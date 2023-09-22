@@ -1,0 +1,311 @@
+/*//////////////////////////////////////////////////////////////////
+[ Slick1 ]*/
+.wrap-slick1 {
+    position: relative;
+}
+
+.item-slick1 {
+    height             : calc(100vh - 40px);
+    background-size    : cover;
+    background-repeat  : no-repeat;
+    background-position: center center;
+    .layer-slick1 {
+        h2{
+            color: #ccc;
+        }
+        span{
+            color: $white-color;
+        }
+    }
+}
+
+.rs1-slick1 .item-slick1 {
+    height: calc(100vh - 84px);
+}
+
+.rs2-slick1 .item-slick1 {
+    height: 100vh;
+}
+
+@media (max-width: 991px) {
+    .item-slick1 {
+        height: calc(100vh - 70px) !important;
+    }
+}
+
+.arrow-slick1 {
+    display        : -webkit-box;
+    display        : -webkit-flex;
+    display        : -moz-box;
+    display        : -ms-flexbox;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    width          : auto;
+    height         : auto;
+    font-size      : 80px;
+    color          : $white-color;
+    position       : absolute;
+    opacity        : 0;
+
+    top              : 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform   : translateY(-50%);
+    -ms-transform    : translateY(-50%);
+    -o-transform     : translateY(-50%);
+    transform        : translateY(-50%);
+
+    z-index           : 200;
+    -webkit-transition: all 0.4s;
+    -o-transition     : all 0.4s;
+    -moz-transition   : all 0.4s;
+    transition        : all 0.4s;
+}
+
+.wrap-slick1:hover .arrow-slick1 {
+    opacity: 1;
+}
+
+.arrow-slick1:hover {
+    color: #7280e0;
+}
+
+.next-slick1 {
+    right: 50px;
+    left : auto;
+}
+
+.prev-slick1 {
+    left : 50px;
+    right: auto;
+}
+
+@media (max-width: 991px) {
+    .next-slick1 {
+        right: 15px;
+    }
+
+    .prev-slick1 {
+        left: 15px;
+    }
+}
+
+/*---------------------------------------------*/
+.rs2-slick1 .arrow-slick1 {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.rs2-slick1 .arrow-slick1:hover {
+    color: #7280e0;
+}
+
+.wrap-slick1-dots {
+    position: absolute;
+    width   : 100%;
+    left    : 0;
+    bottom  : 60px;
+}
+
+.slick1-dots {
+    display        : -webkit-box;
+    display        : -webkit-flex;
+    display        : -moz-box;
+    display        : -ms-flexbox;
+    display        : flex;
+    justify-content: center;
+}
+
+.slick1-dots li {
+    max-width   : 190px;
+    position    : relative;
+    cursor      : pointer;
+    margin-right: 1px;
+}
+
+.slick1-dots li img {
+    width: 100%;
+}
+
+.caption-dots-slick1 {
+    font-family: Poppins-ExtraLight;
+    font-size  : 16px;
+    line-height: 1.3;
+    color      : $white-color;
+    text-align : center;
+
+    display        : -webkit-box;
+    display        : -webkit-flex;
+    display        : -moz-box;
+    display        : -ms-flexbox;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+
+    position        : absolute;
+    width           : 100%;
+    height          : 100%;
+    top             : 0;
+    left            : 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding         : 5px;
+
+    -webkit-transition: all 0.4s;
+    -o-transition     : all 0.4s;
+    -moz-transition   : all 0.4s;
+    transition        : all 0.4s;
+    opacity           : 0;
+}
+
+.slick1-dots li:hover .caption-dots-slick1 {
+    opacity: 1;
+}
+
+.slick1-dots li.slick-active .caption-dots-slick1 {
+    opacity: 1;
+}
+
+@media (max-width: 575px) {
+    .caption-dots-slick1 {
+        font-size: 13px;
+    }
+
+    .wrap-slick1-dots {
+        bottom: 25px;
+    }
+}
+
+/*//////////////////////////////////////////////////////////////////
+  [ Slick2 ]*/
+
+.wrap-slick2 {
+    position    : relative;
+    margin-right: -15px;
+    margin-left : -15px;
+}
+
+/* ------------------------------------ */
+.arrow-slick2 {
+    position         : absolute;
+    z-index          : 100;
+    top              : calc((100% - 60px) / 2);
+    -webkit-transform: translateY(-50%);
+    -moz-transform   : translateY(-50%);
+    -ms-transform    : translateY(-50%);
+    -o-transform     : translateY(-50%);
+    transform        : translateY(-50%);
+    font-size        : 39px;
+    color            : #ccc;
+
+    -webkit-transition: all 0.4s;
+    -o-transition     : all 0.4s;
+    -moz-transition   : all 0.4s;
+    transition        : all 0.4s;
+}
+
+.arrow-slick2:hover {
+    color: #666;
+}
+
+.next-slick2 {
+    right: -40px;
+}
+
+.prev-slick2 {
+    left: -40px;
+}
+
+@media (max-width: 1300px) {
+    .next-slick2 {
+        right: 0px;
+    }
+
+    .prev-slick2 {
+        left: 0px;
+    }
+}
+
+
+/*//////////////////////////////////////////////////////////////////
+  [ Slick3 ]*/
+.wrap-slick3 {
+    position: relative;
+}
+
+/*---------------------------------------------*/
+.wrap-slick3-arrows {
+    position: absolute;
+    z-index : 100;
+    width   : 83.333333%;
+    right   : 0;
+    top     : calc(50% - 20px);
+}
+
+.arrow-slick3 {
+    font-size: 25px;
+    color    : $white-color;
+
+    position        : absolute;
+    top             : 0;
+    width           : 40px;
+    height          : 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    -webkit-transition: all 0.4s;
+    -o-transition     : all 0.4s;
+    -moz-transition   : all 0.4s;
+    transition        : all 0.4s;
+}
+
+.arrow-slick3:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.prev-slick3 {
+    left: 0px;
+}
+
+.next-slick3 {
+    right: 0px;
+}
+
+/*---------------------------------------------*/
+.wrap-slick3-dots {
+    width: 11.111111%;
+}
+
+.slick3 {
+    width: 83.333333%;
+}
+
+.slick3-dots li {
+    display      : block;
+    position     : relative;
+    width        : 100%;
+    margin-bottom: 27px;
+}
+
+.slick3-dots li img {
+    width: 100%;
+}
+
+.slick3-dot-overlay {
+    position          : absolute;
+    width             : 100%;
+    height            : 100%;
+    top               : 0;
+    left              : 0;
+    cursor            : pointer;
+    border            : 2px solid transparent;
+    -webkit-transition: all 0.4s;
+    -o-transition     : all 0.4s;
+    -moz-transition   : all 0.4s;
+    transition        : all 0.4s;
+}
+
+.slick3-dot-overlay:hover {
+    border-color: #ccc;
+}
+
+.slick3-dots .slick-active .slick3-dot-overlay {
+    border-color: #ccc;
+}

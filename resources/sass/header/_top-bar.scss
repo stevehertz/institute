@@ -1,0 +1,46 @@
+/*==================================================================
+[ Top bar ]*/
+.top-bar {
+    height          : 40px;
+    background-color: $tobbar-color;
+}
+
+/*---------------------------------------------*/
+.left-top-bar {
+    font-family: Poppins-Regular;
+    font-size  : 12px;
+    line-height: 1.8;
+    color      : $left-topbar-color;
+}
+
+
+/*---------------------------------------------*/
+.right-top-bar {
+    a {
+        font-family: Poppins-Regular;
+        font-size  : 12px;
+        line-height: 1.8;
+
+        height      : 100%;
+        color       : #b2b2b2;
+        border-right: 1px solid rgba(255, 255, 255, 0.3);
+
+        &:first-child {
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        &:hover {
+            color: #6c7ae0;
+        }
+    }
+}
+
+
+/*---------------------------------------------*/
+.topbar-mobile {
+    li {
+        padding         : 8px 20px;
+        border-top      : 1px solid rgba(255, 255, 255, 0.05);
+        background-color: #222;
+    }
+}

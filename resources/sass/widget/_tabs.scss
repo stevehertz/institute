@@ -1,0 +1,44 @@
+/*//////////////////////////////////////////////////////////////////
+[ Tab01 ]*/
+.tab01 .nav-tabs {
+    display        : -webkit-box;
+    display        : -webkit-flex;
+    display        : -moz-box;
+    display        : -ms-flexbox;
+    display        : flex;
+    flex-wrap      : wrap;
+    justify-content: center;
+    align-items    : center;
+    border         : none;
+}
+
+.tab01 .nav-tabs .nav-item {
+    margin: 0px 15px;
+}
+
+.tab01 .nav-link {
+    font-family: Poppins-Regular;
+    font-size  : 15px;
+    color      : #888;
+    line-height: 1.2;
+
+    padding      : 0;
+    border-radius: 0px;
+    border       : none;
+    border-bottom: 1px solid transparent;
+
+    -webkit-transition: all 0.4s;
+    -o-transition     : all 0.4s;
+    -moz-transition   : all 0.4s;
+    transition        : all 0.4s;
+}
+
+.tab01 .nav-link.active {
+    color       : #333;
+    border-color: #797979;
+}
+
+.tab01 .nav-link:hover {
+    color       : #333;
+    border-color: #797979;
+}

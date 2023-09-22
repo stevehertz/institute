@@ -1,0 +1,44 @@
+/*------------------------------------------------------------------
+[ Icon header ]*/
+
+.wrap-icon-header {
+    flex-grow: 1;
+}
+
+.icon-header-item {
+    position   : relative;
+    font-size  : 26px;
+    line-height: 1;
+    cursor     : pointer;
+    i{
+        color: $white-color;
+        &:hover{
+            color: $active;
+        }
+    }
+}
+
+
+/*---------------------------------------------*/
+.icon-header-noti::after {
+    content    : attr(data-notify);
+    font-family: Poppins-Regular;
+    font-size  : 12px;
+    color      : $white-color;
+    line-height: 15px;
+    text-align : center;
+
+    display         : block;
+    position        : absolute;
+    top             : -7px;
+    right           : 0;
+    min-width       : 15px;
+    height          : 15px;
+    padding         : 0 3px;
+    background-color: #717fe0;
+}
+
+/*---------------------------------------------*/
+.wrap-header-mobile .wrap-icon-header {
+    flex-grow: unset;
+}

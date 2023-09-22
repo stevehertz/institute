@@ -1,0 +1,54 @@
+/*//////////////////////////////////////////////////////////////////
+[ RS sweet alert ]
+//////////////////////////////////////////////////////////////////*/
+/// 
+.swal-overlay {
+    overflow-y: auto;
+}
+
+.swal-button:focus {
+    outline   : none;
+    box-shadow: none;
+}
+
+.swal-button {
+    background-color  : #717fe0;
+    font-family       : Poppins-Regular;
+    font-size         : 16px;
+    color             : $white-color;
+    text-transform    : uppercase;
+    font-weight       : unset;
+    border-radius     : 4px;
+    -webkit-transition: all 0.3s;
+    -o-transition     : all 0.3s;
+    -moz-transition   : all 0.3s;
+    transition        : all 0.3s;
+}
+
+.swal-button:hover {
+    background-color: #333;
+}
+
+.swal-button:active {
+    background-color: #333;
+}
+
+.swal-title {
+    font-family: Poppins-Bold;
+    color      : #333333;
+    font-size  : 18px;
+    line-height: 1.5;
+    padding    : 0 15px;
+}
+
+.swal-text {
+    font-family: Poppins-Regular;
+    color      : #555555;
+    font-size  : 16px;
+    line-height: 1.666667;
+    text-align : center;
+}
+
+.swal-footer {
+    margin-top: 0;
+}

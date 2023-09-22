@@ -1,0 +1,89 @@
+.mfp-bg {
+    z-index         : 10000;
+    background-color: #000;
+    opacity         : 0.9;
+}
+
+.mfp-wrap {
+    z-index: 10000;
+}
+
+.mfp-arrow:after,
+.mfp-arrow:before {
+    display: none;
+}
+
+.mfp-arrow {
+    -webkit-transition: all 0.4s;
+    -o-transition     : all 0.4s;
+    -moz-transition   : all 0.4s;
+    transition        : all 0.4s;
+}
+
+button.mfp-arrow-right {
+    background-image   : url(/storage/icons/icon-next.png);
+    background-position: center center;
+    background-repeat  : no-repeat;
+}
+
+button.mfp-arrow-left {
+    background-image   : url(/storage/icons/icon-prev.png);
+    background-position: center center;
+    background-repeat  : no-repeat;
+}
+
+button.mfp-close {
+    width              : 75px !important;
+    height             : 58px !important;
+    line-height        : 44px;
+    position           : fixed;
+    right              : 0;
+    top                : 0;
+    color              : transparent !important;
+    background-image   : url(/storage/icons/icon-close.png);
+    background-position: center center;
+    background-repeat  : no-repeat;
+    cursor             : pointer !important;
+    -webkit-transition : all 0.4s;
+    -o-transition      : all 0.4s;
+    -moz-transition    : all 0.4s;
+    transition         : all 0.4s;
+}
+
+/* overlay at start */
+.mfp-fade.mfp-bg {
+    opacity: 0;
+
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition   : all 0.3s ease-out;
+    transition        : all 0.3s ease-out;
+}
+
+/* overlay animate in */
+.mfp-fade.mfp-bg.mfp-ready {
+    opacity: 0.9;
+}
+
+/* overlay animate out */
+.mfp-fade.mfp-bg.mfp-removing {
+    opacity: 0;
+}
+
+/* content at start */
+.mfp-fade.mfp-wrap .mfp-content {
+    opacity: 0;
+
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition   : all 0.3s ease-out;
+    transition        : all 0.3s ease-out;
+}
+
+/* content animate it */
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+    opacity: 1;
+}
+
+/* content animate out */
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+    opacity: 0;
+}

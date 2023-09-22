@@ -1,0 +1,39 @@
+/*---------------------------------------------*/
+.sidebar-content {
+    flex-grow    : 1;
+    overflow     : auto;
+    align-content: space-between;
+}
+
+/*---------------------------------------------*/
+.wrap-item-gallery {
+    width: calc((100% - 20px) / 3);
+}
+
+.item-gallery {
+    display    : block;
+    width      : 100%;
+    padding-top: 100%;
+    position   : relative;
+
+    &::after {
+        content         : "";
+        display         : block;
+        position        : absolute;
+        width           : 100%;
+        height          : 100%;
+        top             : 0;
+        left            : 0;
+        background-color: rgba(103, 117, 214, 0.8);
+        opacity         : 0;
+
+        -webkit-transition: all 0.4s;
+        -o-transition     : all 0.4s;
+        -moz-transition   : all 0.34;
+        transition        : all 0.4s;
+    }
+
+    &:hover:after {
+        opacity: 1;
+    }
+}
