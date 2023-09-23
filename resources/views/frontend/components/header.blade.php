@@ -2,46 +2,7 @@
     <!-- Header desktop -->
     <div class="container-menu-desktop">
         <!-- Topbar -->
-        <div class="top-bar">
-            <div class="content-topbar flex-sb-m h-full container">
-                <div class="left-top-bar">
-                    Welcome to CCIB Institute
-                </div>
-
-                <div class="right-top-bar flex-w h-full">
-
-                    @guest
-                        @if (Route::has('login'))
-                            <a href="{{ route('login') }}" class="flex-c-m trans-04 p-lr-25">
-                                Login
-                            </a>
-                        @endif
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="flex-c-m trans-04 p-lr-25">
-                                Register
-                            </a>
-                        @endif
-                    @else
-                        <a href="#" class="flex-c-m trans-04 p-lr-25">
-                            My Account
-                        </a>
-                    @endguest
-
-                    <a href="#" class="flex-c-m trans-04 p-lr-25">
-                        Help & FAQs
-                    </a>
-
-                    <a href="#" class="flex-c-m trans-04 p-lr-25">
-                        EN
-                    </a>
-
-                    <a href="#" class="flex-c-m trans-04 p-lr-25">
-                        USD
-                    </a>
-                </div>
-            </div>
-        </div>
+        @include('frontend.includes.desktop.top-bar')
 
         <div class="wrap-menu-desktop">
             <nav class="limiter-menu-desktop container">
