@@ -1,8 +1,8 @@
 @extends('backend.layouts.app')
-@section('title', __('labels.backend.categories.title').' | '.app_name())
+@section('title', __('labels.backend.categories.title') . ' | ' . app_name())
 
 @push('after-styles')
-    <link rel="stylesheet" href="{{asset('plugins/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css')}}"/>
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css') }}" />
 @endpush
 @section('content')
 
@@ -10,8 +10,7 @@
         <div class="card-header">
             <h3 class="page-title d-inline">@lang('labels.backend.categories.create')</h3>
             <div class="float-right">
-                <a href="{{ route('admin.categories.index') }}"
-                   class="btn btn-success">@lang('labels.backend.categories.view')</a>
+                <a href="{{ route('admin.categories.index') }}" class="btn btn-success">@lang('labels.backend.categories.view')</a>
 
             </div>
         </div>
@@ -20,20 +19,26 @@
             <div class="row">
                 <div class="col-12">
 
-                    {!! Form::open(['method' => 'POST', 'route' => ['admin.categories.store'], 'files' => true,]) !!}
+                    {!! Form::open(['method' => 'POST', 'route' => ['admin.categories.store'], 'files' => true]) !!}
 
                     <div class="row justify-content-center">
                         <div class="col-12 col-lg-4 form-group">
-                            {!! Form::label('title', trans('labels.backend.categories.fields.name').' *', ['class' => 'control-label']) !!}
-                            {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => trans('labels.backend.categories.fields.name'), 'required' => false]) !!}
+                            {!! Form::label('title', trans('labels.backend.categories.fields.name') . ' *', ['class' => 'control-label']) !!}
+                            {!! Form::text('name', old('name'), [
+                                'class' => 'form-control',
+                                'placeholder' => trans('labels.backend.categories.fields.name'),
+                                'required' => false,
+                            ]) !!}
 
                         </div>
 
 
                         <div class="col-12 col-lg-2  form-group">
 
-                                {!! Form::label('icon',  trans('labels.backend.categories.fields.select_icon'), ['class' => 'control-label  d-block']) !!}
-                                <button class="btn  btn-block btn-default border" id="icon" name="icon"></button>
+                            {!! Form::label('icon', trans('labels.backend.categories.fields.select_icon'), [
+                                'class' => 'control-label  d-block',
+                            ]) !!}
+                            <button class="btn  btn-block btn-default border" id="icon" name="icon"></button>
 
                         </div>
 
@@ -54,10 +59,11 @@
 @endsection
 
 @push('after-scripts')
-    <script src="{{asset('plugins/bootstrap-iconpicker/js/bootstrap-iconpicker.bundle.min.js')}}"></script>
+    <script src="{{ asset('plugins/bootstrap-iconpicker/js/bootstrap-iconpicker.bundle.min.js') }}"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
+        
             $('#icon').iconpicker({
                 cols: 10,
                 icon: 'fas fa-bomb',
@@ -74,6 +80,5 @@
 
 
         })
-
     </script>
 @endpush

@@ -7,26 +7,33 @@
         <div class="right-top-bar flex-w h-full">
 
             @guest
-                <a href="javascript:void(0)" class="flex-c-m trans-04 p-lr-25"  id="openLoginModal" data-target="#myModal">
+                <a href="javascript:void(0)" class="flex-c-m trans-04 p-lr-25" id="openLoginModal" data-target="#myModal">
                     @lang('navs.general.login')
                 </a>
-
-                <a href="#" class="flex-c-m trans-04 p-lr-25">
-                    Register
-                </a>
             @else
-                <a href="#" class="flex-c-m trans-04 p-lr-25">
-                    My Account
-                </a>
+                @if ($logged_in_user->hasRole('student'))
+                    <a href="{{ route('admin.dashboard') }}" class="flex-c-m trans-04 p-lr-25" target="_blank">
+                        @lang('navs.frontend.dashboard')
+                    </a>
+                @else
+                    @can('view backend')
+                        <a href="{{ route('admin.dashboard') }}" class="flex-c-m trans-04 p-lr-25" target="_blank">
+                            @lang('navs.frontend.dashboard')
+                        </a>
+                    @endcan
+                @endif
+
             @endguest
 
-            <a href="#" class="flex-c-m trans-04 p-lr-25">
+            {{-- <a href="#" class="flex-c-m trans-04 p-lr-25">
                 Help & FAQs
-            </a>
+            </a> --}}
 
-            <a href="#" class="flex-c-m trans-04 p-lr-25">
-                EN
-            </a>
+            @if (count($locales) > 1)
+                <a href="#" class="flex-c-m trans-04 p-lr-25">
+                    @lang('menus.language-picker.language')({{ strtoupper(app()->getLocale()) }})
+                </a>
+            @endif
 
             <a href="#" class="flex-c-m trans-04 p-lr-25">
                 USD

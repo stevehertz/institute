@@ -95,8 +95,8 @@
 
         $(window).on('resize', function() {
             ps.update();
-        })
+        });
     });
 </script>
 <!--===============================================================================================-->
-<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/scripts.js') }}"></script>

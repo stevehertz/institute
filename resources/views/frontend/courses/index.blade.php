@@ -1,5 +1,5 @@
-@extends('frontend.layouts.app'.config('theme_layout'))
-@section('title', trans('labels.frontend.course.courses').' | '. app_name() )
+@extends('frontend.layouts.app' . config('theme_layout'))
+@section('title', trans('labels.frontend.course.courses') . ' | ' . app_name())
 
 @push('after-styles')
     <style>
@@ -26,8 +26,9 @@
             border: none;
 
         }
-     .listing-filter-form select{
-            height:50px!important;
+
+        .listing-filter-form select {
+            height: 50px !important;
         }
 
         ul.pagination {
@@ -36,348 +37,334 @@
         }
     </style>
 @endpush
+
 @section('content')
 
-    <!-- Start of breadcrumb section
-        ============================================= -->
-    <section id="breadcrumb" class="breadcrumb-section relative-position backgroud-style">
-        <div class="blakish-overlay"></div>
-        <div class="container">
-            <div class="page-breadcrumb-content text-center">
-                <div class="page-breadcrumb-title">
-                    <h2 class="breadcrumb-head black bold">
-                        <span>@if(isset($category)) {{$category->name}} @else @lang('labels.frontend.course.courses') @endif </span>
-                    </h2>
-                </div>
-            </div>
-        </div>
+
+    <!-- Title page -->
+    <section class="bg-img1 txt-center p-lr-15 p-tb-92"
+        style="background-image: url('{{ asset('storage/images/bg-01.jpg') }}');">
+        <h2 class="ltext-105 cl0 txt-center">
+            {{ env('APP_NAME') }} <span> @lang('labels.frontend.contact.title')</span>
+        </h2>
     </section>
-    <!-- End of breadcrumb section
-        ============================================= -->
 
-
-    <!-- Start of course section
-        ============================================= -->
-    <section id="course-page" class="course-page-section">
+    <!-- Product -->
+    <div class="bg0 m-t-23 p-b-140">
         <div class="container">
-            <div class="row">
-                <div class="col-md-9">
-                    @if(session()->has('success'))
-                        <div class="alert alert-dismissable alert-success fade show">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            {{session('success')}}
-                        </div>
-                    @endif
-                    <div class="short-filter-tab">
-                        <div class="shorting-filter w-50 d-inline float-left mr-3">
-                            <span>@lang('labels.frontend.course.sort_by')</span>
-                            <select id="sortBy" class="form-control d-inline w-50">
-                                <option value="">@lang('labels.frontend.course.none')</option>
-                                <option value="popular">@lang('labels.frontend.course.popular')</option>
-                                <option value="trending">@lang('labels.frontend.course.trending')</option>
-                                <option value="featured">@lang('labels.frontend.course.featured')</option>
-                            </select>
-                        </div>
+            <div class="flex-w flex-sb-m p-b-52">
+                <div class="flex-w flex-l-m filter-tope-group m-tb-10">
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+                        All Products
+                    </button>
 
-                        <div class="tab-button blog-button ul-li text-center float-right">
-                            <ul class="product-tab">
-                                <li class="active" rel="tab1"><i class="fas fa-th"></i></li>
-                                <li rel="tab2"><i class="fas fa-list"></i></li>
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+                        Women
+                    </button>
+
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
+                        Men
+                    </button>
+
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
+                        Bag
+                    </button>
+
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
+                        Shoes
+                    </button>
+
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
+                        Watches
+                    </button>
+                </div>
+
+                <div class="flex-w flex-c-m m-tb-10">
+                    <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
+                        <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
+                        <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+                        Filter
+                    </div>
+
+                    <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
+                        <i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
+                        <i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+                        Search
+                    </div>
+                </div>
+
+                <!-- Search product -->
+                <div class="dis-none panel-search w-full p-t-10 p-b-15">
+                    <div class="bor8 dis-flex p-l-15">
+                        <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
+                            <i class="zmdi zmdi-search"></i>
+                        </button>
+
+                        <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product"
+                            placeholder="Search">
+                    </div>
+                </div>
+
+                <!-- Filter -->
+                <div class="dis-none panel-filter w-full p-t-10">
+                    <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
+                        <div class="filter-col1 p-r-15 p-b-27">
+                            <div class="mtext-102 cl2 p-b-15">
+                                Sort By
+                            </div>
+
+                            <ul>
+                                <li class="p-b-6">
+                                    <a href="#" class="filter-link stext-106 trans-04">
+                                        Default
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <a href="#" class="filter-link stext-106 trans-04">
+                                        Popularity
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <a href="#" class="filter-link stext-106 trans-04">
+                                        Average rating
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+                                        Newness
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <a href="#" class="filter-link stext-106 trans-04">
+                                        Price: Low to High
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <a href="#" class="filter-link stext-106 trans-04">
+                                        Price: High to Low
+                                    </a>
+                                </li>
                             </ul>
                         </div>
 
-                    </div>
-
-                    <div class="genius-post-item">
-                        <div class="tab-container">
-                            <div id="tab1" class="tab-content-1 pt35">
-                                <div class="best-course-area best-course-v2">
-                                    <div class="row">
-                                        @if($courses->count() > 0)
-
-                                            @foreach($courses as $course)
-
-                                                <div class="col-md-4">
-                                                    <div class="best-course-pic-text relative-position">
-                                                        <div class="best-course-pic relative-position"
-                                                             @if($course->course_image != "") style="background-image: url('{{asset('storage/uploads/'.$course->course_image)}}')" @endif>
-
-                                                            @if($course->trending == 1)
-                                                                <div class="trend-badge-2 text-center text-uppercase">
-                                                                    <i class="fas fa-bolt"></i>
-                                                                    <span>@lang('labels.frontend.badges.trending')</span>
-                                                                </div>
-                                                            @endif
-                                                                @if($course->free == 1)
-                                                                    <div class="trend-badge-3 text-center text-uppercase">
-                                                                        <i class="fas fa-bolt"></i>
-                                                                        <span>@lang('labels.backend.courses.fields.free')</span>
-                                                                    </div>
-                                                                @endif
-                                                            <div class="course-price text-center gradient-bg">
-                                                                @if($course->free == 1)
-                                                                    <span>{{trans('labels.backend.courses.fields.free')}}</span>
-                                                                @else
-                                                                    <span>
-                                                                        {!!  $course->strikePrice  !!}
-                                                                        {{$appCurrency['symbol'].' '.$course->price}}
-                                                                    </span>
-                                                                @endif
-                                                            </div>
-
-                                                            <div class="course-rate ul-li">
-                                                                <ul>
-                                                                    @for($i=1; $i<=(int)$course->rating; $i++)
-                                                                        <li><i class="fas fa-star"></i></li>
-                                                                    @endfor
-                                                                </ul>
-                                                            </div>
-                                                            <div class="course-details-btn">
-                                                                <a href="{{ route('courses.show', [$course->slug]) }}">@lang('labels.frontend.course.course_detail')
-                                                                    <i class="fas fa-arrow-right"></i></a>
-                                                            </div>
-                                                            <div class="blakish-overlay"></div>
-                                                        </div>
-                                                        <div class="best-course-text">
-                                                            <div class="course-title mb20 headline relative-position">
-                                                                <h3>
-                                                                    <a href="{{ route('courses.show', [$course->slug]) }}">{{$course->title}}</a>
-                                                                </h3>
-                                                            </div>
-                                                            <div class="course-meta">
-                                                                <span class="course-category"><a
-                                                                            href="{{route('courses.category',['category'=>$course->category->slug])}}">{{$course->category->name}}</a></span>
-                                                                <span class="course-author"><a href="#">{{ $course->students()->count() }}
-                                                                        @lang('labels.frontend.course.students')</a></span>
-
-                                                            </div>
-                                                            @include('frontend.layouts.partials.wishlist',['course' => $course->id, 'price' => $course->price])
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            @endforeach
-                                        @else
-                                            <h3>@lang('labels.general.no_data_available')</h3>
-                                    @endif
-
-                                    <!-- /course -->
-
-                                    </div>
-                                </div>
-                            </div><!-- /tab-1 -->
-
-                            <div id="tab2" class="tab-content-1">
-                                <div class="course-list-view">
-                                    <table>
-                                        <tr class="list-head">
-                                            <th>@lang('labels.frontend.course.course_name')</th>
-                                            <th>@lang('labels.frontend.course.course_type')</th>
-                                            <th>@lang('labels.frontend.course.starts')</th>
-                                        </tr>
-                                        @if($courses->count() > 0)
-                                            @foreach($courses as $course)
-
-                                                <tr>
-                                                    <td>
-                                                        <div class="course-list-img-text">
-                                                            <div class="course-list-img"
-                                                                 @if($course->course_image != "") style="background-image: url({{asset('storage/uploads/'.$course->course_image)}})" @endif >
-                                                            </div>
-                                                            <div class="course-list-text">
-                                                                <h3>
-                                                                    <a href="{{ route('courses.show', [$course->slug]) }}">{{$course->title}}</a>
-                                                                </h3>
-                                                                <div class="course-meta">
-                                                                <span class="course-category bold-font"><a
-                                                                            href="{{ route('courses.show', [$course->slug]) }}">
-                                                                        @if($course->free == 1)
-                                                                            {{trans('labels.backend.courses.fields.free')}}
-                                                                        @else
-                                                                            {!!  $course->strikePrice  !!}
-                                                                            {{$appCurrency['symbol'].' '.$course->price}}
-                                                                        @endif
-                                                                    </a></span>
-
-                                                                    <div class="course-rate ul-li">
-                                                                        <ul>
-                                                                            @for($i=1; $i<=(int)$course->rating; $i++)
-                                                                                <li><i class="fas fa-star"></i></li>
-                                                                            @endfor
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="course-type-list">
-                                                            <span><a href="{{route('courses.category',['category'=>$course->category->slug])}}">{{$course->category->name}}</a></span>
-                                                        </div>
-                                                    </td>
-                                                    <td>{{\Carbon\Carbon::parse($course->start_date)->format('d M Y')}}</td>
-                                                </tr>
-                                            @endforeach
-                                        @else
-                                            <tr>
-                                                <td colspan="3">
-                                                    <h3>@lang('labels.general.no_data_available')</h3>
-
-                                                </td>
-                                            </tr>
-                                        @endif
-
-                                    </table>
-                                </div>
-                            </div><!-- /tab-2 -->
-                        </div>
-                        <div class="couse-pagination text-center ul-li">
-                            {{ $courses->links() }}
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <div class="col-md-3">
-                    <div class="side-bar">
-
-                        <div class="side-bar-widget  first-widget">
-                            <h2 class="widget-title text-capitalize">@lang('labels.frontend.course.find_your_course')</h2>
-                            <div class="listing-filter-form pb30">
-                                <form action="{{route('search-course')}}" method="get">
-
-                                    <div class="filter-search mb20">
-                                        <label class="text-uppercase">@lang('labels.frontend.course.category')</label>
-                                        <select name="category" class="form-control listing-filter-form select">
-                                            <option value="">@lang('labels.frontend.course.select_category')</option>
-                                            @if(count($categories) > 0)
-                                                @foreach($categories as $category)
-                                                    <option value="{{$category->id}}">{{$category->name}}</option>
-
-                                                @endforeach
-                                            @endif
-
-                                        </select>
-                                    </div>
-
-
-                                    <div class="filter-search mb20">
-                                        <label>@lang('labels.frontend.course.full_text')</label>
-                                        <input type="text" class="" name="q" placeholder="{{trans('labels.frontend.course.looking_for')}}">
-                                    </div>
-                                    <button class="genius-btn gradient-bg text-center text-uppercase btn-block text-white font-weight-bold"
-                                            type="submit">@lang('labels.frontend.course.find_courses') <i
-                                                class="fas fa-caret-right"></i></button>
-                                </form>
-
-                            </div>
-                        </div>
-
-                        @if($recent_news->count() > 0)
-                            <div class="side-bar-widget">
-                                <h2 class="widget-title text-capitalize">@lang('labels.frontend.course.recent_news')</h2>
-                                <div class="latest-news-posts">
-                                    @foreach($recent_news as $item)
-                                        <div class="latest-news-area">
-
-                                            @if($item->image != "")
-                                                <div class="latest-news-thumbnile relative-position"
-                                                     style="background-image: url({{asset('storage/uploads/'.$item->image)}})">
-                                                    <div class="blakish-overlay"></div>
-                                                </div>
-                                            @endif
-                                            <div class="date-meta">
-                                                <i class="fas fa-calendar-alt"></i> {{$item->created_at->format('d M Y')}}
-                                            </div>
-                                            <h3 class="latest-title bold-font"><a
-                                                        href="{{route('blogs.index',['slug'=>$item->slug.'-'.$item->id])}}">{{$item->title}}</a>
-                                            </h3>
-                                        </div>
-                                        <!-- /post -->
-                                    @endforeach
-
-
-                                    <div class="view-all-btn bold-font">
-                                        <a href="{{route('blogs.index')}}">@lang('labels.frontend.course.view_all_news')
-                                            <i class="fas fa-chevron-circle-right"></i></a>
-                                    </div>
-                                </div>
+                        <div class="filter-col2 p-r-15 p-b-27">
+                            <div class="mtext-102 cl2 p-b-15">
+                                Price
                             </div>
 
-                        @endif
+                            <ul>
+                                <li class="p-b-6">
+                                    <a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+                                        All
+                                    </a>
+                                </li>
 
+                                <li class="p-b-6">
+                                    <a href="#" class="filter-link stext-106 trans-04">
+                                        $0.00 - $50.00
+                                    </a>
+                                </li>
 
-                        @if($global_featured_course != "")
-                            <div class="side-bar-widget">
-                                <h2 class="widget-title text-capitalize">@lang('labels.frontend.course.featured_course')</h2>
-                                <div class="featured-course">
-                                    <div class="best-course-pic-text relative-position pt-0">
-                                        <div class="best-course-pic relative-position "
-                                             @if($global_featured_course->course_image != "") style="background-image: url({{asset('storage/uploads/'.$global_featured_course->course_image)}})" @endif>
+                                <li class="p-b-6">
+                                    <a href="#" class="filter-link stext-106 trans-04">
+                                        $50.00 - $100.00
+                                    </a>
+                                </li>
 
-                                            @if($global_featured_course->trending == 1)
-                                                <div class="trend-badge-2 text-center text-uppercase">
-                                                    <i class="fas fa-bolt"></i>
-                                                    <span>@lang('labels.frontend.badges.trending')</span>
-                                                </div>
-                                            @endif
-                                                @if($global_featured_course->free == 1)
-                                                    <div class="trend-badge-3 text-center text-uppercase">
-                                                        <i class="fas fa-bolt"></i>
-                                                        <span>@lang('labels.backend.courses.fields.free')</span>
-                                                    </div>
-                                                @endif
+                                <li class="p-b-6">
+                                    <a href="#" class="filter-link stext-106 trans-04">
+                                        $100.00 - $150.00
+                                    </a>
+                                </li>
 
-                                        </div>
-                                        <div class="best-course-text" style="left: 0;right: 0;">
-                                            <div class="course-title mb20 headline relative-position">
-                                                <h3>
-                                                    <a href="{{ route('courses.show', [$global_featured_course->slug]) }}">{{$global_featured_course->title}}</a>
-                                                </h3>
-                                            </div>
-                                            <div class="course-meta">
-                                                <span class="course-category"><a
-                                                            href="{{route('courses.category',['category'=>$global_featured_course->category->slug])}}">{{$global_featured_course->category->name}}</a></span>
-                                                <span class="course-author">{{ $global_featured_course->students()->count() }}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <li class="p-b-6">
+                                    <a href="#" class="filter-link stext-106 trans-04">
+                                        $150.00 - $200.00
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <a href="#" class="filter-link stext-106 trans-04">
+                                        $200.00+
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="filter-col3 p-r-15 p-b-27">
+                            <div class="mtext-102 cl2 p-b-15">
+                                Color
                             </div>
-                        @endif
+
+                            <ul>
+                                <li class="p-b-6">
+                                    <span class="fs-15 lh-12 m-r-6" style="color: #222;">
+                                        <i class="zmdi zmdi-circle"></i>
+                                    </span>
+
+                                    <a href="#" class="filter-link stext-106 trans-04">
+                                        Black
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <span class="fs-15 lh-12 m-r-6" style="color: #4272d7;">
+                                        <i class="zmdi zmdi-circle"></i>
+                                    </span>
+
+                                    <a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+                                        Blue
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <span class="fs-15 lh-12 m-r-6" style="color: #b3b3b3;">
+                                        <i class="zmdi zmdi-circle"></i>
+                                    </span>
+
+                                    <a href="#" class="filter-link stext-106 trans-04">
+                                        Grey
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <span class="fs-15 lh-12 m-r-6" style="color: #00ad5f;">
+                                        <i class="zmdi zmdi-circle"></i>
+                                    </span>
+
+                                    <a href="#" class="filter-link stext-106 trans-04">
+                                        Green
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <span class="fs-15 lh-12 m-r-6" style="color: #fa4251;">
+                                        <i class="zmdi zmdi-circle"></i>
+                                    </span>
+
+                                    <a href="#" class="filter-link stext-106 trans-04">
+                                        Red
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <span class="fs-15 lh-12 m-r-6" style="color: #aaa;">
+                                        <i class="zmdi zmdi-circle-o"></i>
+                                    </span>
+
+                                    <a href="#" class="filter-link stext-106 trans-04">
+                                        White
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="filter-col4 p-b-27">
+                            <div class="mtext-102 cl2 p-b-15">
+                                Tags
+                            </div>
+
+                            <div class="flex-w p-t-4 m-r--5">
+                                <a href="#"
+                                    class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                    Fashion
+                                </a>
+
+                                <a href="#"
+                                    class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                    Lifestyle
+                                </a>
+
+                                <a href="#"
+                                    class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                    Denim
+                                </a>
+
+                                <a href="#"
+                                    class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                    Streetstyle
+                                </a>
+
+                                <a href="#"
+                                    class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                    Crafts
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="row isotope-grid">
+                @if ($courses->count() > 0)
+                    @foreach ($courses as $course)
+                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+                            <!-- Block2 -->
+                            <div class="block2">
+                                <div class="block2-pic hov-img0">
+                                    @if ($course->course_image != '')
+                                        <img src="{{ asset('storage/uploads/' . $course->course_image) }}"
+                                            alt="{{ $course->title }}">
+                                    @endif
+
+
+                                    <a href="#"
+                                        class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                        Quick View
+                                    </a>
+                                </div>
+
+                                <div class="block2-txt flex-w flex-t p-t-14">
+                                    <div class="block2-txt-child1 flex-col-l ">
+                                        <a href="product-detail.html"
+                                            class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            {{ $course->title }}
+                                        </a>
+
+                                        <span class="stext-105 cl3">
+                                            ${{ $course->price }}
+                                        </span>
+                                    </div>
+
+                                    <div class="block2-txt-child2 flex-r p-t-3">
+                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                            <img class="icon-heart1 dis-block trans-04"
+                                                src="{{ asset('storage/images/icons/icon-heart-01.png')}}" alt="ICON">
+                                            <img class="icon-heart2 dis-block trans-04 ab-t-l"
+                                                src="{{ asset('storage/images/icons/icon-heart-02.png')}}" alt="ICON">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                @endif
+            </div>
         </div>
-    </section>
-    <!-- End of course section
-        ============================================= -->
-
-    <!-- Start of best course
-   =============================================  -->
-    @include('frontend.layouts.partials.browse_courses')
-    <!-- End of best course
-            ============================================= -->
-
+    </div>
 
 @endsection
 
 @push('after-scripts')
     <script>
-        $(document).ready(function () {
-            $(document).on('change', '#sortBy', function () {
+        $(document).ready(function() {
+            $(document).on('change', '#sortBy', function() {
                 if ($(this).val() != "") {
-                    location.href = '{{url()->current()}}?type=' + $(this).val();
+                    location.href = '{{ url()->current() }}?type=' + $(this).val();
                 } else {
-                    location.href = '{{route('courses.all')}}';
+                    location.href = '{{ route('courses.all') }}';
                 }
             })
 
-            @if(request('type') != "")
-            $('#sortBy').find('option[value="' + "{{request('type')}}" + '"]').attr('selected', true);
+            @if (request('type') != '')
+                $('#sortBy').find('option[value="' + "{{ request('type') }}" + '"]').attr('selected', true);
             @endif
         });
-
     </script>
 @endpush

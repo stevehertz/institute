@@ -8,7 +8,7 @@
             <nav class="limiter-menu-desktop container">
 
                 <!-- Logo desktop -->
-                <a href="#" class="logo">
+                <a href="{{ url('/') }}" class="logo">
                     <img src="{{ asset('storage/logo/logo.png') }}" alt="IMG-LOGO">
                 </a>
 
@@ -40,8 +40,7 @@
 
     <!-- Header Mobile -->
     @include('frontend.includes.mobile.header')
-
-
+    
     <!-- Menu Mobile -->
     @include('frontend.includes.mobile.main-nav')
 

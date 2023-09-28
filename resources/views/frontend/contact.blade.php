@@ -1,12 +1,12 @@
-@extends('frontend.layouts.app'.config('theme_layout'))
+@extends('frontend.layouts.app' . config('theme_layout'))
 
-@section('title', 'Contact | '.app_name())
+@section('title', 'Contact | ' . app_name())
 @section('meta_description', '')
-@section('meta_keywords','')
+@section('meta_keywords', '')
 
 @push('after-styles')
     <style>
-        .my-alert{
+        .my-alert {
             position: absolute;
             z-index: 10;
             left: 0;
@@ -20,133 +20,98 @@
 @endpush
 
 @section('content')
-    @php
-        $footer_data = json_decode(config('footer_data'));
-    @endphp
-    @if(session()->has('alert'))
-        <div class="alert alert-light alert-dismissible fade my-alert show">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>{{session('alert')}}</strong>
-        </div>
-    @endif
 
-    <!-- Start of breadcrumb section
-        ============================================= -->
-    <section id="breadcrumb" class="breadcrumb-section relative-position backgroud-style">
-        <div class="blakish-overlay"></div>
+    <!-- Title page -->
+    <section class="bg-img1 txt-center p-lr-15 p-tb-92"
+        style="background-image: url('{{ asset('storage/images/bg-01.jpg') }}');">
+        <h2 class="ltext-105 cl0 txt-center">
+            {{ env('APP_NAME') }} <span> @lang('labels.frontend.contact.title')</span>
+        </h2>
+    </section>
+
+    <!-- Content page -->
+    <section class="bg0 p-t-104 p-b-116">
         <div class="container">
-            <div class="page-breadcrumb-content text-center">
-                <div class="page-breadcrumb-title">
-                    <h2 class="breadcrumb-head black bold">{{env('APP_NAME')}} <span> @lang('labels.frontend.contact.title')</span></h2>
+            <div class="flex-w flex-tr">
+                <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                    <form>
+                        <h4 class="mtext-105 cl2 txt-center p-b-30">
+                            Send Us A Message
+                        </h4>
+
+                        <div class="bor8 m-b-20 how-pos4-parent">
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email"
+                                placeholder="Your Email Address">
+                            <img class="how-pos4 pointer-none" src="{{ asset('storage/images/icons/icon-email.png')}}" alt="ICON">
+                        </div>
+
+                        <div class="bor8 m-b-30">
+                            <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="How Can We Help?"></textarea>
+                        </div>
+
+                        <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+
+                <div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+                    <div class="flex-w w-full p-b-42">
+                        <span class="fs-18 cl5 txt-center size-211">
+                            <span class="lnr lnr-map-marker"></span>
+                        </span>
+
+                        <div class="size-212 p-t-2">
+                            <span class="mtext-110 cl2">
+                                Address
+                            </span>
+
+                            <p class="stext-115 cl6 size-213 p-t-18">
+                                Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018 US
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex-w w-full p-b-42">
+                        <span class="fs-18 cl5 txt-center size-211">
+                            <span class="lnr lnr-phone-handset"></span>
+                        </span>
+
+                        <div class="size-212 p-t-2">
+                            <span class="mtext-110 cl2">
+                                Lets Talk
+                            </span>
+
+                            <p class="stext-115 cl1 size-213 p-t-18">
+                                +1 800 1236879
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex-w w-full">
+                        <span class="fs-18 cl5 txt-center size-211">
+                            <span class="lnr lnr-envelope"></span>
+                        </span>
+
+                        <div class="size-212 p-t-2">
+                            <span class="mtext-110 cl2">
+                                Sale Support
+                            </span>
+
+                            <p class="stext-115 cl1 size-213 p-t-18">
+                                contact@example.com
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End of breadcrumb section
-        ============================================= -->
-
-
-    <!-- Start of contact section
-        ============================================= -->
-    <section id="contact-page" class="contact-page-section">
-        <div class="container">
-            <div class="section-title mb45 headline text-center">
-                <h2>@lang('labels.frontend.contact.keep_in_touch')</h2>
-            </div>
-            @if(($footer_data->social_links->status == 1) && (count($footer_data->social_links->links) > 0))
-                <div class="social-contact text-center d-inline-block w-100">
-                    @foreach($footer_data->social_links->links as $item)
-                    <div class="category-icon-title text-center">
-                        <a href="{{$item->link}}" target="_blank">
-                            <div class="category-icon">
-                                <i class="text-gradiant {{$item->icon}}"></i>
-                            </div>
-                        </a>
-                    </div>
-                    @endforeach
-                </div>
-            @endif
-        </div>
-    </section>
-    <!-- End of contact section
-        ============================================= -->
-
-    <!-- Start of contact area form
-        ============================================= -->
-    <section id="contact-form" class="contact-form-area_3 contact-page-version">
-        <div class="container">
-            <div class="section-title mb45 headline text-center">
-                <h2>@lang('labels.frontend.contact.send_us_a_message')</h2>
-            </div>
-
-            <div class="contact_third_form">
-                <form class="contact_form" action="{{route('contact.send')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="contact-info">
-                                <input class="name" name="name" type="text" placeholder="@lang('labels.frontend.contact.your_name')">
-                                @if($errors->has('name'))
-                                    <span class="help-block text-danger">{{$errors->first('name')}}</span>
-                                @endif
-                            </div>
-
-                        </div>
-                        <div class="col-md-4">
-                            <div class="contact-info">
-                                <input class="email" name="email" type="email" placeholder="@lang('labels.frontend.contact.your_email')">
-                                @if($errors->has('email'))
-                                    <span class="help-block text-danger">{{$errors->first('email')}}</span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="contact-info">
-                                <input class="number" name="phone" type="number" placeholder="@lang('labels.frontend.contact.phone_number')">
-                                @if($errors->has('phone'))
-                                    <span class="help-block text-danger">{{$errors->first('phone')}}</span>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <textarea name="message" placeholder="@lang('labels.frontend.contact.message')"></textarea>
-
-                @if($errors->has('message'))
-                        <span class="help-block text-danger">{{$errors->first('message')}}</span>
-                    @endif
-
-                    @if(config('access.captcha.registration'))
-                        <div class="contact-info mt-5 text-center">
-                            {{ no_captcha()->display() }}
-                            {{ html()->hidden('captcha_status', 'true')->id('captcha_status') }}
-                            @if($errors->has('g-recaptcha-response'))
-                                <p class="help-block text-danger mx0auto">{{$errors->first('g-recaptcha-response')}}</p>
-                            @endif
-                        </div><!--col-->
-                    @endif
-
-
-                    <div class="nws-button text-center  gradient-bg text-uppercase">
-                        <button class="text-uppercase" type="submit" value="Submit">@lang('labels.frontend.contact.send_email') <i class="fas fa-caret-right"></i></button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-    <!-- End of contact area form
-        ============================================= -->
-
-
-    <!-- Start of contact area
-        ============================================= -->
-    @include('frontend.layouts.partials.contact_area')
-    <!-- End of contact area
-        ============================================= -->
 
 
 @endsection
 @push('after-scripts')
-    @if(config('access.captcha.registration'))
+    @if (config('access.captcha.registration'))
         {{ no_captcha()->script() }}
     @endif
 @endpush

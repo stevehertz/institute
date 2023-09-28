@@ -1,10 +1,10 @@
-@extends('frontend.layouts.app'.config('theme_layout'))
+@extends('frontend.layouts.app' . config('theme_layout'))
 
-@section('title', ($page->meta_title) ? $page->meta_title : app_name())
-@section('meta_description', ($page->meta_description) ? $page->meta_description :'' )
-@section('meta_keywords', ($page->meta_keywords) ? $page->meta_keywords : app_name())
+@section('title', $page->meta_title ? $page->meta_title : app_name())
+@section('meta_description', $page->meta_description ? $page->meta_description : '')
+@section('meta_keywords', $page->meta_keywords ? $page->meta_keywords : app_name())
 
-@push('after-styles')
+{{-- @push('after-styles')
     <style>
         .content img {
             margin: 10px;
@@ -17,52 +17,34 @@
             margin-bottom: 25px;
         }
     </style>
-@endpush
+@endpush --}}
 
 @section('content')
 
-    <!-- Start of breadcrumb section
-        ============================================= -->
-    <section id="breadcrumb" class="breadcrumb-section relative-position backgroud-style">
-        <div class="blakish-overlay"></div>
-        <div class="container">
-            <div class="page-breadcrumb-content text-center">
-                <div class="page-breadcrumb-title">
-                    <h2 class="breadcrumb-head black bold">{{env('APP_NAME')}} <span>{{$page->title}}</span></h2>
-                </div>
-            </div>
-        </div>
+    <!-- Title page -->
+    <section class="bg-img1 txt-center p-lr-15 p-tb-92"
+        style="background-image: url('{{ asset('storage/images/bg-01.jpg') }}');">
+        <h2 class="ltext-105 cl0 txt-center">
+            {{env('APP_NAME')}} <span>{{$page->title}}
+        </h2>
     </section>
-    <!-- End of breadcrumb section
-        ============================================= -->
 
-    <section id="about-page" class="about-page-section">
+
+    <!-- Content page -->
+    <section class="bg0 p-t-75 p-b-120">
         <div class="container">
-            <div class="row">
-                <div class="@if($page->sidebar == 1) col-md-9 @else col-md-12 @endif ">
-                    <div class="about-us-content-item">
-                        @if($page->image != "")
-                        <div class="about-gallery w-100 text-center">
-                            <div class="about-gallery-img d-inline-block float-none">
-                                <img src="{{asset('storage/uploads/'.$page->image)}}" alt="">
-                            </div>
-                        </div>
-                    @endif
-                    <!-- /gallery -->
+            <div class="row p-b-148">
+                <div class="col-md-12 col-lg-8">
+                    <div class="p-t-12 p-r-85 p-r-15-lg p-r-0-md">
+                        <h3 class="mtext-111 cl2 p-b-16">
+                            {{$page->title}}
+                        </h3>
 
-                        <div class="about-text-item">
-                            <div class="section-title-2  headline text-left">
-                                <h2>{{$page->title}}</h2>
-                            </div>
-                           {!! $page->content !!}
-                        </div>
-                        <!-- /about-text -->
+                        {!! $page->content !!}
                     </div>
                 </div>
-                @if($page->sidebar == 1)
-                    @include('frontend.layouts.partials.right-sidebar')
-                @endif
             </div>
         </div>
     </section>
+
 @endsection
