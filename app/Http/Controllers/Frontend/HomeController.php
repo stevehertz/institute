@@ -86,7 +86,7 @@ class HomeController extends Controller
         $clients = Client::where('status', '=', 1)->get();
         $partners = Partner::where('status', '=', 1)->get();
 
-        $news = Blog::orderBy('created_at', 'desc')->take(2)->get();
+        $news = Blog::orderBy('created_at', 'desc')->take(3)->get();
 
         $faqs = Category::with('faqs')->get()->take(6);
 

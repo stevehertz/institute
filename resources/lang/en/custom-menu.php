@@ -4,5 +4,6 @@
     'about-us' => 'About Us',
     'courses' => 'Courses',
     'contact' => 'Contact',
+    'blog' => 'Blog',
   ),
 );

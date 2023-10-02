@@ -1,200 +1,410 @@
-@extends('frontend.layouts.app'.config('theme_layout'))
+@extends('frontend.layouts.app' . config('theme_layout'))
 
-@section('title', ($blog->meta_title) ? $blog->meta_title : app_name() )
+@section('title', $blog->meta_title ? $blog->meta_title : app_name())
 @section('meta_description', $blog->meta_description)
 @section('meta_keywords', $blog->meta_keywords)
 
 @section('content')
 
-    <!-- Start of breadcrumb section
-    ============================================= -->
-    <section id="breadcrumb" class="breadcrumb-section relative-position backgroud-style">
-        <div class="blakish-overlay"></div>
-        <div class="container">
-            <div class="page-breadcrumb-content text-center">
-                <div class="page-breadcrumb-title">
-                    <h2 class="breadcrumb-head black bold">{{$blog->title}}</h2>
-                </div>
-            </div>
-        </div>
+    <!-- Title page -->
+    <section class="bg-img1 txt-center p-lr-15 p-tb-92"
+        style="background-image: url('{{ asset('storage/images/bg-01.jpg') }}');">
+        <h2 class="ltext-105 cl0 txt-center">
+            {{ $blog->title }}
+        </h2>
     </section>
-    <!-- End of breadcrumb section
-        ============================================= -->
 
+    <!-- breadcrumb -->
+    <div class="container">
+        <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+            <a href="#" class="stext-109 cl8 hov-cl1 trans-04">
+                Home
+                <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+            </a>
 
-    <!-- Start of Blog single content
-        ============================================= -->
-    <section id="blog-detail" class="blog-details-section">
+            <a href="#" class="stext-109 cl8 hov-cl1 trans-04">
+                Blog
+                <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+            </a>
+
+            <span class="stext-109 cl4">
+                {{ $blog->title }}
+            </span>
+        </div>
+    </div>
+
+    <!-- Content page -->
+    <section class="bg0 p-t-52 p-b-20">
         <div class="container">
             <div class="row">
-                <div class="col-md-9">
-                    <div class="blog-details-content">
-                        <div class="post-content-details">
-                            @if($blog->image != "")
+                <div class="col-md-8 col-lg-9 p-b-80">
+                    <div class="p-r-45 p-r-0-lg">
+                        <!--  -->
+                        <div class="wrap-pic-w how-pos5-parent">
+                            <img src="{{ asset('storage/images/blog-04.jpg')}}" alt="IMG-BLOG">
 
-                                <div class="blog-detail-thumbnile mb35">
-                                    <img src="{{asset('storage/uploads/'.$blog->image)}}" alt="">
-                                </div>
-                            @endif
+                            <div class="flex-col-c-m size-123 bg9 how-pos5">
+                                <span class="ltext-107 cl2 txt-center">
+                                    22
+                                </span>
 
-                            <h2>{{$blog->title}}</h2>
-
-                            <div class="date-meta text-uppercase">
-                                <span><i class="fas fa-calendar-alt"></i> {{$blog->created_at->format('d M Y')}}</span>
-                                <span><i class="fas fa-user"></i> {{$blog->author->name}}</span>
-                                <span><i class="fas fa-comment-dots"></i> {{$blog->comments->count()}}</span>
-                                <span><i class="fas fa-tag"><a
-                                                href="{{route('blogs.category',['category' => $blog->category->slug])}}"> {{$blog->category->name}}</a></i></span>
+                                <span class="stext-109 cl3 txt-center">
+                                    Jan 2018
+                                </span>
                             </div>
-                            <p>
-                                {!! $blog->content !!}
+                        </div>
+
+                        <div class="p-t-32">
+                            <span class="flex-w flex-m stext-111 cl2 p-b-19">
+                                <span>
+                                    <span class="cl4">By</span> Admin
+                                    <span class="cl12 m-l-4 m-r-6">|</span>
+                                </span>
+
+                                <span>
+                                    22 Jan, 2018
+                                    <span class="cl12 m-l-4 m-r-6">|</span>
+                                </span>
+
+                                <span>
+                                    StreetStyle, Fashion, Couple
+                                    <span class="cl12 m-l-4 m-r-6">|</span>
+                                </span>
+
+                                <span>
+                                    8 Comments
+                                </span>
+                            </span>
+
+                            <h4 class="ltext-109 cl2 p-b-28">
+                                8 Inspiring Ways to Wear Dresses in the Winter
+                            </h4>
+
+                            <p class="stext-117 cl6 p-b-26">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet est vel orci luctus
+                                sollicitudin. Duis eleifend vestibulum justo, varius semper lacus condimentum dictum. Donec
+                                pulvinar a magna ut malesuada. In posuere felis diam, vel sodales metus accumsan in. Duis
+                                viverra dui eu pharetra pellentesque. Donec a eros leo. Quisque sed ligula vitae lorem
+                                efficitur faucibus. Praesent sit amet imperdiet ante. Nulla id tellus auctor, dictum libero
+                                a, malesuada nisi. Nulla in porta nibh, id vestibulum ipsum. Praesent dapibus tempus erat
+                                quis aliquet. Donec ac purus id sapien condimentum feugiat.
                             </p>
 
-
-                        </div>
-                        <div class="blog-share-tag">
-                            <div class="share-text float-left">
-                                @lang('labels.frontend.blog.share_this_news')
-                            </div>
-
-                            <div class="share-social ul-li float-right">
-                                <ul>
-                                    <li><a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u={{url()->current()}}"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a target="_blank" href="http://twitter.com/share?url={{url()->current()}}&text={{$blog->title}}"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a target="_blank" href="http://www.linkedin.com/shareArticle?url={{url()->current()}}&title={{$blog->title}}&summary={{substr(strip_tags($blog->content),0,40)}}..."><i class="fab fa-linkedin"></i></a></li>
-                                    <li><a target="_blank" href="https://api.whatsapp.com/send?phone=&text={{url()->current()}}"><i class="fab fa-whatsapp"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="author-comment d-inline-block p-3   h-100 d-table text-center mx-auto">
-                            <div class="author-img float-none">
-                                <img src="{{$blog->author->picture}}" alt="">
-                            </div>
-                            <span class="mt-2  d-table-cell align-middle">BY:  <b>{{$blog->author->name}}</b></span>
+                            <p class="stext-117 cl6 p-b-26">
+                                Praesent vel mi bibendum, finibus leo ac, condimentum arcu. Pellentesque sem ex, tristique
+                                sit amet suscipit in, mattis imperdiet enim. Integer tempus justo nec velit fringilla, eget
+                                eleifend neque blandit. Sed tempor magna sed congue auctor. Mauris eu turpis eget tortor
+                                ultricies elementum. Phasellus vel placerat orci, a venenatis justo. Phasellus faucibus
+                                venenatis nisl vitae vestibulum. Praesent id nibh arcu. Vivamus sagittis accumsan felis,
+                                quis vulputate
+                            </p>
                         </div>
 
-                        <div class="next-prev-post">
-                            @if($previous != "")
-                                <div class="next-post-item float-left">
-                                    <a href="{{route('blogs.index',['slug'=>$previous->slug.'-'.$previous->id ])}}"><i
-                                                class="fas fa-arrow-circle-left"></i>Previous Post</a>
+                        <div class="flex-w flex-t p-t-16">
+                            <span class="size-216 stext-116 cl8 p-t-4">
+                                Tags
+                            </span>
+
+                            <div class="flex-w size-217">
+                                <a href="#"
+                                    class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                    Streetstyle
+                                </a>
+
+                                <a href="#"
+                                    class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                    Crafts
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--  -->
+                        <div class="p-t-40">
+                            <h5 class="mtext-113 cl2 p-b-12">
+                                Leave a Comment
+                            </h5>
+
+                            <p class="stext-107 cl6 p-b-40">
+                                Your email address will not be published. Required fields are marked *
+                            </p>
+
+                            <form>
+                                <div class="bor19 m-b-20">
+                                    <textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="cmt" placeholder="Comment..."></textarea>
                                 </div>
-                            @endif
 
-                            @if($next != "")
-                                <div class="next-post-item float-right">
-                                    <a href="{{route('blogs.index',['slug'=>$next->slug.'-'.$next->id ])}}">Next Post<i
-                                                class="fas fa-arrow-circle-right"></i></a>
+                                <div class="bor19 size-218 m-b-20">
+                                    <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="name"
+                                        placeholder="Name *">
                                 </div>
-                                @endif
 
-                        </div>
-                    </div>
-
-                    <div class="blog-recent-post about-teacher-2">
-                        <div class="section-title-2  headline text-left">
-                            <h2> @lang('labels.frontend.blog.related_news')</h2>
-                        </div>
-                        @if(count($related_news) > 0)
-                            <div class="recent-post-item">
-                                <div class="row">
-                                    @foreach($related_news as $item)
-                                        <div class="col-md-6">
-                                            <div class="blog-post-img-content">
-                                                <div class="blog-img-date relative-position">
-                                                    <div class="blog-thumnile" @if($item->image != "") style="background-image: url({{asset('storage/uploads/'.$item->image)}})" @endif></div>
-
-                                                    <div class="course-price text-center gradient-bg">
-                                                        <span>{{$item->created_at->format('d M Y')}}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="blog-title-content headline">
-                                                    <h3>
-                                                        <a href="{{route('blogs.index',['slug'=>$item->slug.'-'.$item->id ])}}">{{$item->title}}</a>
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    @endforeach
+                                <div class="bor19 size-218 m-b-20">
+                                    <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="email"
+                                        placeholder="Email *">
                                 </div>
-                            </div>
-                        @endif
-                    </div>
 
-                    <div class="blog-comment-area ul-li about-teacher-2">
-                        <div class="reply-comment-box">
-                            <div class="section-title-2  headline text-left">
-                                <h2> @lang('labels.frontend.blog.post_comments')</h2>
-                            </div>
-
-                            @if(auth()->check())
-                                <div class="teacher-faq-form">
-                                    <form method="POST" action="{{route('blogs.comment',['id'=>$blog->id])}}"
-                                          data-lead="Residential">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label for="comment"> @lang('labels.frontend.blog.write_a_comment')</label>
-                                            <textarea name="comment" required class="mb-0" id="comment" rows="2"
-                                                      cols="20"></textarea>
-                                            <span class="help-block text-danger">{{ $errors->first('comment', ':message') }}</span>
-                                        </div>
-
-                                        <div class="nws-button text-center  gradient-bg text-uppercase">
-                                            <button type="submit" value="Submit"> @lang('labels.frontend.blog.add_comment')</button>
-                                        </div>
-                                    </form>
+                                <div class="bor19 size-218 m-b-30">
+                                    <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="web"
+                                        placeholder="Website">
                                 </div>
-                            @else
-                                <a id="openLoginModal" class="btn nws-button gradient-bg text-white"
-                                   data-target="#myModal"> @lang('labels.frontend.blog.login_to_post_comment')</a>
-                            @endif
+
+                                <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
+                                    Post Comment
+                                </button>
+                            </form>
                         </div>
-                        @if($blog->comments->count() > 0)
-
-                        <ul class="comment-list my-5">
-                                @foreach($blog->comments as $item)
-                                <li class="d-block">
-                                    <div class="comment-avater">
-                                        <img src="{{$item->user->picture}}" alt="">
-                                    </div>
-
-                                    <div class="author-name-rate">
-                                        <div class="author-name float-left">
-                                            @lang('labels.frontend.blog.by'): <span>{{$item->name}}</span>
-                                        </div>
-
-                                        <div class="time-comment float-right">{{$item->created_at->diffforhumans()}}</div><br>
-                                        @if($item->user_id == auth()->user()->id)
-                                        <div class="time-comment float-right">
-
-                                            <a class="text-danger font-weight-bolf" href="{{route('blogs.comment.delete',['id'=>$item->id])}}"> @lang('labels.general.delete')</a>
-
-                                        </div>
-                                        @endif
-                                    </div>
-                                    <div class="author-designation-comment">
-                                        <p>{{$item->comment}}</p>
-                                    </div>
-                                </li>
-                                @endforeach
-
-
-                        </ul>
-                        @else
-                            <p class="my-5">@lang('labels.frontend.blog.no_comments_yet')</p>
-                        @endif
-
-
-
                     </div>
                 </div>
-                @include('frontend.blogs.partials.sidebar')
+
+                <div class="col-md-4 col-lg-3 p-b-80">
+                    <div class="side-menu">
+                        <div class="bor17 of-hidden pos-relative">
+                            <input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" type="text" name="search"
+                                placeholder="Search">
+
+                            <button class="flex-c-m size-122 ab-t-r fs-18 cl4 hov-cl1 trans-04">
+                                <i class="zmdi zmdi-search"></i>
+                            </button>
+                        </div>
+
+                        <div class="p-t-55">
+                            <h4 class="mtext-112 cl2 p-b-33">
+                                Categories
+                            </h4>
+
+                            <ul>
+                                <li class="bor18">
+                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                        Fashion
+                                    </a>
+                                </li>
+
+                                <li class="bor18">
+                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                        Beauty
+                                    </a>
+                                </li>
+
+                                <li class="bor18">
+                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                        Street Style
+                                    </a>
+                                </li>
+
+                                <li class="bor18">
+                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                        Life Style
+                                    </a>
+                                </li>
+
+                                <li class="bor18">
+                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                        DIY & Crafts
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="p-t-65">
+                            <h4 class="mtext-112 cl2 p-b-33">
+                                Featured Products
+                            </h4>
+
+                            <ul>
+                                <li class="flex-w flex-t p-b-30">
+                                    <a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
+                                        <img src="{{ asset('storage/images/product-min-01.jpg')}}" alt="PRODUCT">
+                                    </a>
+
+                                    <div class="size-215 flex-col-t p-t-8">
+                                        <a href="#" class="stext-116 cl8 hov-cl1 trans-04">
+                                            White Shirt With Pleat Detail Back
+                                        </a>
+
+                                        <span class="stext-116 cl6 p-t-20">
+                                            $19.00
+                                        </span>
+                                    </div>
+                                </li>
+
+                                <li class="flex-w flex-t p-b-30">
+                                    <a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
+                                        <img src="{{ asset('storage/images/product-min-02.jpg')}}" alt="PRODUCT">
+                                    </a>
+
+                                    <div class="size-215 flex-col-t p-t-8">
+                                        <a href="#" class="stext-116 cl8 hov-cl1 trans-04">
+                                            Converse All Star Hi Black Canvas
+                                        </a>
+
+                                        <span class="stext-116 cl6 p-t-20">
+                                            $39.00
+                                        </span>
+                                    </div>
+                                </li>
+
+                                <li class="flex-w flex-t p-b-30">
+                                    <a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
+                                        <img src="{{ asset('storage/images/product-min-03.jpg')}}" alt="PRODUCT">
+                                    </a>
+
+                                    <div class="size-215 flex-col-t p-t-8">
+                                        <a href="#" class="stext-116 cl8 hov-cl1 trans-04">
+                                            Nixon Porter Leather Watch In Tan
+                                        </a>
+
+                                        <span class="stext-116 cl6 p-t-20">
+                                            $17.00
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="p-t-55">
+                            <h4 class="mtext-112 cl2 p-b-20">
+                                Archive
+                            </h4>
+
+                            <ul>
+                                <li class="p-b-7">
+                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+                                        <span>
+                                            July 2018
+                                        </span>
+
+                                        <span>
+                                            (9)
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li class="p-b-7">
+                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+                                        <span>
+                                            June 2018
+                                        </span>
+
+                                        <span>
+                                            (39)
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li class="p-b-7">
+                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+                                        <span>
+                                            May 2018
+                                        </span>
+
+                                        <span>
+                                            (29)
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li class="p-b-7">
+                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+                                        <span>
+                                            April 2018
+                                        </span>
+
+                                        <span>
+                                            (35)
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li class="p-b-7">
+                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+                                        <span>
+                                            March 2018
+                                        </span>
+
+                                        <span>
+                                            (22)
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li class="p-b-7">
+                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+                                        <span>
+                                            February 2018
+                                        </span>
+
+                                        <span>
+                                            (32)
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li class="p-b-7">
+                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+                                        <span>
+                                            January 2018
+                                        </span>
+
+                                        <span>
+                                            (21)
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li class="p-b-7">
+                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+                                        <span>
+                                            December 2017
+                                        </span>
+
+                                        <span>
+                                            (26)
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="p-t-50">
+                            <h4 class="mtext-112 cl2 p-b-27">
+                                Tags
+                            </h4>
+
+                            <div class="flex-w m-r--5">
+                                <a href="#"
+                                    class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                    Fashion
+                                </a>
+
+                                <a href="#"
+                                    class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                    Lifestyle
+                                </a>
+
+                                <a href="#"
+                                    class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                    Denim
+                                </a>
+
+                                <a href="#"
+                                    class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                    Streetstyle
+                                </a>
+
+                                <a href="#"
+                                    class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                    Crafts
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <!-- End of Blog single content
-        ============================================= -->
+
+
+
 
 
 @endsection

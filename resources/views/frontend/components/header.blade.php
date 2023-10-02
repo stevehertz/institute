@@ -24,13 +24,13 @@
                     </div>
 
                     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-                        data-notify="2">
+                        @if (auth()->check() && Cart::session(auth()->user()->id)->getTotalQuantity() != 0) data-notify="{{ Cart::session(auth()->user()->id)->getTotalQuantity() }}" @else data-notify="0" @endif>
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
 
                     <a href="#"
                         class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-                        data-notify="0">
+                        data-notify="2">
                         <i class="zmdi zmdi-favorite-outline"></i>
                     </a>
                 </div>
@@ -40,7 +40,7 @@
 
     <!-- Header Mobile -->
     @include('frontend.includes.mobile.header')
-    
+
     <!-- Menu Mobile -->
     @include('frontend.includes.mobile.main-nav')
 
