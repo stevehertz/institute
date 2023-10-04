@@ -1,151 +1,76 @@
+@php
+    $footer_data = json_decode(config('footer_data'));
+@endphp
 <!-- Footer -->
-<footer class="bg3 p-t-75 p-b-32">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-lg-3 p-b-50">
-                <h4 class="stext-301 cl0 p-b-30">
-                    Categories
-                </h4>
 
-                <ul>
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Women
-                        </a>
-                    </li>
+@if ($footer_data != '')
+    <footer class="bg3 p-t-75 p-b-32">
+        <div class="container">
+            <div class="row">
+                @if ($footer_data->section1->status == 1)
+                    @php
+                        $section_data = section_filter($footer_data->section1);
+                    @endphp
+                    @include('frontend.includes.desktop.footer_section', ['section_data' => $section_data])
+                @endif
 
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Men
-                        </a>
-                    </li>
+                @if ($footer_data->section2->status == 1)
+                    @php
+                        $section_data = section_filter($footer_data->section2);
+                    @endphp
+                    @include('frontend.includes.desktop.footer_section', ['section_data' => $section_data])
+                @endif
 
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Shoes
-                        </a>
-                    </li>
+                @if ($footer_data->section3->status == 1)
+                    @php
+                        $section_data = section_filter($footer_data->section3);
+                    @endphp
 
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Watches
-                        </a>
-                    </li>
-                </ul>
+                    @include('frontend.includes.desktop.footer_section', ['section_data' => $section_data])
+                @endif
+
+                @if ($footer_data->newsletter_form->status == 1)
+                    <div class="col-sm-6 col-lg-3 p-b-50">
+                        <h4 class="stext-301 cl0 p-b-30">
+                            @lang('labels.frontend.layouts.partials.subscribe_newsletter')
+                        </h4>
+
+                        <form action="{{ route('subscribe') }}" method="post">
+                            <div class="wrap-input1 w-full p-b-4">
+                                <input class="input1 bg-none plh1 stext-107 cl7" type="email" required name="subs_email"
+                                    placeholder="@lang('labels.frontend.layouts.partials.email_address').">
+                                <div class="focus-input1 trans-04"></div>
+                            </div>
+
+                            <div class="p-t-18">
+                                <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+                                    @lang('labels.frontend.layouts.partials.subscribe_now')
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                @endif
             </div>
 
-            <div class="col-sm-6 col-lg-3 p-b-50">
-                <h4 class="stext-301 cl0 p-b-30">
-                    Help
-                </h4>
+            <div class="p-t-40">
+                @if ($footer_data->social_links->status == 1 && count($footer_data->social_links->links) > 0)
+                    <div class="flex-c-m flex-w p-b-18">
+                        @foreach ($footer_data->social_links->links as $item)
+                            <a href="{{$item->link}}" class="m-all-1">
+                                <i class="{{$item->icon}}"></i>
+                            </a>
+                        @endforeach
+                    </div>
+                @endif
 
-                <ul>
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Track Order
-                        </a>
-                    </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Returns
-                        </a>
-                    </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Shipping
-                        </a>
-                    </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            FAQs
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-sm-6 col-lg-3 p-b-50">
-                <h4 class="stext-301 cl0 p-b-30">
-                    GET IN TOUCH
-                </h4>
-
-                <p class="stext-107 cl7 size-201">
-                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us
-                    on (+1) 96 716 6879
+                <p class="stext-107 cl6 txt-center">
+                    Powered By <a href="#" target="_blank" class="mr-4">{{ config('app.name') }}</a>
+                    {!! $footer_data->copyright_text->text !!}
                 </p>
-
-                <div class="p-t-27">
-                    <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-
-                    <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                        <i class="fa fa-instagram"></i>
-                    </a>
-
-                    <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                        <i class="fa fa-pinterest-p"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-lg-3 p-b-50">
-                <h4 class="stext-301 cl0 p-b-30">
-                    Newsletter
-                </h4>
-
-                <form>
-                    <div class="wrap-input1 w-full p-b-4">
-                        <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email"
-                            placeholder="email@example.com">
-                        <div class="focus-input1 trans-04"></div>
-                    </div>
-
-                    <div class="p-t-18">
-                        <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-                            Subscribe
-                        </button>
-                    </div>
-                </form>
             </div>
         </div>
-
-        <div class="p-t-40">
-            <div class="flex-c-m flex-w p-b-18">
-                <a href="#" class="m-all-1">
-                    <img src="{{ asset('storage/icons/icon-pay-01.png') }}" alt="ICON-PAY">
-                </a>
-
-                <a href="#" class="m-all-1">
-                    <img src="{{ asset('storage/icons/icon-pay-02.png') }}" alt="ICON-PAY">
-                </a>
-
-                <a href="#" class="m-all-1">
-                    <img src="{{ asset('storage/icons/icon-pay-03.png') }}" alt="ICON-PAY">
-                </a>
-
-                <a href="#" class="m-all-1">
-                    <img src="{{ asset('storage/icons/icon-pay-04.png') }}" alt="ICON-PAY">
-                </a>
-
-                <a href="#" class="m-all-1">
-                    <img src="{{ asset('storage/icons/icon-pay-05.png') }}" alt="ICON-PAY">
-                </a>
-            </div>
-
-            <p class="stext-107 cl6 txt-center">
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;
-                <script>
-                    document.write(new Date().getFullYear());
-                </script> All rights reserved
-            </p>
-        </div>
-    </div>
-</footer>
-
+    </footer>
+@endif
 <!-- Back to top -->
 <div class="btn-back-to-top" id="myBtn">
     <span class="symbol-btn-back-to-top">
