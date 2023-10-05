@@ -3406,3 +3406,114 @@ input.num-product::-webkit-inner-spin-button {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/*==================================================================
+  RATINGS RATINGS RATINGS RATINGS RATINGS RATINGS RATINGS RATINGS 
+==================================================================*/
+/*//////////////////////////////////////////////////////////////////
+[ XL ]*/
+.avrg-rating .avrg-rate {
+  font-size: 50px;
+  font-weight: 700;
+  display: block;
+  color: #fdbd04;
+  margin: 10px 0px;
+}
+.avrg-rating li {
+  color: #ffc926;
+}
+.avrg-rating .start-bar {
+  width: 100px;
+  height: 8px;
+  display: inline-block;
+  margin: 0px 10px;
+  background-color: #eeeeee;
+  transition: 0.3s all ease-in-out;
+}
+.avrg-rating .rating-overview {
+  margin-top: 5px;
+}
+.avrg-rating .rating-overview:hover .start-bar {
+  background-color: #fdbd04;
+}
+
+.review-option {
+  display: inline-block;
+  width: 100%;
+}
+
+.rating {
+  display: inline-block;
+  position: relative;
+  font-size: 20px;
+  float: right;
+  margin-left: 10px;
+}
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+.rating label span {
+  margin: 0px 2px;
+  color: #eee;
+}
+.rating label:last-child {
+  position: static;
+}
+.rating label:last-child .icon {
+  color: #000;
+}
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+.rating label input,
+.rating label .rating label .register-form-area select,
+.rating label .register-form-area .rating label select,
+.rating label .rating label .register-form-area textarea,
+.rating label .register-form-area .rating label textarea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.rating label .icon {
+  float: left;
+  color: transparent;
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:not(:hover) label .register-form-area select:checked ~ .icon,
+.register-form-area .rating:not(:hover) label select:checked ~ .icon,
+.rating:not(:hover) label .register-form-area textarea:checked ~ .icon,
+.register-form-area .rating:not(:hover) label textarea:checked ~ .icon,
+.rating:hover label:hover input ~ .icon,
+.rating:hover label:hover .register-form-area select ~ .icon,
+.register-form-area .rating:hover label:hover select ~ .icon,
+.rating:hover label:hover .register-form-area textarea ~ .icon,
+.register-form-area .rating:hover label:hover textarea ~ .icon {
+  color: #ffc926;
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child,
+.rating label .register-form-area select:focus:not(:checked) ~ .icon:last-child,
+.register-form-area .rating label select:focus:not(:checked) ~ .icon:last-child,
+.rating label .register-form-area textarea:focus:not(:checked) ~ .icon:last-child,
+.register-form-area .rating label textarea:focus:not(:checked) ~ .icon:last-child {
+  color: #000;
+  text-shadow: 0 0 5px #ffc926;
+}
