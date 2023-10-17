@@ -31,13 +31,13 @@
     <!-- breadcrumb -->
     <div class="container">
         <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-            <a href="#" class="stext-109 cl8 hov-cl1 trans-04">
+            <a href="{{ url('/') }}" class="stext-109 cl8 hov-cl1 trans-04">
                 Home
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
-            <a href="#" class="stext-109 cl8 hov-cl1 trans-04">
-                Men
+            <a href="{{ route('courses.all') }}" class="stext-109 cl8 hov-cl1 trans-04">
+                courses
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
@@ -126,7 +126,7 @@
                             <span class="mtext-106 cl2"> {{ trans('labels.backend.courses.fields.free') }}</span>
                         @else
                             <span class="mtext-106 cl2 currency" data-currencyName="kes">
-                                <span>KES :</span> {{$course->KES_cost}}
+                                <span>KES :</span> {{ $course->KES_cost }}
                             </span>
                         @endif
 
@@ -169,9 +169,14 @@
                                                 auth()->user()->hasRole('student') &&
                                                 Cart::session(auth()->user()->id)->get($course->id))
                                             <button
-                                                class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                                class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04" style="margin-bottom: 5px;">
                                                 @lang('labels.frontend.course.added_to_cart')
                                             </button>
+
+                                            <a class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 text-center text-uppercase  bold-font"
+                                                href="{{ route('cart.index') }}">View cart/Checkout
+                                            </a>
+                                            
                                         @elseif(!auth()->check())
                                             @if ($course->free == 1)
                                                 <a href="javascript:void()" id="openLoginModal"
@@ -222,7 +227,8 @@
                                                         </a>
                                                     </p>
                                                 @else
-                                                    <form action="{{ route('cart.checkout') }}" method="POST" style="margin-bottom: 10px;">
+                                                    <form action="{{ route('cart.checkout') }}" method="POST"
+                                                        style="margin-bottom: 10px;">
                                                         @csrf
 
                                                         <input type="hidden" name="course_id"
@@ -234,11 +240,12 @@
 
                                                         <button
                                                             class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"
-                                                            href="#">@lang('labels.frontend.course.buy_now') 
+                                                            href="#">@lang('labels.frontend.course.buy_now')
                                                         </button>
                                                     </form>
 
-                                                    <form action="{{ route('cart.addToCart') }}" method="POST" style="margin-bottom: 10px;">
+                                                    <form action="{{ route('cart.addToCart') }}" method="POST"
+                                                        style="margin-bottom: 10px;">
                                                         @csrf
                                                         <input type="hidden" name="course_id"
                                                             value="{{ $course->id }}" />
@@ -248,7 +255,7 @@
 
                                                         <button type="submit"
                                                             class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                                            @lang('labels.frontend.course.add_to_cart') 
+                                                            @lang('labels.frontend.course.add_to_cart')
                                                         </button>
                                                     </form>
 
@@ -323,11 +330,12 @@
                             <a class="nav-link active" data-toggle="tab" href="#description"
                                 role="tab">Description</a>
                         </li>
-
-                        <li class="nav-item p-b-10">
-                            <a class="nav-link" data-toggle="tab" href="#information" role="tab">Additional
-                                information</a>
-                        </li>
+                        @if ($course->mediaVideo && $course->mediavideo->count() > 0)
+                            <li class="nav-item p-b-10">
+                                <a class="nav-link" data-toggle="tab" href="#information" role="tab">Additional
+                                    information</a>
+                            </li>
+                        @endif
 
                         <li class="nav-item p-b-10">
                             <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">
@@ -348,10 +356,11 @@
                         </div>
 
                         <!-- - -->
-                        <div class="tab-pane fade" id="information" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-                                    @if ($course->mediaVideo && $course->mediavideo->count() > 0)
+                        @if ($course->mediaVideo && $course->mediavideo->count() > 0)
+                            <div class="tab-pane fade" id="information" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+
                                         <div class="course-single-text">
                                             <p class="stext-102 cl6">
                                                 @if ($course->mediavideo != '')
@@ -382,10 +391,11 @@
                                                 @endif
                                             </p>
                                         </div>
-                                    @endif
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
 
                         <!-- - -->
                         <div class="tab-pane fade" id="reviews" role="tabpanel">

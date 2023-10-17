@@ -14,6 +14,7 @@
     @include('frontend.components.styles')
 </head>
 <!--/. -->
+
 <body class="animsition">
 
     <!-- Header -->
@@ -50,6 +51,14 @@
             $('#loginForm').find('#email').val('teacher@lms.com')
             $('#loginForm').find('#password').val('secret')
         @endif
+    </script>
+    <script src="{{ asset('assets/js/script.js') }}"></script>
+    <script>
+        @if (session()->has('show_login') && session('show_login') == true)
+            $('#myModal').modal('show');
+        @endif
+        var font_color = "{{ config('font_color') }}"
+        setActiveStyleSheet(font_color);
     </script>
 
 </body>

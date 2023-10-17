@@ -929,7 +929,7 @@ return array(
       'failed' => 'Failed',
       'my_subscribed_courses' => 'My Subscribed Courses',
       'my_subscribed_course_bundles' => 'My Subscribed Course Bundles',
-      'organizations'=>'Organizations',
+      'organizations' => 'Organizations',
     ),
     'questions_options' =>
     array(

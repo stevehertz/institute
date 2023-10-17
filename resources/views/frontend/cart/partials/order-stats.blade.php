@@ -9,6 +9,7 @@
         @endif
     </span>
 </div>
+
 @if(Cart::getConditionsByType('coupon') != null)
     @foreach(Cart::getConditionsByType('coupon') as $condition)
         <div class="in-total font-weight-normal  mb-3"> {{ $condition->getValue().' '.$condition->getName()}}

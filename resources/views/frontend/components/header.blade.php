@@ -19,14 +19,14 @@
 
                 <!-- Icon header -->
                 <div class="wrap-icon-header flex-w flex-r-m">
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+                    {{-- <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
                         <i class="zmdi zmdi-search"></i>
-                    </div>
+                    </div> --}}
 
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+                    <a href="{{route('cart.index')}}" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
                         @if (auth()->check() && Cart::session(auth()->user()->id)->getTotalQuantity() != 0) data-notify="{{ Cart::session(auth()->user()->id)->getTotalQuantity() }}" @else data-notify="0" @endif>
                         <i class="zmdi zmdi-shopping-cart"></i>
-                    </div>
+                    </a>
 
                     {{-- <a href="#"
                         class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"

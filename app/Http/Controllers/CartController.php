@@ -51,8 +51,6 @@ class CartController extends Controller
 
     public function index(Request $request)
     {
-
-
         $ids = Cart::session(auth()->user()->id)->getContent()->keys();
         $course_ids = [];
         $bundle_ids = [];
