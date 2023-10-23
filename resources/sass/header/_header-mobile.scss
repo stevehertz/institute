@@ -42,6 +42,18 @@
 }
 
 /*------------------------------------------------------------------
+[ Icons mobile ]*/
+.wrap-header-mobile {
+    .wrap-icon-header {
+        .icon-header-item {
+            i {
+                color: #000;
+            }
+        }
+    }
+}
+
+/*------------------------------------------------------------------
 [ btn show menu ]*/
 .hamburger {
     display          : -webkit-box;

@@ -1,24 +1,27 @@
 <div class="wrap-header-mobile">
     <!-- Logo moblie -->
     <div class="logo-mobile">
-        <a href="index.html"><img src="{{ asset('storage/logo/logo.png') }}" alt="IMG-LOGO"></a>
+        <a href="{{ url('/') }}"><img src="{{ asset('storage/logo/logo.png') }}" alt="IMG-LOGO"></a>
     </div>
 
     <!-- Icon header -->
     <div class="wrap-icon-header flex-w flex-r-m m-r-15">
-        <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+
+        {{-- <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
             <i class="zmdi zmdi-search"></i>
-        </div>
+        </div> --}}
 
-        <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-            data-notify="2">
+        <a href="{{ route('cart.index') }}" class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
+            @if (auth()->check() && Cart::session(auth()->user()->id)->getTotalQuantity() != 0) data-notify="{{ Cart::session(auth()->user()->id)->getTotalQuantity() }}"
+        @else
+        data-notify="0" @endif>
             <i class="zmdi zmdi-shopping-cart"></i>
-        </div>
+        </a>
 
-        <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
+        {{-- <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
             data-notify="0">
             <i class="zmdi zmdi-favorite-outline"></i>
-        </a>
+        </a> --}}
     </div>
 
     <!-- Button show menu -->

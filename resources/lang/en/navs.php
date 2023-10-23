@@ -5,7 +5,7 @@ return array (
   array (
     'logout' => 'Logout',
     'home' => 'Home',
-    'login' => '<i class="fas fa-sign-in-alt"></i> Login',
+    'login' => 'Login',
     'messages' => 'Messages',
     'no_messages' => 'No messages',
     'account' => 'Account',
@@ -15,7 +15,7 @@ return array (
   array (
     'contact' => 'Contact',
     'dashboard' => 'Dashboard',
-    'login' => '<i class="fas fa-sign-in-alt"></i> Login',
+    'login' => 'Login',
     'macros' => 'Macros',
     'register' => 'Register',
     'courses' => 'Courses',

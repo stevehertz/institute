@@ -15,12 +15,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', app_name())</title>
     <meta name="description" content="@yield('meta_description', 'Laravel 5 Boilerplate')">
-    <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
+    <meta name="author" content="@yield('meta_author', 'Stephen Kamau')">
     @if (config('favicon_image') != '')
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/logos/' . config('favicon_image')) }}" />
     @endif
     @yield('meta')
     <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('fonts/fontawesome-free/css/all.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome-all.css') }}">
 
     {{-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> --}}

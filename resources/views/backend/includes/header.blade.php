@@ -82,12 +82,12 @@
                 </div>
 
                 <a class="dropdown-item" href="{{ route('admin.messages') }}">
-                    <i class="fab fa-envelope"></i> @lang('navs.general.messages')
+                    <i class="fab fa-envelope-open"></i> @lang('navs.general.messages')
                     <span class="badge unreadMessageCounter d-none badge-success">5</span>
                 </a>
 
                 <a class="dropdown-item" href="{{ route('admin.account') }}">
-                    <i class="fab fa-user-alt"></i> @lang('navs.general.profile')
+                    <i class="fas fa-user-alt"></i> @lang('navs.general.profile')
                 </a>
 
                 <div class="divider"></div>

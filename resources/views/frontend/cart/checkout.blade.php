@@ -62,7 +62,7 @@
     </div>
 
     <!-- Shoping Cart -->
-    <form class="bg0 p-t-75 p-b-85">
+    <section class="bg0 p-t-75 p-b-85">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
@@ -82,7 +82,7 @@
                                         <th class="column-3">@lang('labels.frontend.cart.price')</th>
                                         <th class="column-4">@lang('labels.frontend.cart.product_type')</th>
                                         <th class="column-5">@lang('labels.frontend.cart.starts')</th>
-                                        <th class="column-6">Action</th>
+                                        <th style="margin-right: 10px; padding-right:10px;" class="column-6">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -141,20 +141,21 @@
                             <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
                                 <div class="flex-w flex-m m-r-20 m-tb-5">
                                     <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text"
-                                        name="coupon" placeholder="Coupon Code">
+                                        name="coupon" id="coupon" pattern="[^\s]+" placeholder="Enter Coupon">
 
-                                    <div
+                                    <div id="applyCoupon"
                                         class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-                                        Apply coupon
+                                        @lang('labels.frontend.cart.apply')
                                     </div>
                                 </div>
 
-                                <div
+                                {{-- <div
                                     class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
                                     Update Cart
-                                </div>
+                                </div> --}}
                             </div>
                         @endif
+                        
                     </div>
                 </div>
 
@@ -166,33 +167,49 @@
 
 
                         <div class="flex-w flex-t bor12 p-b-13">
-							<div class="size-208">
-								<span class="stext-110 cl2">
-									Subtotal:
-								</span>
-							</div>
+                            <div class="size-208">
+                                <span class="stext-110 cl2">
+                                    @lang('labels.frontend.cart.price') <small class="text-muted">
+                                        ({{ Cart::getContent()->count() }}{{ Cart::getContent()->count() > 1 ? ' ' . trans('labels.frontend.cart.items') : ' ' . trans('labels.frontend.cart.item') }}
+                                        )
+                                    </small>
+                                </span>
+                            </div>
 
-							<div class="size-209">
-								<span class="mtext-110 cl2">
-									$79.65
-								</span>
-							</div>
-						</div>
+                            <div class="size-209">
+                                <span class="mtext-110 cl2">
+                                    @if (isset($total))
+                                        {{ Session::get('cartCurrency') ? Session::get('cartCurrency') : $cartCurrency['short_code'] . ' ' }}{{ $total }}
+                                    @endif
+                                </span>
+                            </div>
+                        </div>
+                        @if (Cart::getConditionsByType('coupon') != null)
+                            @foreach (Cart::getConditionsByType('coupon') as $condition)
+                                <div class="flex-w flex-t bor12 p-t-15 p-b-30">
+                                    <div class="size-208 w-full-ssm">
+                                        <span class="stext-110 cl2">
+                                            {{ $condition->getValue() . ' ' . $condition->getName() }}
+                                        </span>
+                                    </div>
+                                    <div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
+                                        {{ Session::get('cartCurrency') ? Session::get('cartCurrency') : $cartCurrency['short_code'] . ' ' }}.{{ number_format($condition->getCalculatedValue($total), 2) }}
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+
 
                         <div class="flex-w flex-t bor12 p-b-13">
                             <div class="size-208">
                                 <span class="stext-110 cl2">
-                                    @lang('labels.frontend.cart.total')
+                                    @lang('labels.frontend.cart.total_payable')
                                 </span>
                             </div>
 
                             <div class="size-209">
                                 @if (count($courses) > 0)
                                     <span class="mtext-110 cl2">
-                                        <small class="text-muted">
-                                            ({{ Cart::getContent()->count() }}{{ Cart::getContent()->count() > 1 ? ' ' . trans('labels.frontend.cart.items') : ' ' . trans('labels.frontend.cart.item') }}
-                                            )
-                                        </small>
                                         <span class="font-weight-bold">
                                             @if (isset($total))
                                                 {{ Session::get('cartCurrency') ? Session::get('cartCurrency') : $cartCurrency['short_code'] . ' ' }}{{ $total }}
@@ -201,22 +218,18 @@
                                     </span>
                                 @else
                                     <span class="mtext-110 cl2">
-                                        {{ Session::get('cartCurrency') ? Session::get('cartCurrency') : $cartCurrency['short_code'] }}
-                                        0.00
+                                        {{ Session::get('cartCurrency') ? Session::get('cartCurrency') : $cartCurrency['short_code'] . ' ' }}.{{ number_format(Cart::session(auth()->user()->id)->getTotal(), 2) }}
                                     </span>
                                 @endif
-
                             </div>
                         </div>
-                        {{-- <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                            Proceed to Checkout
-                        </button> --}}
+
                     </div>
                 </div>
             </div>
         </div>
-    </form>
-    
+    </section>
+
 @endsection
 
 @push('after-scripts')

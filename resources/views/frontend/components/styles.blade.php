@@ -1,6 +1,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('fvendor/bootstrap/css/bootstrap.min.css') }}">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+<link rel="stylesheet" href="{{ asset('fonts/fontawesome-free/css/all.min.css') }}">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{ asset('fonts/iconic/css/material-design-iconic-font.min.css') }}">
 <!--===============================================================================================-->

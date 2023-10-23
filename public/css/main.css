@@ -612,6 +612,12 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 /*------------------------------------------------------------------
+[ Icons mobile ]*/
+.wrap-header-mobile .wrap-icon-header .icon-header-item i {
+  color: #000;
+}
+
+/*------------------------------------------------------------------
 [ btn show menu ]*/
 .hamburger {
   display: flex;
