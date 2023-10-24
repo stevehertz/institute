@@ -155,7 +155,77 @@
                                 </div> --}}
                             </div>
                         @endif
-                        
+
+                        @if (count($courses) > 0)
+                            @if (config('services.stripe.active') == 0 &&
+                                    config('paypal.active') == 0 &&
+                                    config('payment_offline_active') == 0 &&
+                                    config('services.instamojo.active') == 0 &&
+                                    config('services.razorpay.active') == 0 &&
+                                    config('services.cashfree.active') == 0 &&
+                                    config('services.payu.active') == 0 &&
+                                    config('flutter.active') == 0 &&
+                                    config('pesapal.active') == 0)
+                                <div class="order-payment">
+                                    <div class="section-title-2 headline text-left">
+                                        <h2>@lang('labels.frontend.cart.no_payment_method')</h2>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="order-payment">
+                                    <div class="section-title-2  headline text-left">
+                                        <h2>@lang('labels.frontend.cart.order_payment')</h2>
+                                    </div>
+                                    {{-- Pesapal option here --}}
+                                    @if (config('pesapal.active') == 1)
+                                        <div class="payment-method w-100 mb-0">
+                                            <div class="payment-method-header">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="method-header-text">
+                                                            <div class="radio">
+                                                                <label>
+                                                                    <input data-toggle="collapse"
+                                                                        href="#collapsePaymentPesapal" type="radio"
+                                                                        name="paymentMethod" value="2">
+                                                                </label>
+                                                                <label>Pay with <span style="color: orangered"> PESAPAL
+                                                                    </span>
+                                                                    <img src="{{ asset('assets/img/banner/pesapal.jpg') }}"
+                                                                        width="105px" alt=""></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="check-out-form collapse disabled" id="collapsePaymentPesapal"
+                                                data-parent="#accordion">
+                                                <form class="w3-container w3-display-middle w3-card-4 " method="POST"
+                                                    action="{{ route('make.payment') }}">
+                                                    {{ csrf_field() }}
+                                                    <p> @lang('labels.frontend.cart.pay_securely_pesapal')</p>
+                                                    <div class="form-control">
+                                                        <p>Amount:</p>
+                                                        <input class="form-control col-md-3" name="amount" required
+                                                            value=" {{ Session::get('cartCurrency') ? Session::get('cartCurrency') : $cartCurrency['short_code'] . ' ' }}. {{ number_format(Cart::session(auth()->user()->id)->getTotal(), 2) }}"
+                                                            readonly>
+                                                    </div>
+
+                                                    <button type="submit"
+                                                        class="text-white genius-btn mt25 gradient-bg text-center text-uppercase  bold-font">
+                                                        @lang('labels.frontend.cart.pay_now') <i class="fas fa-caret-right"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            
+                                        </div>
+                                    @endif
+                                </div>
+                            @endif
+                        @endif
+
                     </div>
                 </div>
 
