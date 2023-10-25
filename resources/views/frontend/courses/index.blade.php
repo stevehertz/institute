@@ -44,7 +44,11 @@
     <section class="bg-img1 txt-center p-lr-15 p-tb-92"
         style="background-image: url('{{ asset('storage/images/bg-01.jpg') }}');">
         <h2 class="ltext-105 cl0 txt-center">
-            {{ env('APP_NAME') }} <span> @lang('labels.frontend.contact.title')</span>
+            @if (isset($category))
+                {{ $category->name }}
+            @else
+                @lang('labels.frontend.course.courses')
+            @endif
         </h2>
     </section>
 
