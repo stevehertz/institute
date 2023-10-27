@@ -18,20 +18,20 @@ use App\Http\Controllers\ExamController;
 Route::get('lang/{lang}', [LanguageController::class, 'swap']);
 
 
-Route::get('/sitemap-' .str_slug(config('app.name')) . '/{file?}', 'SitemapController@index');
+Route::get('/sitemap-' . str_slug(config('app.name')) . '/{file?}', 'SitemapController@index');
 
 
 //============ Remove this  while creating zip for Envato ===========//
 
 /*This command is useful in demo site you can go to https://demo.neonlms.com/reset-demo and it will refresh site from this URL. */
 
-Route::get('reset-demo',function (){
+Route::get('reset-demo', function () {
     ini_set('memory_limit', '-1');
     ini_set('max_execution_time', 1000);
-    try{
+    try {
         \Illuminate\Support\Facades\Artisan::call('refresh:site');
         return 'Refresh successful!';
-    }catch (\Exception $e){
+    } catch (\Exception $e) {
         return $e->getMessage();
     }
 });
@@ -55,8 +55,8 @@ Route::group([
  * Namespaces indicate folder structure
  */
 Route::group([
-    'namespace' => 'Backend', 
-    'prefix' => 'user', 'as' => 'admin.', 
+    'namespace' => 'Backend',
+    'prefix' => 'user', 'as' => 'admin.',
     'middleware' => 'admin'
 ], function () {
     /*
@@ -70,13 +70,12 @@ Route::group([
     include_route_files(__DIR__ . '/backend/');
 });
 
+//==== Messages Routes =====//
 Route::group([
-    'namespace' => 'Backend', 
-    'prefix' => 'user', 'as' => 'admin.', 
+    'namespace' => 'Backend',
+    'prefix' => 'user', 'as' => 'admin.',
     'middleware' => 'auth'
 ], function () {
-
-//==== Messages Routes =====//
     Route::get('messages', ['uses' => 'MessagesController@index', 'as' => 'messages']);
     Route::post('messages/unread', ['uses' => 'MessagesController@getUnreadMessages', 'as' => 'messages.unread']);
     Route::post('messages/send', ['uses' => 'MessagesController@send', 'as' => 'messages.send']);
@@ -126,7 +125,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('lesson/{slug}/retest', ['uses' => 'LessonsController@retest', 'as' => 'lessons.retest']);
     Route::post('video/progress', 'LessonsController@videoProgress')->name('update.videos.progress');
     Route::post('lesson/progress', 'LessonsController@courseProgress')->name('update.course.progress');
-    Route::post('lesson/book-slot','LessonsController@bookSlot')->name('lessons.course.book-slot');
+    Route::post('lesson/book-slot', 'LessonsController@bookSlot')->name('lessons.course.book-slot');
 });
 
 Route::get('/search', [HomeController::class, 'searchCourse'])->name('search');
@@ -153,32 +152,32 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('cart', ['uses' => 'CartController@index', 'as' => 'cart.index']);
     Route::get('cart/clear', ['uses' => 'CartController@clear', 'as' => 'cart.clear']);
     Route::get('cart/remove', ['uses' => 'CartController@remove', 'as' => 'cart.remove']);
-    Route::post('cart/apply-coupon',['uses' => 'CartController@applyCoupon','as'=>'cart.applyCoupon']);
-    Route::post('cart/remove-coupon',['uses' => 'CartController@removeCoupon','as'=>'cart.removeCoupon']);
+    Route::post('cart/apply-coupon', ['uses' => 'CartController@applyCoupon', 'as' => 'cart.applyCoupon']);
+    Route::post('cart/remove-coupon', ['uses' => 'CartController@removeCoupon', 'as' => 'cart.removeCoupon']);
     Route::post('cart/stripe-payment', ['uses' => 'CartController@stripePayment', 'as' => 'cart.stripe.payment']);
     Route::post('cart/paypal-payment', ['uses' => 'CartController@paypalPayment', 'as' => 'cart.paypal.payment']);
     Route::get('cart/paypal-payment/status', ['uses' => 'CartController@getPaymentStatus'])->name('cart.paypal.status');
 
-    Route::post('cart/instamojo-payment',['uses' => 'CartController@instamojoPayment', 'as' => 'cart.instamojo.payment']);
+    Route::post('cart/instamojo-payment', ['uses' => 'CartController@instamojoPayment', 'as' => 'cart.instamojo.payment']);
     Route::get('cart/instamojo-payment/status', ['uses' => 'CartController@getInstamojoStatus'])->name('cart.instamojo.status');
 
-    Route::post('cart/razorpay-payment',['uses' => 'CartController@razorpayPayment', 'as' => 'cart.razorpay.payment']);
+    Route::post('cart/razorpay-payment', ['uses' => 'CartController@razorpayPayment', 'as' => 'cart.razorpay.payment']);
     Route::post('cart/razorpay-payment/status', ['uses' => 'CartController@getRazorpayStatus'])->name('cart.razorpay.status');
 
-    Route::post('cart/cashfree-payment',['uses' => 'CartController@cashfreeFreePayment', 'as' => 'cart.cashfree.payment']);
+    Route::post('cart/cashfree-payment', ['uses' => 'CartController@cashfreeFreePayment', 'as' => 'cart.cashfree.payment']);
     Route::post('cart/cashfree-payment/status', ['uses' => 'CartController@getCashFreeStatus'])->name('cart.cashfree.status');
 
-    Route::post('cart/payu-payment',['uses' => 'CartController@payuPayment', 'as' => 'cart.payu.payment']);
+    Route::post('cart/payu-payment', ['uses' => 'CartController@payuPayment', 'as' => 'cart.payu.payment']);
     Route::post('cart/payu-payment/status', ['uses' => 'CartController@getPayUStatus'])->name('cart.pauy.status');
 
-    Route::match(['GET','POST'],'cart/flutter-payment',['uses' => 'CartController@flatterPayment', 'as' => 'cart.flutter.payment']);
-    Route::get('cart/flutter-payment/status',['uses' => 'CartController@getFlatterStatus', 'as' => 'cart.flutter.status']);
+    Route::match(['GET', 'POST'], 'cart/flutter-payment', ['uses' => 'CartController@flatterPayment', 'as' => 'cart.flutter.payment']);
+    Route::get('cart/flutter-payment/status', ['uses' => 'CartController@getFlatterStatus', 'as' => 'cart.flutter.status']);
 
     Route::get('status', function () {
         return view('frontend.cart.status');
     })->name('status');
     Route::post('cart/offline-payment', ['uses' => 'CartController@offlinePayment', 'as' => 'cart.offline.payment']);
-    Route::post('cart/getnow',['uses'=>'CartController@getNow','as' =>'cart.getnow']);
+    Route::post('cart/getnow', ['uses' => 'CartController@getNow', 'as' => 'cart.getnow']);
 });
 
 //============= Menu  Manager Routes ===============//
@@ -194,31 +193,31 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => con
     Route::post('change-location', 'MenuController@updateLocation')->name('update-location');
 });
 
-Route::get('certificate-verification','Backend\CertificateController@getVerificationForm')->name('frontend.certificates.getVerificationForm');
-Route::post('certificate-verification','Backend\CertificateController@verifyCertificate')->name('frontend.certificates.verify');
+Route::get('certificate-verification', 'Backend\CertificateController@getVerificationForm')->name('frontend.certificates.getVerificationForm');
+Route::post('certificate-verification', 'Backend\CertificateController@verifyCertificate')->name('frontend.certificates.verify');
 Route::get('certificates/download', ['uses' => 'Backend\CertificateController@download', 'as' => 'certificates.download']);
 
 
-if(config('show_offers') == 1){
-    Route::get('offers',['uses' => 'CartController@getOffers', 'as' => 'frontend.offers']);
+if (config('show_offers') == 1) {
+    Route::get('offers', ['uses' => 'CartController@getOffers', 'as' => 'frontend.offers']);
 }
 
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth','role:teacher|administrator']], function () {
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth', 'role:teacher|administrator']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-Route::group(['prefix' => 'subscription'], function(){
+Route::group(['prefix' => 'subscription'], function () {
     Route::get('plans', 'SubscriptionController@plans')->name('subscription.plans');
     Route::get('/{plan}/{name}', 'SubscriptionController@showForm')->name('subscription.form');
     Route::post('subscribe/{plan}', 'SubscriptionController@subscribe')->name('subscription.subscribe');
     Route::post('update/{plan}', 'SubscriptionController@updateSubscription')->name('subscription.update');
-    Route::get('status','SubscriptionController@status')->name('subscription.status');
-    Route::post('subscribe','SubscriptionController@courseSubscribed')->name('subscription.course_subscribe');
+    Route::get('status', 'SubscriptionController@status')->name('subscription.status');
+    Route::post('subscribe', 'SubscriptionController@courseSubscribed')->name('subscription.course_subscribe');
 });
 
 
 // wishlist
-Route::post('add-to-wishlist','Backend\WishlistController@store')->name('add-to-wishlist');
+Route::post('add-to-wishlist', 'Backend\WishlistController@store')->name('add-to-wishlist');
 
 Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function () {
     Route::get('/{page?}', [HomeController::class, 'index'])->name('index');
@@ -238,9 +237,9 @@ Route::get('payment_success', function () {
 });
 
 //Mpesa paymentd
-Route::get('pay_with_mpesa_test', ['uses' =>'MpesaPaymentController@test', 'as'=>'pay_with_mpesa_test']);
-Route::get('pay_with_mpesa/{invoice_id}', ['uses' =>'MpesaPaymentController@makePayment', 'as'=>'pay_with_mpesa']);
-Route::post('mpesaexpresspayment',[MpesaPaymentController::class, 'mpesaExpress'])->name('mpesaexpresspayment');
+Route::get('pay_with_mpesa_test', ['uses' => 'MpesaPaymentController@test', 'as' => 'pay_with_mpesa_test']);
+Route::get('pay_with_mpesa/{invoice_id}', ['uses' => 'MpesaPaymentController@makePayment', 'as' => 'pay_with_mpesa']);
+Route::post('mpesaexpresspayment', [MpesaPaymentController::class, 'mpesaExpress'])->name('mpesaexpresspayment');
 Route::post('makeMpesaOrder', [MpesaPaymentController::class, 'makeMpesaOrder'])->name('makeMpesaOrder');
 
 // ======  Exam routes==

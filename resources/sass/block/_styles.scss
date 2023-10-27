@@ -1,0 +1,66 @@
+
+/*//////////////////////////////////////////////////////////////////
+[ Block1 ]*/
+
+.block1 {
+    position: relative;
+    border  : 1px solid #e6e6e6;
+}
+
+.block1-txt {
+    background-color: rgba(103, 117, 214, 0.0);
+}
+
+/*---------------------------------------------*/
+.block1-name {
+    color: #333;
+}
+
+.block1-info {
+    color: #555;
+}
+
+/*---------------------------------------------*/
+.block1-txt-child2 {
+    border-bottom    : 2px solid #fff;
+    overflow         : hidden;
+    -webkit-transform: scaleX(0);
+    -moz-transform   : scaleX(0);
+    -ms-transform    : scaleX(0);
+    -o-transform     : scaleX(0);
+    transform        : scaleX(0);
+}
+
+.block1-link {
+    -webkit-transform: translateY(250%);
+    -moz-transform   : translateY(250%);
+    -ms-transform    : translateY(250%);
+    -o-transform     : translateY(250%);
+    transform        : translateY(250%);
+}
+
+/*---------------------------------------------*/
+.block1-txt:hover {
+    background-color: rgba(103, 117, 214, 0.8);
+}
+
+.block1-txt:hover .block1-txt-child2 {
+    -webkit-transform: scaleX(1);
+    -moz-transform   : scaleX(1);
+    -ms-transform    : scaleX(1);
+    -o-transform     : scaleX(1);
+    transform        : scaleX(1);
+}
+
+.block1-txt:hover .block1-link {
+    -webkit-transform: translateY(0%);
+    -moz-transform   : translateY(0%);
+    -ms-transform    : translateY(0%);
+    -o-transform     : translateY(0%);
+    transform        : translateY(0%);
+}
+
+.block1-txt:hover .block1-name,
+.block1-txt:hover .block1-info {
+    color: #fff;
+}

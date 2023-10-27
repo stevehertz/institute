@@ -1741,6 +1741,8 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 /*//////////////////////////////////////////////////////////////////
+[ Blocks ]*/
+/*//////////////////////////////////////////////////////////////////
 [ Block1 ]*/
 .block1 {
   position: relative;
@@ -1839,7 +1841,6 @@ input.num-product::-webkit-inner-spin-button {
 .label-new {
   position: relative;
 }
-
 .label-new::after {
   content: attr(data-label);
   font-family: Montserrat-Regular;
