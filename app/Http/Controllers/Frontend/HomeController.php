@@ -57,7 +57,13 @@ class HomeController extends Controller
             $page = Page::where('slug', '=', request('page'))
                 ->where('published', '=', 1)->first();
             if ($page != "") {
-                return view($this->path . '.pages.index', compact('page'));
+               
+                if($page->slug == "about"){
+                    return view($this->path . '.pages.about', compact('page'));
+                } else {
+                    return view($this->path . '.pages.index', compact('page'));
+                }
+                
             }
             abort(404);
         }
@@ -110,6 +116,11 @@ class HomeController extends Controller
 
         return view($this->path . '.index-' . config('theme_layout'), compact('popular_courses', 'featured_courses', 'sponsors', 'clients', 'partners', 'total_students', 'total_courses', 'total_teachers', 'testimonials', 'news', 'trending_courses', 'teachers', 'faqs', 'course_categories', 'reasons', 'sections','categories'));
 
+    }
+
+    public function about() 
+    {
+        return view('frontend.pages.about');
     }
 
     public function getFaqs()

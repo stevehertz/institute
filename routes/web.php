@@ -215,13 +215,14 @@ Route::group(['prefix' => 'subscription'], function () {
     Route::post('subscribe', 'SubscriptionController@courseSubscribed')->name('subscription.course_subscribe');
 });
 
-
 // wishlist
 Route::post('add-to-wishlist', 'Backend\WishlistController@store')->name('add-to-wishlist');
 
 Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function () {
     Route::get('/{page?}', [HomeController::class, 'index'])->name('index');
 });
+
+Route::get('/about', [HomeController::class, 'about'])->name('about');
 
 Route::post('make-payment', MakePayment::class)->name('make.payment');
 Route::group(['prefix' => '/webhooks'], function () {

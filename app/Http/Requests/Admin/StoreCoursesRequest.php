@@ -18,15 +18,15 @@ class StoreCoursesRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return array    
      */
     public function rules()
     {
         return [
-            'teachers.*' => 'exists:users,id',
-            'title' => 'required',
-            'category_id' => 'required',
-            'start_date' => 'date_format:'.config('app.date_format'),
+            'teachers.*' => ['exists:users,id'],
+            'title' => ['required'],
+            'category_id' => ['required'],
+            'start_date' => ['date_format:'.config('app.date_format'), 'nullable']
         ];
     }
 }

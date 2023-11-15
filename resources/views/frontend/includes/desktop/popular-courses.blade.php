@@ -38,10 +38,10 @@
                                                     <img src="{{ asset('storage/uploads/' . $item->course_image) }}"
                                                         alt="{{ $item->title }}">
 
-                                                    <a href="#"
+                                                    {{-- <a href="{{ route('courses.show', [$item->slug]) }}"
                                                         class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                                                         Quick View
-                                                    </a>
+                                                    </a> --}}
                                                 </div>
                                                 <!--/.block2-pic -->
                                                 <div class="block2-txt flex-w flex-t p-t-14">
@@ -80,10 +80,10 @@
                                                 <img src="{{ asset('storage/uploads/' . $item->course_image) }}"
                                                     alt="IMG-PRODUCT">
 
-                                                <a href="#"
+                                                {{-- <a href="{{ route('courses.show', [$item->slug]) }}"
                                                     class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                                                     Quick View
-                                                </a>
+                                                </a> --}}
                                             </div>
 
                                             <div class="block2-txt flex-w flex-t p-t-14">

@@ -1,4 +1,9 @@
-@extends('frontend'.(session()->get('display_type') == "rtl"?"-rtl":"").'.layouts.app'.config('theme_layout'))
+@extends('frontend.layouts.app' . config('theme_layout'))
+
+@section('title', trans('labels.frontend.home.title') . ' | ' . app_name())
+@section('meta_description', '')
+@section('meta_keywords', '')
+
 @push('after-styles')
     <style>
         .b-not_found {
@@ -120,41 +125,45 @@
 @endpush
 
 @section('content')
-    <!-- Start of breadcrumb section
-        
-        ============================================= -->
-    <section id="breadcrumb" class="breadcrumb-section relative-position backgroud-style">
-        <div class="blakish-overlay"></div>
-        <div class="container">
-            <div class="page-breadcrumb-content text-center">
-                <div class="page-breadcrumb-title"><h2 class="breadcrumb-head black bold"><span>@lang('http.404.title2')</span></h2></div>
 
-            </div>
-        </div>
-    </section>    
-    <!-- End of breadcrumb section
-    
-        ============================================= -->
-    <section id="about-page" class="about-page-section pb-0">
+    <!-- Title page -->
+    <section class="bg-img1 txt-center p-lr-15 p-tb-92"
+        style="background-image: url('{{ asset('storage/images/bg-02.jpg') }}');">
+        <h2 class="ltext-105 cl0 txt-center">
+            <span>@lang('http.404.title2')</span>
+        </h2>
+    </section>
+
+    <!-- Content page -->
+    <section class="bg0 p-t-75 p-b-120">
         <div class="container">
-            <div class="row">
-                <div class="b-not_found w-100">
-                    <div class="text-center">
-                        <div class="b-page_header">
-                            <h1 class="page-title">@lang('http.404.title')</h1>
-                        </div>
-                        <h2><b>@lang('http.404.description')</b></h2>
-                        <p>
-                            @lang('http.404.description2')
-                        </p>
-                        <div class="nws-button genius-btn text-center  d-inline-block gradient-bg text-uppercase">
-                            <a href="{{route('wizard')}}">@lang('http.404.back')</a>
+            <div class="row  p-b-148">
+                <div class="col-md-12">
+                    <div class="b-not_found w-100">
+                        <div class="text-center">
+                            <div class="b-page_header p-b-45">
+                                <h1 class="page-title ltext-106 cl5 txt-center">
+                                    @lang('http.404.title')
+                                </h1>
+                            </div>
+                            <h2 class="p-b-10">
+                                @lang('http.404.description')
+                            </h2>
+                            <p class="p-b-10">
+                                @lang('http.404.description2')
+                            </p>
+                            <div class="nws-button genius-btn text-center  d-inline-block text-uppercase">
+                                <a href="{{ url('/') }}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                    @lang('http.404.back')
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>    
-    <!-- Start of footer section
+        <!--/.container -->
+    </section>
+
 
 @endsection

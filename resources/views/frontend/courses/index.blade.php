@@ -42,7 +42,7 @@
 
     <!-- Title page -->
     <section class="bg-img1 txt-center p-lr-15 p-tb-92"
-        style="background-image: url('{{ asset('storage/images/bg-01.jpg') }}');">
+        style="background-image: url('{{ asset('storage/images/bg-03.jpg') }}');">
         <h2 class="ltext-105 cl0 txt-center">
             @if (isset($category))
                 {{ $category->name }}
@@ -304,10 +304,10 @@
                                     @endif
 
 
-                                    <a href="#"
+                                    {{-- <a href="#"
                                         class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                                         Quick View
-                                    </a>
+                                    </a> --}}
                                 </div>
 
                                 <div class="block2-txt flex-w flex-t p-t-14">
@@ -326,7 +326,7 @@
                             </div>
                         </div>
                     @endforeach
-                @else
+                @else  
                 @endif
             </div>
         </div>

@@ -12,11 +12,12 @@ class SitemapController extends Controller
         return view('backend.sitemap.index');
     }
 
-    public function saveSitemapConfig(Request $request){
-
+    public function saveSitemapConfig(Request $request)
+    {
         $this->validate($request, [
             'sitemap__schedule' => 'required',
         ]);
+
         if ($request->get('sitemap__chunk') == null) {
             $request['sitemap__chunk'] = 100;
         }
@@ -29,6 +30,7 @@ class SitemapController extends Controller
                 $config->save();
             }
         }
+        
         return back()->withFlashSuccess(__('alerts.backend.general.updated'));
 
     }

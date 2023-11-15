@@ -5,7 +5,7 @@
             <div class="block1 wrap-pic-w">
                 <img src="{{ asset('storage/banner/banner-04.jpg') }}" alt="IMG-BANNER">
 
-                <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                <a href="{{ route('courses.all') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                     <div class="block1-txt-child1 flex-col-l">
                         <span class="block1-name ltext-102 trans-04 p-b-8" style="color: #fff;">
                             Board Certifications
@@ -16,11 +16,11 @@
                         </span>
                     </div>
 
-                    <div class="block1-txt-child2 p-b-4 trans-05">
+                    {{-- <div class="block1-txt-child2 p-b-4 trans-05">
                         <div class="block1-link stext-101 cl0 trans-09">
                             Discover Now
                         </div>
-                    </div>
+                    </div> --}}
                 </a>
             </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="block1 wrap-pic-w">
                 <img src="{{ asset('storage/banner/banner-06.jpg') }}" alt="IMG-BANNER">
 
-                <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                <a href="{{ route('courses.all') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                     <div class="block1-txt-child1 flex-col-l">
                         <span class="block1-name ltext-102 trans-04 p-b-8" style="color: #fff;">
                             Training Programs
@@ -41,11 +41,11 @@
                         </span>
                     </div>
 
-                    <div class="block1-txt-child2 p-b-4 trans-05">
+                    {{-- <div class="block1-txt-child2 p-b-4 trans-05">
                         <div class="block1-link stext-101 cl0 trans-09">
                             Explore programs
                         </div>
-                    </div>
+                    </div> --}}
                 </a>
             </div>
         </div>
@@ -55,7 +55,7 @@
             <div class="block1 wrap-pic-w">
                 <img src="{{ asset('storage/banner/banner-05.jpg') }}" alt="IMG-BANNER">
 
-                <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                <a href="{{ route('courses.all') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                     <div class="block1-txt-child1 flex-col-l">
                         <span class="block1-name ltext-102 trans-04 p-b-8" style="color: #fff;">
                             Examination
@@ -66,11 +66,11 @@
                         </span>
                     </div>
 
-                    <div class="block1-txt-child2 p-b-4 trans-05">
+                    {{-- <div class="block1-txt-child2 p-b-4 trans-05">
                         <div class="block1-link stext-101 cl0 trans-09">
                             Learn More
                         </div>
-                    </div>
+                    </div> --}}
                 </a>
             </div>
         </div>
@@ -81,7 +81,7 @@
             <div class="block1 wrap-pic-w">
                 <img src="{{ asset('storage/banner/banner-04.jpg') }}" alt="IMG-BANNER">
 
-                <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                <a href="{{ route('courses.all') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                     <div class="block1-txt-child1 flex-col-l">
                         <span class="block1-name ltext-102 trans-04 p-b-8" style="color: #fff;">
                             Board Certifications
@@ -92,11 +92,11 @@
                         </span>
                     </div>
 
-                    <div class="block1-txt-child2 p-b-4 trans-05">
+                    {{-- <div class="block1-txt-child2 p-b-4 trans-05">
                         <div class="block1-link stext-101 cl0 trans-09">
                             Discover Now
                         </div>
-                    </div>
+                    </div> --}}
                 </a>
             </div>
         </div>
@@ -106,7 +106,7 @@
             <div class="block1 wrap-pic-w">
                 <img src="{{ asset('storage/banner/banner-06.jpg') }}" alt="IMG-BANNER">
 
-                <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                <a href="{{ route('courses.all') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                     <div class="block1-txt-child1 flex-col-l">
                         <span class="block1-name ltext-102 trans-04 p-b-8" style="color: #fff;">
                             Training Programs
@@ -117,11 +117,11 @@
                         </span>
                     </div>
 
-                    <div class="block1-txt-child2 p-b-4 trans-05">
+                    {{-- <div class="block1-txt-child2 p-b-4 trans-05">
                         <div class="block1-link stext-101 cl0 trans-09">
                             Explore programs
                         </div>
-                    </div>
+                    </div> --}}
                 </a>
             </div>
         </div>
@@ -131,7 +131,7 @@
             <div class="block1 wrap-pic-w">
                 <img src="{{ asset('storage/banner/banner-05.jpg') }}" alt="IMG-BANNER">
 
-                <a href="product.html"
+                <a href="{{ route('courses.all') }}"
                     class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                     <div class="block1-txt-child1 flex-col-l">
                         <span class="block1-name ltext-102 trans-04 p-b-8" style="color: #fff;">
@@ -143,11 +143,11 @@
                         </span>
                     </div>
 
-                    <div class="block1-txt-child2 p-b-4 trans-05">
+                    {{-- <div class="block1-txt-child2 p-b-4 trans-05">
                         <div class="block1-link stext-101 cl0 trans-09">
                             Learn More
                         </div>
-                    </div>
+                    </div> --}}
                 </a>
             </div>
         </div>
