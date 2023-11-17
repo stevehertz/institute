@@ -4,11 +4,26 @@
 @section('meta_description', $page->meta_description ? $page->meta_description : '')
 @section('meta_keywords', $page->meta_keywords ? $page->meta_keywords : app_name())
 
+@push('after-styles')
+    <style>
+        .content img {
+            margin: 10px;
+        }
+        .about-page-section ul{
+            padding-left: 20px;
+            font-size: 20px;
+            color: #333333;
+            font-weight: 300;
+            margin-bottom: 25px;
+        }
+    </style>
+@endpush
+    
 @section('content')
 
     <!-- Title page -->
     <section class="bg-img1 txt-center p-lr-15 p-tb-92"
-        style="background-image: url('{{ asset('storage/images/bg-02.jpg') }}');">
+        style="background-image: url('{{ asset('storage/bg/bg-04.jpg') }}');">
         <h2 class="ltext-105 cl0 txt-center">
             <span>{{ $page->title }}</span>
         </h2>
@@ -21,11 +36,12 @@
                 @if ($page->image != null)
                     <div class="col-md-7 col-lg-8">
                         <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
-                            <h3 class="mtext-111 cl2 p-b-16">
+                            <h3 class="mtext-111 cl2 p-b-16 txt-center">
                                 {{ $page->title }}
                             </h3>
 
                             {!! $page->content !!}
+
                         </div>
                     </div>
 

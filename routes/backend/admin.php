@@ -164,7 +164,6 @@ Route::group(['middleware' => 'role:administrator'], function () {
 
     Route::post('translations/locales/add', 'LangController@postAddLocale');
     Route::post('translations/locales/remove', 'LangController@postRemoveLocaleFolder')->name('delete-locale-folder');
-
 });
 
 
@@ -192,7 +191,6 @@ Route::group(['middleware' => 'role:administrator|teacher'], function () {
 
 
     Route::get('menu-manager', ['uses' => 'MenuController@index'])->name('menu-manager');
-
 });
 
 
@@ -240,7 +238,7 @@ Route::delete('questions_perma_del/{id}', ['uses' => 'Admin\QuestionsController@
 
 //  =====Exam Questions Routes  === //
 Route::resource('exam_questions', 'Admin\ExamQuestionController');
-Route::get('exam_questions_show/{id}', ['uses'=>'Admin\ExamQuestionController@show', 'as'=>'exam_question.show']);
+Route::get('exam_questions_show/{id}', ['uses' => 'Admin\ExamQuestionController@show', 'as' => 'exam_question.show']);
 Route::get('exam_get-questions-data', ['uses' => 'Admin\ExamQuestionController@getData', 'as' => 'exam_questions.get_data']);
 Route::post('exam_ns_mass_destroy', ['uses' => 'Admin\ExamQuestionController@massDestroy', 'as' => 'exam_questions.mass_destroy']);
 Route::post('exam_questions_restore/{id}', ['uses' => 'Admin\ExamQuestionController@restore', 'as' => 'exam_questions.restore']);
@@ -291,7 +289,7 @@ Route::group(['middleware' => ['auth', 'password_expires']], function () {
 
 
 Route::group(['middleware' => 'role:teacher'], function () {
-//====== Review Routes =====//
+    //====== Review Routes =====//
     Route::resource('reviews', 'ReviewController');
     Route::get('get-reviews-data', ['uses' => 'ReviewController@getData', 'as' => 'reviews.get_data']);
 });
@@ -299,7 +297,7 @@ Route::group(['middleware' => 'role:teacher'], function () {
 
 Route::group(['middleware' => 'role:student'], function () {
 
-//==== Certificates ====//
+    //==== Certificates ====//
     Route::get('certificates', 'CertificateController@getCertificates')->name('certificates.index');
     Route::post('certificates/generate', 'CertificateController@generateCertificate')->name('certificates.generate');
     Route::get('certificates/download', ['uses' => 'CertificateController@download', 'as' => 'certificates.download']);
@@ -326,7 +324,7 @@ Route::group(['prefix' => 'blog'], function () {
     Route::get('edit/{id}', 'Admin\BlogController@edit')->name('blogs.edit1');
     Route::post('edit/{id}', 'Admin\BlogController@update');
     Route::get('view/{id}', 'Admin\BlogController@show');
-//        Route::get('{blog}/restore', 'BlogController@restore')->name('blog.restore');
+    //        Route::get('{blog}/restore', 'BlogController@restore')->name('blog.restore');
     Route::post('{id}/storecomment', 'Admin\BlogController@storeComment')->name('storeComment');
 });
 Route::resource('blogs', 'Admin\BlogController');
@@ -350,7 +348,7 @@ Route::get('reasons/status/{id}', 'Admin\ReasonController@status')->name('reason
 Route::post('reasons/status', ['uses' => 'Admin\ReasonController@updateStatus', 'as' => 'reasons.status']);
 
 //==== Live Lessons ====//
-Route::group(['prefix'=> 'live-lessons'], function () {
+Route::group(['prefix' => 'live-lessons'], function () {
     Route::get('data', ['uses' => 'LiveLessonController@getData', 'as' => 'live-lessons.get_data']);
     Route::post('restore/{id}', ['uses' => 'LiveLessonController@restore', 'as' => 'live-lessons.restore']);
     Route::delete('permanent/{id}', ['uses' => 'LiveLessonController@permanent', 'as' => 'live-lessons.perma_del']);
@@ -359,7 +357,7 @@ Route::resource('live-lessons', 'LiveLessonController');
 
 
 //==== Live Lessons Slot ====//
-Route::group(['prefix'=> 'live-lesson-slots'], function () {
+Route::group(['prefix' => 'live-lesson-slots'], function () {
     Route::get('data', ['uses' => 'LiveLessonSlotController@getData', 'as' => 'live-lesson-slots.get_data']);
     Route::post('restore/{id}', ['uses' => 'LiveLessonSlotController@restore', 'as' => 'live-lesson-slots.restore']);
     Route::delete('permanent/{id}', ['uses' => 'LiveLessonSlotController@permanent', 'as' => 'live-lesson-slots.perma_del']);
@@ -368,7 +366,7 @@ Route::resource('live-lesson-slots', 'LiveLessonSlotController');
 
 Route::group(['namespace' => 'Admin\Stripe', 'prefix' => 'stripe', 'as' => 'stripe.'], function () {
     //==== Stripe Plan Controller ====//
-    Route::group(['prefix' => 'plans'], function() {
+    Route::group(['prefix' => 'plans'], function () {
         Route::get('data', ['uses' => 'StripePlanController@getData', 'as' => 'plans.get_data']);
         Route::post('restore/{id}', ['uses' => 'StripePlanController@restore', 'as' => 'plans.restore']);
         Route::delete('permanent/{id}', ['uses' => 'StripePlanController@permanent', 'as' => 'plans.perma_del']);
@@ -378,36 +376,33 @@ Route::group(['namespace' => 'Admin\Stripe', 'prefix' => 'stripe', 'as' => 'stri
 
 Route::get('subscriptions', 'SubscriptionController')->name('subscriptions');
 Route::get('subscription/invoice/{invoice}', 'SubscriptionController@downloadInvoice')->name('subscriptions.download_invoice');
-Route::get('subscriptions/cancel','SubscriptionController@deleteSubscription')->name('subscriptions.delete');
+Route::get('subscriptions/cancel', 'SubscriptionController@deleteSubscription')->name('subscriptions.delete');
 
 // Wishlist Route
-Route::get('wishlist/data',['uses' => 'WishlistController@getData', 'as' => 'wishlist.get_data']);
-Route::resource('wishlist','WishlistController');
+Route::get('wishlist/data', ['uses' => 'WishlistController@getData', 'as' => 'wishlist.get_data']);
+Route::resource('wishlist', 'WishlistController');
 
-Route::get('enrolments', ['uses' =>'Admin\CoursesController@enrolments', 'as'=>'course.enrolments']);
+Route::get('enrolments', ['uses' => 'Admin\CoursesController@enrolments', 'as' => 'course.enrolments']);
 Route::get('get-enrolment-data', ['uses' => 'Admin\CoursesController@getEnrolmentData', 'as' => 'courses.get_enrolment_data']);
-Route::post('deactivate_enrolment', ['uses' =>'Admin\CoursesController@deactivateEnrolment', 'as' =>'deactivate.enrolment']);
+Route::post('deactivate_enrolment', ['uses' => 'Admin\CoursesController@deactivateEnrolment', 'as' => 'deactivate.enrolment']);
 
 // == Exam side for student == //
 
-Route::group(['middleware' => 'preventBackHistory'],function(){
-    Route::get('student_exams', ['uses'=>'ExamController@studentExams', 'as'=>'studentExams']);
-    Route::post('student_exams_preview', ['uses'=>'ExamController@previewExam', 'as'=>'exam.previewExam']);
-    Route::post('student_exams_start', ['uses'=>'ExamController@startExam', 'as'=>'startExam']);
+Route::group(['middleware' => 'preventBackHistory'], function () {
+    Route::get('student_exams', ['uses' => 'ExamController@studentExams', 'as' => 'studentExams']);
+    Route::post('student_exams_preview', ['uses' => 'ExamController@previewExam', 'as' => 'exam.previewExam']);
+    Route::post('student_exams_start', ['uses' => 'ExamController@startExam', 'as' => 'startExam']);
 
     Route::post('exam-submit', ['uses' => 'ExamController@submitExamTest', 'as' => 'exam.submitTest']);
-    Route::get('exam-completed', ['uses'=>'ExamController@examCompleted', 'as'=>'exam.completed']);
-    Route::post('exam-results', ['uses'=> 'ExamController@viewResults', 'as' =>'exam.viewResults']);
-    Route::post('startExamsSuper', ['uses'=>'Admin\ExamController@superVisorStartExam', 'as'=>'exam.superVisorStartExam']);
-    Route::post('endExamsSuper', ['uses'=>'Admin\ExamController@superVisorEndExam', 'as'=>'exam.superVisorEndExam']);
-    Route::post('viewExamsSuper', ['uses'=>'Admin\ExamController@superVisorViewResults', 'as'=>'exam.superVisorViewResults']);
-    Route::post('rescheduleExamsSuper', ['uses'=>'Admin\ExamController@superVisorRescheduleExam', 'as'=>'exam.superVisorRescheduleExam']);
-    Route::post('cancelExamsSuper', ['uses'=>'Admin\ExamController@superVisorCancelExam', 'as'=>'exam.superVisorCancelExam']);
+    Route::get('exam-completed', ['uses' => 'ExamController@examCompleted', 'as' => 'exam.completed']);
+    Route::post('exam-results', ['uses' => 'ExamController@viewResults', 'as' => 'exam.viewResults']);
+    Route::post('startExamsSuper', ['uses' => 'Admin\ExamController@superVisorStartExam', 'as' => 'exam.superVisorStartExam']);
+    Route::post('endExamsSuper', ['uses' => 'Admin\ExamController@superVisorEndExam', 'as' => 'exam.superVisorEndExam']);
+    Route::post('viewExamsSuper', ['uses' => 'Admin\ExamController@superVisorViewResults', 'as' => 'exam.superVisorViewResults']);
+    Route::post('rescheduleExamsSuper', ['uses' => 'Admin\ExamController@superVisorRescheduleExam', 'as' => 'exam.superVisorRescheduleExam']);
+    Route::post('cancelExamsSuper', ['uses' => 'Admin\ExamController@superVisorCancelExam', 'as' => 'exam.superVisorCancelExam']);
 
-    Route::get('importQuestions', ['uses'=>'Admin\ExamController@importQuestionsPage', 'as'=>'questions.import1']);
-    Route::post('importQuestions', ['uses'=>'Admin\ExamController@importQuestions', 'as'=>'questions.import']);
-    Route::post('examStartedStudent', ['uses'=>'LivewireController@index', 'as'=>'exam.studentExamStarted']);
-
+    Route::get('importQuestions', ['uses' => 'Admin\ExamController@importQuestionsPage', 'as' => 'questions.import1']);
+    Route::post('importQuestions', ['uses' => 'Admin\ExamController@importQuestions', 'as' => 'questions.import']);
+    Route::post('examStartedStudent', ['uses' => 'LivewireController@index', 'as' => 'exam.studentExamStarted']);
 });
-
-

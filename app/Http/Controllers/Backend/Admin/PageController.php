@@ -138,12 +138,16 @@ class PageController extends Controller
             return abort(401);
         }
 
+        $data = $request->except("_token");
+
         $page = new Page();
-        $page->title = $request->title;
+
+        $page->title = $data['title'];
+
         if($request->slug == ""){
-            $page->slug = str_slug($request->title);
+            $page->slug = str_slug($data['title']);
         }else{
-            $page->slug = $request->slug;
+            $page->slug = $data['slug'];
         }
         $message = $request->get('content');
         $dom = new \DOMDocument();
