@@ -3631,3 +3631,49 @@ Team
   color: #17d0cf;
   float: right;
 }
+
+.workshops {
+  background: url("/storage/workshops/bg.jpg");
+  padding: 50px;
+  margin-bottom: 2rem;
+}
+.workshops .card {
+  border-radius: 0px !important;
+  background: transparent !important;
+  height: 100%;
+  width: 100%;
+}
+.workshops .card .card-title {
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+}
+.workshops .card .card-text {
+  color: #fff;
+  text-align: center;
+}
+.workshops .workshop-1 {
+  background: url("/storage/workshops/workshop-01.jpg");
+  padding: 10px;
+  margin-right: 2.5rem;
+}
+.workshops .workshop-2 {
+  background: url("/storage/workshops/workshop-02.jpg");
+  padding: 10px;
+  margin-right: 2.5rem;
+}
+.workshops .workshop-3 {
+  background: url("/storage/workshops/workshop-03.jpg");
+  padding: 10px;
+  margin-right: 2.5rem;
+}
+.workshops .workshop-4 {
+  background: url("/storage/workshops/workshop-04.jpg");
+  padding: 10px;
+  margin-right: 2.5rem;
+}
+.workshops .workshop-5 {
+  background: url("/storage/workshops/workshop-05.jpg");
+  padding: 10px;
+}

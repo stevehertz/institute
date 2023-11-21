@@ -1,0 +1,56 @@
+.workshops
+{
+    background: url('/storage/workshops/bg.jpg');
+    padding: 50px;
+    margin-bottom: 2rem;
+    .card {
+        border-radius: 0px !important;
+        background: transparent !important;
+        height: 100%;
+        width: 100%;
+        .card-title{
+            text-transform: uppercase;
+            color: #fff;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .card-text{
+            color: #fff;
+            text-align: center;
+        }
+    }
+
+    .workshop-1 
+    {
+        background: url('/storage/workshops/workshop-01.jpg');
+        padding: 10px;
+        margin-right: 2.5rem;
+    }
+
+    .workshop-2
+    {
+        background: url('/storage/workshops/workshop-02.jpg');
+        padding: 10px;
+        margin-right: 2.5rem;
+    }
+
+    .workshop-3
+    {
+        background: url('/storage/workshops/workshop-03.jpg');
+        padding: 10px;
+        margin-right: 2.5rem;
+    }
+
+    .workshop-4
+    {
+        background: url('/storage/workshops/workshop-04.jpg');
+        padding: 10px;
+        margin-right: 2.5rem;
+    }
+
+    .workshop-5
+    {
+        background: url('/storage/workshops/workshop-05.jpg');
+        padding: 10px;
+    }
+}
