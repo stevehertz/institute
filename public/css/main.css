@@ -153,16 +153,15 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
 }
+.btn-back-to-top:hover {
+  opacity: 1;
+  background-color: #717fe0;
+}
 
 .symbol-btn-back-to-top {
   font-size: 25px;
   color: white;
   line-height: 1em;
-}
-
-.btn-back-to-top:hover {
-  opacity: 1;
-  background-color: #717fe0;
 }
 
 @media (max-width: 575px) {
@@ -1603,7 +1602,6 @@ input.num-product::-webkit-inner-spin-button {
 .tooltip100 {
   position: relative;
 }
-
 .tooltip100::after {
   content: attr(data-tooltip);
   font-family: Poppins-Regular;
@@ -1629,7 +1627,6 @@ input.num-product::-webkit-inner-spin-button {
   visibility: hidden;
   opacity: 0;
 }
-
 .tooltip100:hover:after {
   visibility: visible;
   opacity: 1;
@@ -3676,4 +3673,14 @@ Team
 .workshops .workshop-5 {
   background: url("/storage/workshops/workshop-05.jpg");
   padding: 10px;
+}
+
+span.content {
+  background: yellow;
+}
+
+div.about-content {
+  margin-top: 3rem;
+  font-size: large;
+  font-weight: 200;
 }

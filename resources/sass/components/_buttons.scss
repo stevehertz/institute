@@ -17,6 +17,11 @@
     -webkit-transition: all 0.4s;
     -o-transition     : all 0.4s;
     -moz-transition   : all 0.4s;
+
+    &:hover {
+        opacity         : 1;
+        background-color: #717fe0;
+    }
 }
 
 .symbol-btn-back-to-top {
@@ -25,10 +30,7 @@
     line-height: 1em;
 }
 
-.btn-back-to-top:hover {
-    opacity         : 1;
-    background-color: #717fe0;
-}
+
 
 @media (max-width: 575px) {
     .btn-back-to-top {

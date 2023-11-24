@@ -12,8 +12,6 @@ use App\Http\Controllers\ExamController;
  * Routes that are used between both frontend and backend.
  */
 
-
-
 // Switch between the included languages
 Route::get('lang/{lang}', [LanguageController::class, 'swap']);
 
@@ -23,7 +21,11 @@ Route::get('/sitemap-' . str_slug(config('app.name')) . '/{file?}', 'SitemapCont
 
 //============ Remove this  while creating zip for Envato ===========//
 
-/*This command is useful in demo site you can go to https://demo.neonlms.com/reset-demo and it will refresh site from this URL. */
+/* 
+************
+---------------This command is useful in demo site you can go to https://demo.neonlms.com/reset-demo and it will refresh site from this URL. 
+*********
+*/
 
 Route::get('reset-demo', function () {
     ini_set('memory_limit', '-1');
@@ -82,23 +84,23 @@ Route::group([
     Route::post('messages/reply', ['uses' => 'MessagesController@reply', 'as' => 'messages.reply']);
 });
 
-
+// blogs
 Route::get('category/{category}/blogs', 'BlogController@getByCategory')->name('blogs.category');
 Route::get('tag/{tag}/blogs', 'BlogController@getByTag')->name('blogs.tag');
 Route::get('blog/{slug?}', 'BlogController@getIndex')->name('blogs.index');
 Route::post('blog/{id}/comment', 'BlogController@storeComment')->name('blogs.comment');
 Route::get('blog/comment/delete/{id}', 'BlogController@deleteComment')->name('blogs.comment.delete');
 
+// Teachers
 Route::get('teachers', 'Frontend\HomeController@getTeachers')->name('teachers.index');
 Route::get('teachers/{id}/show', 'Frontend\HomeController@showTeacher')->name('teachers.show');
 
-
+// News Letter
 Route::post('newsletter/subscribe', 'Frontend\HomeController@subscribe')->name('subscribe');
 
 //============Course Routes=================//
 Route::get('courses', ['uses' => 'CoursesController@all', 'as' => 'courses.all']);
 Route::get('course/{slug}', ['uses' => 'CoursesController@show', 'as' => 'courses.show'])->middleware('subscribed');
-//Route::post('course/payment', ['uses' => 'CoursesController@payment', 'as' => 'courses.payment']);
 Route::post('course/{course_id}/rating', ['uses' => 'CoursesController@rating', 'as' => 'courses.rating']);
 Route::get('category/{category}/courses', ['uses' => 'CoursesController@getByCategory', 'as' => 'courses.category']);
 Route::post('courses/{id}/review', ['uses' => 'CoursesController@addReview', 'as' => 'courses.review']);
@@ -110,7 +112,6 @@ Route::get('courses/review/{id}/delete', ['uses' => 'CoursesController@deleteRev
 //============Bundle Routes=================//
 Route::get('bundles', ['uses' => 'BundlesController@all', 'as' => 'bundles.all']);
 Route::get('bundle/{slug}', ['uses' => 'BundlesController@show', 'as' => 'bundles.show']);
-//Route::post('course/payment', ['uses' => 'CoursesController@payment', 'as' => 'courses.payment']);
 Route::post('bundle/{bundle_id}/rating', ['uses' => 'BundlesController@rating', 'as' => 'bundles.rating']);
 Route::get('category/{category}/bundles', ['uses' => 'BundlesController@getByCategory', 'as' => 'bundles.category']);
 Route::post('bundles/{id}/review', ['uses' => 'BundlesController@addReview', 'as' => 'bundles.review']);
@@ -139,11 +140,11 @@ Route::get('/faqs', 'Frontend\HomeController@getFaqs')->name('faqs');
 
 /*=============== Theme blades routes ends ===================*/
 
-
+// Contact
 Route::get('contact', 'Frontend\ContactController@index')->name('contact');
 Route::post('contact/send', 'Frontend\ContactController@send')->name('contact.send');
 
-
+// Download
 Route::get('download', ['uses' => 'Frontend\HomeController@getDownload', 'as' => 'download']);
 
 Route::group(['middleware' => 'auth'], function () {
@@ -196,7 +197,6 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => con
 Route::get('certificate-verification', 'Backend\CertificateController@getVerificationForm')->name('frontend.certificates.getVerificationForm');
 Route::post('certificate-verification', 'Backend\CertificateController@verifyCertificate')->name('frontend.certificates.verify');
 Route::get('certificates/download', ['uses' => 'Backend\CertificateController@download', 'as' => 'certificates.download']);
-
 
 if (config('show_offers') == 1) {
     Route::get('offers', ['uses' => 'CartController@getOffers', 'as' => 'frontend.offers']);

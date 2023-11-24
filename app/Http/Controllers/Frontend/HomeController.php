@@ -57,13 +57,20 @@ class HomeController extends Controller
             $page = Page::where('slug', '=', request('page'))
                 ->where('published', '=', 1)->first();
             if ($page != "") {
-               
-                if($page->slug == "about"){
+
+                if ($page->slug == "about") {
+
                     return view($this->path . '.pages.about', compact('page'));
+
+                } elseif ($page->slug == "apply-today") {
+
+                    return view($this->path . '.pages.apply', compact('page'));
+
                 } else {
+
                     return view($this->path . '.pages.index', compact('page'));
+                    
                 }
-                
             }
             abort(404);
         }
@@ -114,11 +121,10 @@ class HomeController extends Controller
 
         $categories = Category::get();
 
-        return view($this->path . '.index-' . config('theme_layout'), compact('popular_courses', 'featured_courses', 'sponsors', 'clients', 'partners', 'total_students', 'total_courses', 'total_teachers', 'testimonials', 'news', 'trending_courses', 'teachers', 'faqs', 'course_categories', 'reasons', 'sections','categories'));
-
+        return view($this->path . '.index-' . config('theme_layout'), compact('popular_courses', 'featured_courses', 'sponsors', 'clients', 'partners', 'total_students', 'total_courses', 'total_teachers', 'testimonials', 'news', 'trending_courses', 'teachers', 'faqs', 'course_categories', 'reasons', 'sections', 'categories'));
     }
 
-    public function about() 
+    public function about()
     {
         return view('frontend.pages.about');
     }
@@ -149,14 +155,12 @@ class HomeController extends Controller
                 } else {
                     session()->flash('alert', "Email already exist in subscription list");
                     return back();
-
                 }
             } catch (Exception $e) {
                 \Log::info($e->getMessage());
                 session()->flash('alert', "Something went wrong, Please try again Later");
                 return back();
             }
-
         } elseif (config('mail_provider') != "" && config('mail_provider') == "sendgrid") {
             try {
                 $apiKey = config('sendgrid_api_key');
@@ -195,7 +199,6 @@ class HomeController extends Controller
                                 session()->flash('alert', "Check your email and try again");
                                 return back();
                             }
-
                         }
                     }
                 }
@@ -204,12 +207,10 @@ class HomeController extends Controller
                 session()->flash('alert', "Something went wrong, Please try again Later");
                 return back();
             }
-        }else{
+        } else {
             session()->flash('alert', "Please configure Newsletter from Admin");
             return back();
         }
-
-
     }
 
     public function getTeachers()
@@ -243,10 +244,8 @@ class HomeController extends Controller
                 return Response::download($file);
             }
             return abort(404);
-
         }
         return abort(404);
-
     }
 
     public function searchCourse(Request $request)
@@ -254,13 +253,10 @@ class HomeController extends Controller
 
         if (request('type') == 'popular') {
             $courses = Course::withoutGlobalScope('filter')->canDisableCourse()->where('published', 1)->where('popular', '=', 1)->orderBy('id', 'desc')->paginate(12);
-
         } else if (request('type') == 'trending') {
             $courses = Course::withoutGlobalScope('filter')->canDisableCourse()->where('published', 1)->where('trending', '=', 1)->orderBy('id', 'desc')->paginate(12);
-
         } else if (request('type') == 'featured') {
             $courses = Course::withoutGlobalScope('filter')->canDisableCourse()->where('published', 1)->where('featured', '=', 1)->orderBy('id', 'desc')->paginate(12);
-
         } else {
             $courses = Course::withoutGlobalScope('filter')->canDisableCourse()->where('published', 1)->orderBy('id', 'desc')->paginate(12);
         }
@@ -268,7 +264,7 @@ class HomeController extends Controller
 
         if ($request->category != null) {
             $category = Category::find((int)$request->category);
-            if($category){
+            if ($category) {
                 $ids = $category->courses->pluck('id')->toArray();
                 $types = ['popular', 'trending', 'featured'];
                 if ($category) {
@@ -293,17 +289,13 @@ class HomeController extends Controller
                             ->whereIn('id', $ids)
                             ->paginate(12);
                     }
-
                 }
             }
-
-
         } else {
             $courses = Course::where('title', 'LIKE', '%' . $request->q . '%')
                 ->orWhere('description', 'LIKE', '%' . $request->q . '%')
                 ->where('published', '=', 1)
                 ->paginate(12);
-
         }
 
         $categories = Category::where('status', '=', 1)->get();
@@ -321,13 +313,10 @@ class HomeController extends Controller
 
         if (request('type') == 'popular') {
             $bundles = Bundle::withoutGlobalScope('filter')->canDisableBundle()->where('published', 1)->where('popular', '=', 1)->orderBy('id', 'desc')->paginate(12);
-
         } else if (request('type') == 'trending') {
             $bundles = Bundle::withoutGlobalScope('filter')->canDisableBundle()->where('published', 1)->where('trending', '=', 1)->orderBy('id', 'desc')->paginate(12);
-
         } else if (request('type') == 'featured') {
             $bundles = Bundle::withoutGlobalScope('filter')->canDisableBundle()->where('published', 1)->where('featured', '=', 1)->orderBy('id', 'desc')->paginate(12);
-
         } else {
             $bundles = Bundle::withoutGlobalScope('filter')->canDisableBundle()->where('published', 1)->orderBy('id', 'desc')->paginate(12);
         }
@@ -359,16 +348,13 @@ class HomeController extends Controller
                         ->whereIn('id', $ids)
                         ->paginate(12);
                 }
-
             }
-
         } else {
             $bundles = Bundle::where('title', 'LIKE', '%' . $request->q . '%')
                 ->orWhere('description', 'LIKE', '%' . $request->q . '%')
                 ->where('published', '=', 1)
                 ->canDisableBundle()
                 ->paginate(12);
-
         }
 
         $categories = Category::where('status', '=', 1)->get();
@@ -392,4 +378,3 @@ class HomeController extends Controller
         return view($this->path . '.search-result.blogs', compact('blogs', 'q', 'categories', 'popular_tags'));
     }
 }
-

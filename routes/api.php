@@ -20,12 +20,10 @@ use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'v1','namespace'=>'v1'],function (){
 
-
     Route::group([
         'prefix' => 'auth'
     ], function () {
-
-//    Route::post('login', 'ApiController@login');
+        
         Route::post('signup-form', 'ApiController@signupForm');
         Route::post('signup-save', 'ApiController@signup');
 

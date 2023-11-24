@@ -9,7 +9,7 @@
     <!-- Title page -->
     <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('{{ asset('storage/bg/bg-02.jpg') }}');">
         <h2 class="ltext-105 cl0 txt-center">
-            <span>{{ $page->title }}</span>
+            {{-- <span>{{ $page->title }}</span> --}}
         </h2>
     </section>
 
@@ -17,20 +17,19 @@
     <section class="bg0 p-t-75 p-b-120">
         <div class="container-fluid">
             <div class="container">
-                <div class="row p-b-148">
+                <div class="row p-b-30">
                     @if ($page->image != null)
                         <div class="col-md-7 col-lg-8">
-                            <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+                            <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md about-content">
                                 <h3 class="mtext-111 cl2 p-b-16 txt-center">
                                     {{ $page->title }}
                                 </h3>
-
                                 {!! $page->content !!}
                             </div>
                         </div>
 
                         <div class="col-11 col-md-5 col-lg-4 m-lr-auto">
-                            <div class="how-bor1 ">
+                            <div class="">
                                 <div class="hov-img0">
                                     <img src="{{ asset('storage/uploads/' . $page->image) }}" alt="{{ $page->title }}">
                                 </div>

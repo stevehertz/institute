@@ -40,7 +40,7 @@
                                 </h4>
 
                                 <p class="stext-108 cl6">
-                                    {!! strip_tags(mb_substr($item->content, 0, 100) . '...') !!}
+                                    {{ strip_tags(str_limit($item->content, $limit=100, $end ='...')) }}
                                 </p>
                             </div>
                         </div>

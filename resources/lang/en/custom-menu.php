@@ -6,6 +6,6 @@
     'contact' => 'Contact',
     'blog' => 'Blog',
     'our-partners' => 'Our Partners',
-    'how-to-apply' => 'How to apply',
+    'apply-today' => 'Apply today',
   ),
 );
