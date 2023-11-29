@@ -10,6 +10,14 @@ class Category extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'name',
+        'slug',
+        'icon',
+        'image',
+        'status',
+    ];
+
     /**
      * Perform any actions required after the model boots.
      *
@@ -31,6 +39,8 @@ class Category extends Model
                 $category->faqs()->delete();
             }
         });
+
+        
     }
 
     protected $guarded = [];
@@ -50,6 +60,4 @@ class Category extends Model
     public function faqs(){
         return $this->hasMany(Faq::class);
     }
-
-
 }

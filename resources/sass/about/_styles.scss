@@ -1,0 +1,66 @@
+span {
+    &.content {
+        background: yellow;
+    }
+}
+
+div {
+    &.about-content {
+        margin-top : 3rem;
+        font-size  : large;
+        font-weight: 200;
+        text-align : justify;
+    }
+
+
+    &.apply-content {
+        padding   : 10px;
+        text-align: justify;
+
+        ul {
+            list-style-type: none;
+            padding        : 0;
+            text-align     : justify;
+
+            li {
+                padding     : 8px 0;
+                padding-left: 2.5rem;
+                position    : relative;
+
+                &::not(:last-child) {
+                    margin-bottom: 10px;
+                }
+
+                &::before {
+                    content     : '\2022';
+                    /* Unicode character for a bullet point */
+                    color       : #000;
+                    /* Set the color of the bullet point */
+                    font-size   : 18px;
+                    margin-right: 10px;
+                }
+
+                a {
+                    text-decoration: none;
+                    color          : #333;
+                    font-weight    : bold;
+
+                    &:hover {
+                        color: #007BFF;
+                    }
+                }
+            }
+        }
+    }
+
+    &.apply-registration {
+        margin-top: 1rem;
+        .bor10
+        {
+            padding: 1rem;
+            a{
+                color: $white-color;
+            }
+        }
+    }
+}

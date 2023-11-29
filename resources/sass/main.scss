@@ -217,7 +217,7 @@ input.num-product::-webkit-inner-spin-button {
         display         : -webkit-box;
         display         : -webkit-flex;
         display         : -moz-box;
-        display         : -ms-flexbox;  
+        display         : -ms-flexbox;
         display         : flex;
         justify-content : center;
         align-items     : center;
@@ -1768,16 +1768,41 @@ input.num-product::-webkit-inner-spin-button {
 
 @import 'workshops';
 
-span{
-    &.content{
-        background: yellow;
+@import 'about';
+
+.popup-logo {
+    left      : 0;
+    right     : 0;
+    top       : -30px;
+    position  : absolute;
+    text-align: center;
+
+    img {
+        border-radius: 4px;
     }
 }
 
-div{
-    &.about-content{
-        margin-top: 3rem;
-        font-size: large;
-        font-weight: 200;
+.popup-text {
+    width   : 100%;
+    padding : 70px 0px 50px 0px;
+    position: relative;
+
+    h2 {
+        color      : #fff;
+        font-weight: 300;
+        font-size  : 38px;
+
+        span {
+            font-weight: 700;
+        }
     }
+
+    p {
+        color: #fff;
+
+        span {
+            font-weight: 700;
+        }
+    }
+
 }

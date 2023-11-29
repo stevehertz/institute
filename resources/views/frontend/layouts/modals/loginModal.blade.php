@@ -30,6 +30,16 @@
         border: none
     }
 
+    .form-check{
+        padding-right: 1rem !important;
+    }
+
+    .form-check .form-check-input {
+        width: 18px !important; /* Adjust the width as needed */
+        height: 18px !important; /* Adjust the height as needed */
+        margin-right: 4rem !important;
+    }
+
     @media (max-width: 768px) {
         .modal-dialog {
             min-height: calc(100vh - 20px);
@@ -52,7 +62,7 @@
 
                     <div class="gradient-bg"></div>
                     <div class="popup-logo">
-                        <img src="{{ asset('storage/logos/' . config('logo_popup')) }}" alt="">
+                        {{-- <img src="{{ asset('storage/logos/' . config('logo_popup')) }}" alt="{{ config('app.name') }}"> --}}
                     </div>
                     <div class="popup-text text-center">
                         <h2>@lang('labels.frontend.modal.my_account') </h2>
@@ -118,7 +128,6 @@
                                 <a href="#" class="go-login float-right text-info pr-0">@lang('labels.frontend.modal.already_user_note')</a>
                                 <div class="contact-info mb-2">
 
-
                                     {{ html()->text('first_name')->class('form-control mb-0')->placeholder(__('validation.attributes.frontend.first_name'))->attribute('maxlength', 191) }}
                                     <span id="first-name-error" class="text-danger"></span>
                                 </div>
@@ -139,6 +148,15 @@
                                 </div>
                                 <div class="contact-info mb-2">
                                     {{ html()->password('password_confirmation')->class('form-control mb-0')->placeholder(__('validation.attributes.frontend.password_confirmation')) }}
+                                </div>
+                                <div class="contact-info mb-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="terms" type="checkbox" id="acceptTerms"
+                                            name="acceptTerms">
+                                        <label class="form-check-label" for="acceptTerms">
+                                            I accept the terms and conditions
+                                        </label>
+                                    </div>
                                 </div>
                                 @if (config('registration_fields') != null)
                                     @php

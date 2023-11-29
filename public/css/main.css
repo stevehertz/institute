@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*------------------------------------------------------------------
 Project:  CCIB Institute
 Version:  1.0.0
@@ -1788,12 +1789,40 @@ input.num-product::-webkit-inner-spin-button {
 /* --------------------
 Team 
 ---------------------------------*/
-.team img {
-  max-width: 100%;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+.team-block {
+  position: relative;
+  border: 1.5px solid #e6e6e6;
+}
+.team-block .haron-block-txt {
+  background-color: rgba(103, 117, 214, 0);
+}
+.team-block .haron-block-txt:hover {
+  background-image: url("/storage/teams/hover/haron.png");
+  background-size: cover;
+}
+.team-block .haron-block-txt:hover .block1-txt-child2 {
+  transform: scaleX(1);
+}
+.team-block .haron-block-txt:hover .block1-link {
+  transform: translateY(0%);
+}
+.team-block .haron-block-txt:hover .block1-name,
+.team-block .haron-block-txt:hover .block1-txt:hover .block1-info {
+  color: #333333;
+}
+.team-block .obare-block-txt {
+  background-color: rgba(103, 117, 214, 0);
+}
+.team-block .obare-block-txt:hover {
+  background-image: url("/storage/teams/hover/obare.png");
+  background-size: cover;
+}
+.team-block .carol-block-txt {
+  background-color: rgba(103, 117, 214, 0);
+}
+.team-block .carol-block-txt:hover {
+  background-image: url("/storage/teams/hover/carol.png");
+  background-size: cover;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -3683,4 +3712,78 @@ div.about-content {
   margin-top: 3rem;
   font-size: large;
   font-weight: 200;
+  text-align: justify;
+}
+div.apply-content {
+  padding: 10px;
+  text-align: justify;
+}
+div.apply-content ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: justify;
+}
+div.apply-content ul li {
+  padding: 8px 0;
+  padding-left: 2.5rem;
+  position: relative;
+}
+div.apply-content ul li::not(:last-child) {
+  margin-bottom: 10px;
+}
+div.apply-content ul li::before {
+  content: "•";
+  /* Unicode character for a bullet point */
+  color: #000;
+  /* Set the color of the bullet point */
+  font-size: 18px;
+  margin-right: 10px;
+}
+div.apply-content ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+div.apply-content ul li a:hover {
+  color: #007BFF;
+}
+div.apply-registration {
+  margin-top: 1rem;
+}
+div.apply-registration .bor10 {
+  padding: 1rem;
+}
+div.apply-registration .bor10 a {
+  color: #fff;
+}
+
+.popup-logo {
+  left: 0;
+  right: 0;
+  top: -30px;
+  position: absolute;
+  text-align: center;
+}
+.popup-logo img {
+  border-radius: 4px;
+}
+
+.popup-text {
+  width: 100%;
+  padding: 70px 0px 50px 0px;
+  position: relative;
+}
+.popup-text h2 {
+  color: #fff;
+  font-weight: 300;
+  font-size: 38px;
+}
+.popup-text h2 span {
+  font-weight: 700;
+}
+.popup-text p {
+  color: #fff;
+}
+.popup-text p span {
+  font-weight: 700;
 }

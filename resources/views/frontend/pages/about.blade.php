@@ -243,11 +243,12 @@
                         <div class="flex-w flex-c-m">
                             <div class="size-202 m-lr-auto respon4">
                                 <!-- Block1 -->
-                                <div class="block1 wrap-pic-w team">
-                                    <img src="{{ asset('storage/teams/haron.png') }}" alt="Joshua Mcafee">
+                                <div class="wrap-pic-w team-block">
+
+                                    <img src="{{ asset('storage/teams/haron.png') }}" alt="Haron">
 
                                     <a href="#"
-                                        class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                                        class="haron-block-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                                         <div class="block1-txt-child1 flex-col-l">
                                             <span class="block1-name ltext-102 trans-04 p-b-8">
                                                 HARON OICHOE
@@ -258,55 +259,58 @@
                                             </span>
                                         </div>
 
-                                        <div class="block1-txt-child2 p-b-4 trans-05">
+                                        {{-- <div class="block1-txt-child2 p-b-4 trans-05">
                                             <div class="block1-link stext-101 cl0 trans-09">
                                                 More Details
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </a>
+
+
                                 </div>
                             </div>
 
                             <div class="size-202 m-lr-auto respon4">
                                 <!-- Block1 -->
-                                <div class="block1 wrap-pic-w">
-                                    <img src="{{ asset('storage/teams/obare.png') }}" alt="IMG-BANNER">
+                                <div class="wrap-pic-w team-block">
+                                    <img src="{{ asset('storage/teams/obare.png') }}" alt="Stephen Obare">
 
                                     <a href="#"
-                                        class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                                        class="haron-block-txt obare-block-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                                         <div class="block1-txt-child1 flex-col-l">
                                             <span class="block1-name ltext-102 trans-04 p-b-8">
                                                 Stephen Obare
                                             </span>
 
                                             <span class="block1-info stext-102 trans-04">
-                                                Chief Academic Officer(CAO)
+                                                Chief of Strategy & Academic Affairs
                                             </span>
                                         </div>
 
-                                        <div class="block1-txt-child2 p-b-4 trans-05">
+                                        {{-- <div class="block1-txt-child2 p-b-4 trans-05">
                                             <div class="block1-link stext-101 cl0 trans-09">
                                                 More Details
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </a>
                                 </div>
                             </div>
 
                             <div class="size-202 m-lr-auto respon4">
                                 <!-- Block1 -->
-                                <div class="block1 wrap-pic-w">
-                                    <img src="{{ asset('storage/teams/terry.png') }}" alt="Terry Farris">
+                                <div class="wrap-pic-w team-block">
+                                    <img src="{{ asset('storage/teams/carol.png') }}" alt="Caroline Machaka">
 
                                     <a href="#"
-                                        class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                                        class="haron-block-txt carol-block-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                                         <div class="block1-txt-child1 flex-col-l">
                                             <span class="block1-name ltext-102 trans-04 p-b-8">
-                                                Dr. Terry Farris
+                                                Caroline Machaka
                                             </span>
 
                                             <span class="block1-info stext-102 trans-04">
-                                                VP of Certification & Training
+                                                Chief of Administration,
+                                                <br>Certification and Training
                                             </span>
                                         </div>
 

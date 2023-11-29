@@ -131,15 +131,27 @@
                                 <div class="contact-info mb-2">
                                     {{ html()->email('email')->class('form-control mb-0')->placeholder(__('validation.attributes.frontend.email'))->attribute('maxlength', 191) }}
                                     <span id="email-error" class="text-danger"></span>
-
                                 </div>
+
                                 <div class="contact-info mb-2">
                                     {{ html()->password('password')->class('form-control mb-0')->placeholder(__('validation.attributes.frontend.password')) }}
                                     <span id="password-error" class="text-danger"></span>
                                 </div>
+
                                 <div class="contact-info mb-2">
                                     {{ html()->password('password_confirmation')->class('form-control mb-0')->placeholder(__('validation.attributes.frontend.password_confirmation')) }}
                                 </div>
+
+                                <div class="contact-info mb-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="acceptTerms"
+                                            name="acceptTerms">
+                                        <label class="form-check-label" for="acceptTerms">
+                                            I accept the terms and conditions
+                                        </label>
+                                    </div>
+                                </div>
+
                                 @if (config('registration_fields') != null)
                                     @php
                                         $fields = json_decode(config('registration_fields'));
