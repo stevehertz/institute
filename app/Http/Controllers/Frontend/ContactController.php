@@ -10,7 +10,7 @@ use App\Mail\Frontend\Contact\SendContact;
 use App\Http\Requests\Frontend\Contact\SendContactRequest;
 use Illuminate\Support\Facades\Session;
 use Arcanedev\NoCaptcha\Rules\CaptchaRule;
-
+use PragmaRX\Countries\Package\Countries;
 
 /**
  * Class ContactController.
@@ -41,7 +41,11 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view($this->path.'.contact');
+        $countries = new Countries();
+        $countryList = $countries->all()->pluck('name.common');
+        return view($this->path.'.contact', [
+            'countries' => $countryList
+        ]);
     }
 
     /**

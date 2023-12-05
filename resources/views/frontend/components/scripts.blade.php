@@ -28,6 +28,8 @@
 <script>
     $('.parallax100').parallax100();
 </script>
+<!-- Toastr -->
+<script src="{{ asset('vendor/toastr/toastr.min.js')}}"></script>
 <!--===============================================================================================-->
 <script src="{{ asset('fvendor/MagnificPopup/jquery.magnific-popup.min.js') }}"></script>
 <script>
@@ -98,5 +100,13 @@
         });
     });
 </script>
+
+<script>
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2();
+    });
+</script>
+
 <!--===============================================================================================-->
 <script src="{{ asset('js/scripts.js') }}"></script>

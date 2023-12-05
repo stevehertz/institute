@@ -22,6 +22,11 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('fvendor/MagnificPopup/magnific-popup.css') }}">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{ asset('fvendor/perfect-scrollbar/perfect-scrollbar.css') }}">
+<!-- Select2 -->
+<link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+<!-- Toastr -->
+<link rel="stylesheet" href="{{ asset('vendor/toastr/toastr.min.css') }}">
 <!-- Fonts -->
 <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('css/util.css') }}">

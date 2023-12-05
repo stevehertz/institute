@@ -51,6 +51,7 @@
         "omnipay/stripe": "^3.1",
         "paragonie/certainty": "^2",
         "phpoffice/phpspreadsheet": "*",
+        "pragmarx/countries": "^0.8.2",
         "razorpay/razorpay": "^2.5",
         "sendgrid/sendgrid": "~7",
         "skyraptor/chatter": "^0.5.11",

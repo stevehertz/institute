@@ -7,5 +7,6 @@
     'blog' => 'Blog',
     'our-partners' => 'Our Partners',
     'apply-today' => 'Apply today',
+    'become-our-instructor' => 'Become Our Instructor',
   ),
 );
