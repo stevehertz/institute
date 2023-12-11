@@ -16,6 +16,12 @@ div {
     &.apply-content {
         padding   : 10px;
         text-align: justify;
+        font-size : large;
+
+        h3 {
+            text-align : center;
+            font-weight: 700;
+        }
 
         ul {
             list-style-type: none;
@@ -76,6 +82,7 @@ div {
         text-align: justify;
         font-size : large;
         padding   : 2rem;
+        color: #706e6d;
 
         ol {
             list-style-type: decimal !important;
@@ -83,10 +90,12 @@ div {
             list-style     : none;
             counter-reset  : my-counter;
             /* If you want to use custom counters */
+            color          : #706e6d;
 
             li {
                 position    : relative;
                 padding-left: 2.5rem;
+                color       : #706e6d;
 
                 /* Adjust the padding as needed */
                 &:before {
@@ -94,6 +103,11 @@ div {
                     counter-increment: my-counter;
                     position         : absolute;
                     left             : 0;
+                    color            : #706e6d;
+                }
+
+                span {
+                    color: #706e6d !important;
                 }
             }
         }

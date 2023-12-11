@@ -21,9 +21,9 @@
                     @if ($page->image != null)
                         <div class="col-md-7 col-lg-8">
                             <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md apply-content">
-                                <h3 class="mtext-111 cl2 p-b-16 txt-center">
+                                {{-- <h3 class="mtext-111 cl2 p-b-16 txt-center">
                                     {{ $page->title }}
-                                </h3>
+                                </h3> --}}
                                 
                                 {!! $page->content !!}
                             
@@ -64,7 +64,6 @@
             <!--/.container -->
         </div>
         <!--/.container-fluid -->
-        
     </section>
 
 @endsection

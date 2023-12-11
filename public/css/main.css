@@ -1754,10 +1754,12 @@ input.num-product::-webkit-inner-spin-button {
 /*---------------------------------------------*/
 .block1-name {
   color: #333;
+  text-transform: capitalize !important;
 }
 
 .block1-info {
   color: #555;
+  text-transform: capitalize !important;
 }
 
 /*---------------------------------------------*/
@@ -1784,6 +1786,7 @@ input.num-product::-webkit-inner-spin-button {
 .block1-txt:hover .block1-name,
 .block1-txt:hover .block1-txt:hover .block1-info {
   color: #fff;
+  text-transform: capitalize;
 }
 
 /* --------------------
@@ -1795,12 +1798,16 @@ Team
 }
 .team-block .haron-block-txt {
   background-color: rgba(103, 117, 214, 0);
+  text-transform: capitalize !important;
 }
 .team-block .haron-block-txt:hover {
   background-image: url("/storage/teams/hover/haron.png");
   background-size: cover;
 }
 .team-block .haron-block-txt:hover .block1-txt-child2 {
+  background-color: rgba(103, 117, 214, 0.8);
+  padding: 1rem;
+  width: 100%;
   transform: scaleX(1);
 }
 .team-block .haron-block-txt:hover .block1-link {
@@ -3717,6 +3724,11 @@ div.about-content {
 div.apply-content {
   padding: 10px;
   text-align: justify;
+  font-size: large;
+}
+div.apply-content h3 {
+  text-align: center;
+  font-weight: 700;
 }
 div.apply-content ul {
   list-style-type: none;
@@ -3766,6 +3778,7 @@ div.instructors-content {
   text-align: justify;
   font-size: large;
   padding: 2rem;
+  color: #706e6d;
 }
 div.instructors-content ol {
   list-style-type: decimal !important;
@@ -3773,10 +3786,12 @@ div.instructors-content ol {
   list-style: none;
   counter-reset: my-counter;
   /* If you want to use custom counters */
+  color: #706e6d;
 }
 div.instructors-content ol li {
   position: relative;
   padding-left: 2.5rem;
+  color: #706e6d;
   /* Adjust the padding as needed */
 }
 div.instructors-content ol li:before {
@@ -3784,6 +3799,10 @@ div.instructors-content ol li:before {
   counter-increment: my-counter;
   position: absolute;
   left: 0;
+  color: #706e6d;
+}
+div.instructors-content ol li span {
+  color: #706e6d !important;
 }
 
 .popup-logo {

@@ -249,21 +249,21 @@
 
                                     <a href="#"
                                         class="haron-block-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                                        <div class="block1-txt-child1 flex-col-l">
-                                            <span class="block1-name ltext-102 trans-04 p-b-8">
-                                                HARON OICHOE
-                                            </span>
-
-                                            <span class="block1-info stext-102 trans-04">
-                                                FOUNDER & EXECUTIVE DIRECTOR
-                                            </span>
+                                        <div class="p-b-4 trans-05">
+                                            <span class="haron-block1-name ltext-102 trans-04 p-b-8">&nbsp;</span>
+                                            <span class="haron-block1-info stext-102 trans-04">&nbsp;</span>
                                         </div>
 
-                                        {{-- <div class="block1-txt-child2 p-b-4 trans-05">
-                                            <div class="block1-link stext-101 cl0 trans-09">
-                                                More Details
+                                        <div class="block1-txt-child2 p-b-4 trans-05">
+
+                                            <div class="block1-link block1-name ltext-102 cl0 trans-09">
+                                                Haron Oichoe
                                             </div>
-                                        </div> --}}
+                                            <div class="block1-info stext-102">
+                                                Founder & Executive Director
+                                            </div>
+                                        </div>
+
                                     </a>
 
 
@@ -278,20 +278,18 @@
                                     <a href="#"
                                         class="haron-block-txt obare-block-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                                         <div class="block1-txt-child1 flex-col-l">
-                                            <span class="block1-name ltext-102 trans-04 p-b-8">
-                                                Stephen Obare
-                                            </span>
-
-                                            <span class="block1-info stext-102 trans-04">
-                                                Chief of Strategy & Academic Affairs
-                                            </span>
+                                            <span class="block1-name ltext-102 trans-04 p-b-8">&nbsp;</span>
+                                            <span class="block1-info stext-102 trans-04">&nbsp;</span>
                                         </div>
 
-                                        {{-- <div class="block1-txt-child2 p-b-4 trans-05">
-                                            <div class="block1-link stext-101 cl0 trans-09">
-                                                More Details
+                                        <div class="block1-txt-child2 p-b-4 trans-05">
+                                            <div class="block1-link block1-name ltext-102 cl0 trans-09">
+                                                Stephen Obare
                                             </div>
-                                        </div> --}}
+                                            <div class="block1-info stext-102">
+                                                Chief of Strategy & Academic Affairs
+                                            </div>
+                                        </div>
                                     </a>
                                 </div>
                             </div>
@@ -304,21 +302,21 @@
                                     <a href="#"
                                         class="haron-block-txt carol-block-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                                         <div class="block1-txt-child1 flex-col-l">
-                                            <span class="block1-name ltext-102 trans-04 p-b-8">
-                                                Caroline Machaka
-                                            </span>
+                                            <span class="block1-name ltext-102 trans-04 p-b-8">&nbsp;</span>
 
                                             <span class="block1-info stext-102 trans-04">
-                                                Chief of Administration,
-                                                <br>Certification and Training
+                                                &nbsp;
                                             </span>
                                         </div>
 
-                                        {{-- <div class="block1-txt-child2 p-b-4 trans-05">
-                                            <div class="block1-link stext-101 cl0 trans-09">
-                                                More Details
+                                        <div class="block1-txt-child2 p-b-4 trans-05">
+                                            <div class="block1-link block1-name ltext-102 cl0 trans-09">
+                                                Caroline Machaka
                                             </div>
-                                        </div> --}}
+                                            <div class="block1-info stext-102">
+                                                Chief of Administration, Certification and Training
+                                            </div>
+                                        </div>
                                     </a>
                                 </div>
                             </div>
