@@ -55,12 +55,49 @@ div {
 
     &.apply-registration {
         margin-top: 1rem;
-        .bor10
-        {
+
+        .bor10 {
             padding: 1rem;
-            a{
+
+            a {
                 color: $white-color;
             }
         }
+    }
+
+    &.instructors-badge {
+        text-align : justify;
+        font-size  : large;
+        padding    : 1.5rem;
+        padding-top: 4rem;
+    }
+
+    &.instructors-content {
+        text-align: justify;
+        font-size : large;
+        padding   : 2rem;
+
+        ol {
+            list-style-type: decimal !important;
+            /* or the desired list style type */
+            list-style     : none;
+            counter-reset  : my-counter;
+            /* If you want to use custom counters */
+
+            li {
+                position    : relative;
+                padding-left: 2.5rem;
+
+                /* Adjust the padding as needed */
+                &:before {
+                    content          : counter(my-counter) ". ";
+                    counter-increment: my-counter;
+                    position         : absolute;
+                    left             : 0;
+                }
+            }
+        }
+
+        ;
     }
 }

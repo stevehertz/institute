@@ -66,7 +66,11 @@ class HomeController extends Controller
 
                     return view($this->path . '.pages.apply', compact('page'));
 
-                } else {
+                } elseif($page->slug == "become-our-instructor"){
+
+                    return view($this->path . '.pages.instructors', compact('page'));
+
+                }else {
 
                     return view($this->path . '.pages.index', compact('page'));
                     
@@ -74,6 +78,7 @@ class HomeController extends Controller
             }
             abort(404);
         }
+        
         $type = config('theme_layout');
         $sections = Config::where('key', '=', 'layout_' . $type)->first();
         $sections = json_decode($sections->value);

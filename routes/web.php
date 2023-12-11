@@ -40,8 +40,6 @@ Route::get('reset-demo', function () {
 //===================================================================//
 
 
-
-
 /*
  * Frontend Routes
  * Namespaces indicate folder structure
@@ -147,6 +145,8 @@ Route::post('contact/send', 'Frontend\ContactController@send')->name('contact.se
 // Download
 Route::get('download', ['uses' => 'Frontend\HomeController@getDownload', 'as' => 'download']);
 
+
+// Cart
 Route::group(['middleware' => 'auth'], function () {
     Route::post('cart/checkout', ['uses' => 'CartController@checkout', 'as' => 'cart.checkout']);
     Route::post('cart/add', ['uses' => 'CartController@addToCart', 'as' => 'cart.addToCart']);

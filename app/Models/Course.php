@@ -55,7 +55,7 @@ class Course extends Model
 
     protected $appends = ['image'];
 
-//    protected $dates = ['expire_at'];
+    //    protected $dates = ['expire_at'];
 
 
     /**
@@ -83,8 +83,6 @@ class Course extends Model
                 }
             }
         });
-
-
     }
 
 

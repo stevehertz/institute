@@ -91,11 +91,13 @@ class CoursesController extends Controller
                 $edit = "";
                 $delete = "";
                 if ($request->show_deleted == 1) {
-                    return view('backend.datatable.action-trashed')->with(['route_label' => 'admin.courses', 'label' => 'id', 'value' => $q->id]);
+                    return view('backend.datatable.action-trashed')
+                        ->with(['route_label' => 'admin.courses', 'label' => 'id', 'value' => $q->id]);
                 }
                 if ($has_view) {
                     $view = view('backend.datatable.action-view')
-                        ->with(['route' => route('admin.courses.show', ['course' => $q->id])])->render();
+                        ->with(['route' => route('admin.courses.show', ['course' => $q->id])])
+                        ->render();
                 }
                 if ($has_edit) {
                     $edit = view('backend.datatable.action-edit')
@@ -116,7 +118,7 @@ class CoursesController extends Controller
                     $type = 'action-publish';
                 }
 
-                $view .= view('backend.datatable.'.$type)
+                $view .= view('backend.datatable.' . $type)
                     ->with(['route' => route('admin.courses.publish', ['id' => $q->id])])->render();
                 return $view;
             })
@@ -208,8 +210,7 @@ class CoursesController extends Controller
 
         $course = Course::create($request->all());
         $course->slug = $slug;
-        if ($request->KES_cost == null)
-        {
+        if ($request->KES_cost == null) {
             $course->KES_cost = $request->price;
         }
         $course->save();
@@ -235,22 +236,22 @@ class CoursesController extends Controller
                     ->first();
                 $size = 0;
             } elseif ($request->media_type == 'upload') {
-//                if (\Illuminate\Support\Facades\Request::hasFile('video_file')) {
-//                    $file = \Illuminate\Support\Facades\Request::file('video_file');
-//                    $filename = time() . '-' . $file->getClientOriginalName();
-//                    $size = $file->getSize() / 1024;
-//                    $path = public_path() . '/storage/uploads/';
-//                    $file->move($path, $filename);
-//
-//                    $video_id = $filename;
-//                    $url = asset('storage/uploads/' . $filename);
-//
-//                    $media = Media::where('type', '=', $request->media_type)
-//                        ->where('model_type', '=', 'App\Models\Course')
-//                        ->where('model_id', '=', $course->id)
-//                        ->first();
-//
-//                }
+                //                if (\Illuminate\Support\Facades\Request::hasFile('video_file')) {
+                //                    $file = \Illuminate\Support\Facades\Request::file('video_file');
+                //                    $filename = time() . '-' . $file->getClientOriginalName();
+                //                    $size = $file->getSize() / 1024;
+                //                    $path = public_path() . '/storage/uploads/';
+                //                    $file->move($path, $filename);
+                //
+                //                    $video_id = $filename;
+                //                    $url = asset('storage/uploads/' . $filename);
+                //
+                //                    $media = Media::where('type', '=', $request->media_type)
+                //                        ->where('model_type', '=', 'App\Models\Course')
+                //                        ->where('model_id', '=', $course->id)
+                //                        ->first();
+                //
+                //                }
                 $video_id = $request->video_file;
                 $url = asset('storage/uploads/' . $video_id);
                 $media = Media::where('url', $video_id)
@@ -272,7 +273,7 @@ class CoursesController extends Controller
                         $subtitle = new Media();
                         $subtitle->model_type = $model_type;
                         $subtitle->model_id = $model_id;
-                        $subtitle->name = $name.' - subtitle';
+                        $subtitle->name = $name . ' - subtitle';
                         $subtitle->url = $subtitle_url;
                         $subtitle->type = 'subtitle';
                         $subtitle->file_name = $subtitle_id;
@@ -297,19 +298,13 @@ class CoursesController extends Controller
                 $media->save();
             }
         }
-
-
-
-
         if ((int)$request->price == 0) {
             $course->price = null;
             $course->save();
         }
 
-
         $teachers = \Auth::user()->isAdmin() ? array_filter((array)$request->input('teachers')) : [\Auth::user()->id];
         $course->teachers()->sync($teachers);
-
 
         return redirect()->route('admin.courses.index')->withFlashSuccess(trans('alerts.backend.general.created'));
     }
@@ -416,7 +411,7 @@ class CoursesController extends Controller
                     $media->model_type = $model_type;
                     $media->model_id = $model_id;
                     $media->name = $name;
-                    $media->url = url('storage/uploads/'.$request->video_file);
+                    $media->url = url('storage/uploads/' . $request->video_file);
                     $media->type = $request->media_type;
                     $media->file_name = $request->video_file;
                     $media->size = 0;
@@ -427,8 +422,7 @@ class CoursesController extends Controller
 
 
         $course->update($request->all());
-        if (!$request->KES_cost)
-        {
+        if (!$request->KES_cost) {
             $course->KES_cost = $request->price;
             $course->save();
         }
@@ -618,16 +612,14 @@ class CoursesController extends Controller
                 $view .= $deactivate;
 
                 return $view;
-
             })
             ->addColumn('items', function ($q) {
                 $items1 = "";
                 foreach ($q->items1 as $key => $item) {
-                    if($item->item != null){
+                    if ($item->item != null) {
                         $key++;
                         $items1 .= $key . '. ' . $item->item->title . "<br>";
                     }
-
                 }
                 return $items1;
             })
@@ -641,14 +633,12 @@ class CoursesController extends Controller
     public function deactivateEnrolment(Request $request)
     {
         $query = DB::table('course_student')->where('course_id', $request->course_id)->where('user_id', $request->student_id)
-            ->update(array('status' =>$request->status_change));
-        if($query !=0){
+            ->update(array('status' => $request->status_change));
+        if ($query != 0) {
             return redirect()->back();
         } else {
-            \Log::error( 'An error occurred updating status');
+            \Log::error('An error occurred updating status');
             return redirect()->back();
         }
-
-
     }
 }

@@ -10,7 +10,8 @@
                 {{ $category->name }}
             @elseif(isset($tag))
                 {{ $tag->name }}
-            @endif <span>@lang('labels.frontend.blog.title')</span>
+            @endif 
+            {{-- <span>@lang('labels.frontend.blog.title')</span> --}}
         </h2>
     </section>
 

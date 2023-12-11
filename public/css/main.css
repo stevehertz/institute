@@ -3756,6 +3756,35 @@ div.apply-registration .bor10 {
 div.apply-registration .bor10 a {
   color: #fff;
 }
+div.instructors-badge {
+  text-align: justify;
+  font-size: large;
+  padding: 1.5rem;
+  padding-top: 4rem;
+}
+div.instructors-content {
+  text-align: justify;
+  font-size: large;
+  padding: 2rem;
+}
+div.instructors-content ol {
+  list-style-type: decimal !important;
+  /* or the desired list style type */
+  list-style: none;
+  counter-reset: my-counter;
+  /* If you want to use custom counters */
+}
+div.instructors-content ol li {
+  position: relative;
+  padding-left: 2.5rem;
+  /* Adjust the padding as needed */
+}
+div.instructors-content ol li:before {
+  content: counter(my-counter) ". ";
+  counter-increment: my-counter;
+  position: absolute;
+  left: 0;
+}
 
 .popup-logo {
   left: 0;
@@ -3786,4 +3815,20 @@ div.apply-registration .bor10 a {
 }
 .popup-text p span {
   font-weight: 700;
+}
+
+.checkbox label:after,
+.radio label:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.inline-radio input[type=radio] {
+  display: inline-block;
+}
+.inline-radio label {
+  display: inline-block;
+  margin-right: 10px;
+  /* Adjust the margin as needed for spacing */
 }

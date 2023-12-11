@@ -41,7 +41,6 @@ class CategoriesController extends Controller
         $has_edit = false;
         $categories = "";
 
-
         if (request('show_deleted') == 1) {
             if (!Gate::allows('category_delete')) {
                 return abort(401);
@@ -71,12 +70,9 @@ class CategoriesController extends Controller
                 $allow_delete = false;
 
                 if ($request->show_deleted == 1) {
-                    return view('backend.datatable.action-trashed')->with(['route_label' => 'admin.categories', 'label' => 'id', 'value' => $q->id]);
+                    return view('backend.datatable.action-trashed')
+                        ->with(['route_label' => 'admin.categories', 'label' => 'id', 'value' => $q->id]);
                 }
-//                if ($has_view) {
-//                    $view = view('backend.datatable.action-view')
-//                        ->with(['route' => route('admin.categories.show', ['category' => $q->id])])->render();
-//                }
                 if ($has_edit) {
                     $edit = view('backend.datatable.action-edit')
                         ->with(['route' => route('admin.categories.edit', ['category' => $q->id])])
@@ -90,7 +86,7 @@ class CategoriesController extends Controller
                         $allow_delete = true;
                     }
                     $delete = view('backend.datatable.action-delete')
-                        ->with(['route' => route('admin.categories.destroy', ['category' => $q->id]),'allow_delete'=> $allow_delete])
+                        ->with(['route' => route('admin.categories.destroy', ['category' => $q->id]), 'allow_delete' => $allow_delete])
                         ->render();
                     $view .= $delete;
                 }
@@ -102,7 +98,7 @@ class CategoriesController extends Controller
             })
             ->editColumn('icon', function ($q) {
                 if ($q->icon != "") {
-                    return '<i style="font-size:40px;" class="'.$q->icon.'"></i>';
+                    return '<i style="font-size:40px;" class="' . $q->icon . '"></i>';
                 } else {
                     return 'N/A';
                 }
@@ -146,20 +142,26 @@ class CategoriesController extends Controller
      */
     public function store(StoreCategoriesRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-        ]);
 
         if (!Gate::allows('category_create')) {
             return abort(401);
         }
+
+        $request->except("_token");
+
+        $request = $this->saveCategories($request);
+
         $category = Category::where('slug', '=', str_slug($request->name))->first();
+
         if ($category == null) {
             $category = new  Category();
         }
+
         $category->name = $request->name;
         $category->slug = str_slug($request->name);
         $category->icon = $request->icon;
+        $category->image = $request->image;
+
         $category->save();
 
         return redirect()->route('admin.categories.index')->withFlashSuccess(trans('alerts.backend.general.created'));
@@ -201,9 +203,13 @@ class CategoriesController extends Controller
         }
 
         $category = Category::findOrFail($id);
+
+        $request = $this->saveCategories($request);
+
         $category->name = $request->name;
         $category->slug = str_slug($request->name);
         $category->icon = $request->icon;
+        $category->image = $request->image;
         $category->save();
 
         return redirect()->route('admin.categories.index')->withFlashSuccess(trans('alerts.backend.general.updated'));

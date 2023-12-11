@@ -1806,3 +1806,24 @@ input.num-product::-webkit-inner-spin-button {
     }
 
 }
+
+
+.checkbox label:after,
+.radio label:after {
+    content: '';
+    display: table;
+    clear  : both;
+}
+
+
+.inline-radio {
+    input[type="radio"] {
+        display: inline-block;
+    }
+
+    label {
+        display     : inline-block;
+        margin-right: 10px;
+        /* Adjust the margin as needed for spacing */
+    }
+}

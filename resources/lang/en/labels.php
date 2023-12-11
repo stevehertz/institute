@@ -3,6 +3,11 @@
 return array(
   'backend' =>
   array(
+    'categories' => array(
+      'fields' => array(
+        'image' => 'Category Image'
+      ),
+    ),
     'courses' =>
     array(
       'title' => 'Courses',

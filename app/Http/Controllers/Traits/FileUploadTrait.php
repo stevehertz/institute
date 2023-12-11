@@ -96,10 +96,8 @@ trait FileUploadTrait
                         ]);
                     }
                     $finalRequest = $finalRequest = new Request($request->except($downloadable_file_input));
-
-
                 } else {
-                    
+
                     if ($key != 'video_file') {
                         if ($key == 'add_pdf') {
                             $file = $request->file($key);
@@ -149,7 +147,6 @@ trait FileUploadTrait
                             $model->lesson_image = $filename;
                             $model->save();
                         }
-
                     }
                 }
             }
@@ -172,7 +169,30 @@ trait FileUploadTrait
                 $filename = time() . '-' . str_slug($name) . '.' . $extension;
                 $request->file($key)->move(public_path('storage/logos'), $filename);
                 $finalRequest = new Request(array_merge($finalRequest->all(), [$key => $filename]));
+            }
+        }
 
+        return $finalRequest;
+    }
+
+    public function saveCategories(Request $request)
+    {
+        ini_set('memory_limit', '-1');
+        if (!file_exists(public_path('storage/categories'))) {
+            mkdir(public_path('storage/categories'), 0777, true);
+        }
+
+        $finalRequest = $request;
+
+        foreach ($request->all() as $key => $value) {
+
+            if ($request->hasFile($key)) {
+
+                $extension = array_last(explode('.', $request->file($key)->getClientOriginalName()));
+                $name = array_first(explode('.', $request->file($key)->getClientOriginalName()));
+                $filename = time() . '-' . str_slug($name) . '.' . $extension;
+                $request->file($key)->move(public_path('storage/categories'), $filename);
+                $finalRequest = new Request(array_merge($finalRequest->all(), [$key => $filename]));
             }
         }
 

@@ -32,6 +32,17 @@
 
                         </div>
 
+                        <div class="col-12 col-lg-4">
+                            {!! Form::label('image', trans('labels.backend.categories.fields.image'), [
+                                'class' => 'control-label',
+                                'accept' => 'image/jpeg,image/gif,image/png',
+                            ]) !!}
+                            {!! Form::file('image', ['class' => 'form-control']) !!}
+                            {!! Form::hidden('course_image_max_size', 8) !!}
+                            {!! Form::hidden('course_image_max_width', 4000) !!}
+                            {!! Form::hidden('course_image_max_height', 4000) !!}
+                        </div>
+
 
                         <div class="col-12 col-lg-2  form-group">
 
@@ -63,7 +74,7 @@
 
     <script>
         $(document).ready(function() {
-        
+
             $('#icon').iconpicker({
                 cols: 10,
                 icon: 'fas fa-bomb',

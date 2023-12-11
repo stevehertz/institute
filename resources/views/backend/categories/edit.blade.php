@@ -1,11 +1,15 @@
 @extends('backend.layouts.app')
-@section('title', __('labels.backend.categories.title').' | '.app_name())
+@section('title', __('labels.backend.categories.title') . ' | ' . app_name())
 
 @push('after-styles')
-    <link rel="stylesheet" href="{{asset('plugins/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css')}}"/>
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css') }}" />
 @endpush
 @section('content')
-    {!! Form::model($category, ['method' => 'PUT', 'route' => ['admin.categories.update', $category->id], 'files' => true,]) !!}
+    {!! Form::model($category, [
+        'method' => 'PUT',
+        'route' => ['admin.categories.update', $category->id],
+        'files' => true,
+    ]) !!}
 
     <div class="alert alert-danger d-none" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -18,43 +22,74 @@
         <div class="card-header">
             <h3 class="page-title d-inline">@lang('labels.backend.categories.edit')</h3>
             <div class="float-right">
-                <a href="{{ route('admin.categories.index') }}"
-                   class="btn btn-success">@lang('labels.backend.categories.view')</a>
+                <a href="{{ route('admin.categories.index') }}" class="btn btn-success">@lang('labels.backend.categories.view')</a>
             </div>
         </div>
         <div class="card-body">
             <div class="row justify-content-center">
-            <div class="col-12 col-lg-4 form-group">
-                {!! Form::label('title', trans('labels.backend.categories.fields.name').' *', ['class' => 'control-label']) !!}
-                {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => 'Enter Category Name', 'required' => false]) !!}
+                <div class="col-12 col-lg-12 form-group">
+                    {!! Form::label('title', trans('labels.backend.categories.fields.name') . ' *', ['class' => 'control-label']) !!}
+                    {!! Form::text('name', old('name'), [
+                        'class' => 'form-control',
+                        'placeholder' => 'Enter Category Name',
+                        'required' => false,
+                    ]) !!}
+
+                </div>
 
             </div>
+            <div class="row justify-content-center">
 
+                <div class="col-12 col-lg-10">
+                    {!! Form::label('image', trans('labels.backend.categories.fields.image'), [
+                        'class' => 'control-label',
+                        'accept' => 'image/jpeg,image/gif,image/png',
+                    ]) !!}
+                    {!! Form::file('image', ['class' => 'form-control']) !!}
+                    {!! Form::hidden('course_image_max_size', 8) !!}
+                    {!! Form::hidden('course_image_max_width', 4000) !!}
+                    {!! Form::hidden('course_image_max_height', 4000) !!}
+                </div>
+                <div class="col-12 col-lg-2">
 
-            <div class="col-12 col-lg-2  form-group">
+                    @if ($category->image)
+                        <a href="{{ asset('storage/categories/' . $category->image) }}" target="_blank"><img height="50px"
+                                src="{{ asset('storage/categories/' . $category->image) }}" class="mt-1"></a>
+                    @endif
 
-                {!! Form::label('icon',  trans('labels.backend.categories.fields.select_icon'), ['class' => 'control-label  d-block']) !!}
-                <button class="btn  btn-block btn-default border" id="icon" name="icon"></button>
-
+                </div>
             </div>
 
-            <div class="col-12 form-group text-center">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-12 form-group">
 
-                {!! Form::submit(trans('strings.backend.general.app_save'), ['class' => 'btn mt-auto  btn-danger']) !!}
+                    {!! Form::label('icon', trans('labels.backend.categories.fields.select_icon'), [
+                        'class' => 'control-label  d-block',
+                    ]) !!}
+                    <button class="btn  btn-block btn-default border" id="icon" name="icon"></button>
+
+                </div>
+            </div>
+            <div class="row justify-content-center">
+
+                <div class="col-12 form-group text-center">
+
+                    {!! Form::submit(trans('strings.backend.general.app_save'), ['class' => 'btn mt-auto  btn-danger']) !!}
+                </div>
             </div>
         </div>
-        </div>
+    </div>
     </div>
     {{ html()->form()->close() }}
 @endsection
 
 @push('after-scripts')
-    <script src="{{asset('plugins/bootstrap-iconpicker/js/bootstrap-iconpicker.bundle.min.js')}}"></script>
+    <script src="{{ asset('plugins/bootstrap-iconpicker/js/bootstrap-iconpicker.bundle.min.js') }}"></script>
 
     <script>
         var icon = 'fas fa-bomb';
-        @if($category->icon != "")
-                icon = "{{$category->icon}}";
+        @if ($category->icon != '')
+            icon = "{{ $category->icon }}";
         @endif
         $('#icon').iconpicker({
             cols: 10,
@@ -70,7 +105,7 @@
             unselectedClass: ''
         });
 
-        $(document).on('change', '#icon_type', function () {
+        $(document).on('change', '#icon_type', function() {
 
             if ($(this).val() == 1) {
                 $('.upload-image-wrapper').parent('.col-12').removeClass('d-none')
@@ -90,8 +125,5 @@
 
             }
         })
-
     </script>
 @endpush
-
-
