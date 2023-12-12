@@ -1813,9 +1813,12 @@ Team
 .team-block .haron-block-txt:hover .block1-link {
   transform: translateY(0%);
 }
-.team-block .haron-block-txt:hover .block1-name,
+.team-block .haron-block-txt:hover .block1-name .block1-info,
 .team-block .haron-block-txt:hover .block1-txt:hover .block1-info {
-  color: #333333;
+  color: #fff;
+}
+.team-block .haron-block-txt:hover .haron-block-info {
+  color: #fff;
 }
 .team-block .obare-block-txt {
   background-color: rgba(103, 117, 214, 0);

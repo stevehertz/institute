@@ -104,8 +104,14 @@ Team
             }
 
             .block1-name,
-            .block1-txt:hover .block1-info {
-                color: $black;
+            .block1-txt:hover {
+                .block1-info {
+                    color: $white-color;
+                }
+            }
+
+            .haron-block-info {
+                color: $white-color;
             }
         }
     }

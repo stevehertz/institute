@@ -259,14 +259,11 @@
                                             <div class="block1-link block1-name ltext-102 cl0 trans-09">
                                                 Haron Oichoe
                                             </div>
-                                            <div class="block1-info stext-102">
+                                            <div class="block1-info stext-102 haron-block-info">
                                                 Founder & Executive Director
                                             </div>
                                         </div>
-
                                     </a>
-
-
                                 </div>
                             </div>
 
@@ -286,7 +283,7 @@
                                             <div class="block1-link block1-name ltext-102 cl0 trans-09">
                                                 Stephen Obare
                                             </div>
-                                            <div class="block1-info stext-102">
+                                            <div class="block1-info stext-102 haron-block-info">
                                                 Chief of Strategy & Academic Affairs
                                             </div>
                                         </div>
@@ -313,7 +310,7 @@
                                             <div class="block1-link block1-name ltext-102 cl0 trans-09">
                                                 Caroline Machaka
                                             </div>
-                                            <div class="block1-info stext-102">
+                                            <div class="block1-info stext-102 haron-block-info">
                                                 Chief of Administration, Certification and Training
                                             </div>
                                         </div>
