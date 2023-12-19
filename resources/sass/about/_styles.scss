@@ -10,6 +10,9 @@ div {
         font-size  : large;
         font-weight: 200;
         text-align : justify;
+        p{
+            margin-bottom: 1rem;
+        }
     }
 
 
@@ -56,6 +59,10 @@ div {
                     }
                 }
             }
+        }
+
+        p{
+            margin-bottom: 0.5rem;
         }
     }
 
@@ -112,6 +119,8 @@ div {
             }
         }
 
-        ;
+        p{
+            margin-bottom: 1rem;
+        }
     }
 }

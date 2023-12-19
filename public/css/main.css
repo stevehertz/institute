@@ -3724,6 +3724,9 @@ div.about-content {
   font-weight: 200;
   text-align: justify;
 }
+div.about-content p {
+  margin-bottom: 1rem;
+}
 div.apply-content {
   padding: 10px;
   text-align: justify;
@@ -3761,6 +3764,9 @@ div.apply-content ul li a {
 }
 div.apply-content ul li a:hover {
   color: #007BFF;
+}
+div.apply-content p {
+  margin-bottom: 0.5rem;
 }
 div.apply-registration {
   margin-top: 1rem;
@@ -3806,6 +3812,9 @@ div.instructors-content ol li:before {
 }
 div.instructors-content ol li span {
   color: #706e6d !important;
+}
+div.instructors-content p {
+  margin-bottom: 1rem;
 }
 
 .popup-logo {
@@ -3853,4 +3862,14 @@ div.instructors-content ol li span {
   display: inline-block;
   margin-right: 10px;
   /* Adjust the margin as needed for spacing */
+}
+
+.partners-img {
+  padding: 1.5rem;
+  margin: 1rem;
+}
+.partners-img img {
+  max-width: 100%;
+  width: 80%;
+  text-align: center;
 }
