@@ -20,11 +20,10 @@
 @section('content')
 
     <!-- Title page -->
-    <section class="bg-img1 txt-center p-lr-15 p-tb-92"
-        style="background-image: url('{{ asset('storage/images/bg-01.jpg') }}');">
-        <h2 class="ltext-105 cl0 txt-center">
+    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('{{ asset('storage/bg/bg-03.jpg') }}');">
+        {{-- <h2 class="ltext-105 cl0 txt-center">
             {{ $course->title }}
-        </h2>
+        </h2> --}}
     </section>
 
 
@@ -137,30 +136,32 @@
 
                         <!--  -->
                         <div class="p-t-33">
+                            @if (!$purchased_course)
+                                <div class="flex-w flex-r-m p-b-10">
+                                    <div class="size-203 flex-c-m respon6">
+                                        Currency
+                                    </div>
 
-                            <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-203 flex-c-m respon6">
-                                    Currency
-                                </div>
+                                    <div class="size-204 respon6-next">
+                                        <div class="rs1-select2 bor8 bg0">
 
-                                <div class="size-204 respon6-next">
-                                    <div class="rs1-select2 bor8 bg0">
-                                        @if ($course->free == 1)
-                                        @else
-                                            <select id="currencySelector" class="js-select2" name="time">
-                                                <option selected disabled>Select Currency</option>
-                                                <option value="kes">KES</option>
-                                                <option value="usd">USD</option>
-                                                <option value="aud">AUD</option>
-                                                <option value="eur">EUR</option>
-                                                <option value="gbp">GBP</option>
-                                            </select>
-                                        @endif
-
-                                        <div class="dropDownSelect2"></div>
+                                            @if ($course->free == 1)
+                                                <span> {{ trans('labels.backend.courses.fields.free') }}</span>
+                                            @else
+                                                <select id="currencySelector" class="form-control">
+                                                    <option selected disabled>Select Currency</option>
+                                                    <option value="kes">KES</option>
+                                                    <option value="usd">USD</option>
+                                                    <option value="aud">AUD</option>
+                                                    <option value="eur">EUR</option>
+                                                    <option value="gbp">GBP</option>
+                                                </select>
+                                            @endif
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
 
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-204 flex-w flex-m respon6-next">
@@ -169,14 +170,14 @@
                                                 auth()->user()->hasRole('student') &&
                                                 Cart::session(auth()->user()->id)->get($course->id))
                                             <button
-                                                class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04" style="margin-bottom: 5px;">
+                                                class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"
+                                                style="margin-bottom: 5px;">
                                                 @lang('labels.frontend.course.added_to_cart')
                                             </button>
 
                                             <a class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 text-center text-uppercase  bold-font"
                                                 href="{{ route('cart.index') }}">View cart/Checkout
                                             </a>
-                                            
                                         @elseif(!auth()->check())
                                             @if ($course->free == 1)
                                                 <a href="javascript:void()" id="openLoginModal"
@@ -196,10 +197,10 @@
                                                     @lang('labels.frontend.course.add_to_cart')
                                                 </a>
 
-                                                <a href="javascript:void()" id="openLoginModal" data-target="#myModal"
+                                                {{-- <a href="javascript:void()" id="openLoginModal" data-target="#myModal"
                                                     class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                                     @lang('labels.frontend.course.subscribe')
-                                                </a>
+                                                </a> --}}
                                             @endif
                                         @elseif(auth()->check() &&
                                                 auth()->user()->hasRole('student'))
@@ -294,11 +295,11 @@
                         <!--  -->
                         <div class="flex-w flex-m p-l-100 p-t-40 respon7">
                             <div class="flex-m bor9 p-r-10 m-r-11">
-                                <a href="#"
+                                {{-- <a href="#"
                                     class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
                                     data-tooltip="Add to Wishlist">
                                     <i class="zmdi zmdi-favorite"></i>
-                                </a>
+                                </a> --}}
                             </div>
 
                             <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"

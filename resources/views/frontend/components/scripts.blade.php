@@ -8,12 +8,16 @@
 <script src="{{ asset('fvendor/select2/select2.min.js') }}"></script>
 
 <script>
-    $(".js-select2").each(function() {
-        $(this).select2({
-            minimumResultsForSearch: 20,
-            dropdownParent: $(this).next('.dropDownSelect2')
+    $(document).ready(function() {
+        $(".js-select2").each(function() {
+
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+
         });
-    })
+    });
 </script>
 
 
@@ -29,7 +33,7 @@
     $('.parallax100').parallax100();
 </script>
 <!-- Toastr -->
-<script src="{{ asset('vendor/toastr/toastr.min.js')}}"></script>
+<script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
 <!--===============================================================================================-->
 <script src="{{ asset('fvendor/MagnificPopup/jquery.magnific-popup.min.js') }}"></script>
 <script>
