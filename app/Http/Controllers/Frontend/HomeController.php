@@ -53,14 +53,18 @@ class HomeController extends Controller
 
     public function index()
     {
+        $partners = Partner::where('status', '=', 1)->get();
         if (request('page')) {
             $page = Page::where('slug', '=', request('page'))
                 ->where('published', '=', 1)->first();
+            
             if ($page != "") {
 
                 if ($page->slug == "about") {
 
-                    return view($this->path . '.pages.about', compact('page'));
+                    return view($this->path . '.pages.about', [
+                        'page' => $page,
+                    ]);
 
                 } elseif ($page->slug == "apply-today") {
 
@@ -72,7 +76,7 @@ class HomeController extends Controller
 
                 }else {
 
-                    return view($this->path . '.pages.index', compact('page'));
+                    return view($this->path . '.pages.index', compact('page', 'partners'));
                     
                 }
             }
@@ -102,7 +106,7 @@ class HomeController extends Controller
 
         $sponsors = Sponsor::where('status', '=', 1)->get();
         $clients = Client::where('status', '=', 1)->get();
-        $partners = Partner::where('status', '=', 1)->get();
+        
 
         $news = Blog::orderBy('created_at', 'desc')->take(3)->get();
 
@@ -126,7 +130,7 @@ class HomeController extends Controller
 
         $categories = Category::get();
 
-        return view($this->path . '.index-' . config('theme_layout'), compact('popular_courses', 'featured_courses', 'sponsors', 'clients', 'partners', 'total_students', 'total_courses', 'total_teachers', 'testimonials', 'news', 'trending_courses', 'teachers', 'faqs', 'course_categories', 'reasons', 'sections', 'categories'));
+        return view($this->path . '.index-' . config('theme_layout'), compact('popular_courses', 'featured_courses', 'sponsors', 'clients', 'total_students', 'total_courses', 'total_teachers', 'testimonials', 'news', 'trending_courses', 'teachers', 'faqs', 'course_categories', 'reasons', 'sections', 'categories'));
     }
 
     public function about()

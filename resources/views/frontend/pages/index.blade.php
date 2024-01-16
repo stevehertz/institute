@@ -65,50 +65,15 @@
             <!--/.row -->
 
             @if ($page->slug == 'our-partners')
-                <div class="row">
-                    <div class="col-md-2 partners-img">
-                        <img src="{{ asset('storage/partners/partner-01.png') }}" alt="" class="img-circle">
+                @if (count($partners) > 0)
+                    <div class="row">
+                        @foreach ($partners as $partner)
+                            <div class="col-md-2 partners-img">
+                                <img src="{{ asset('storage/uploads/' . $partner->logo) }}" alt="" class="img-circle">
+                            </div>
+                        @endforeach
                     </div>
-                    <div class="col-md-2 partners-img">
-                        <img src="{{ asset('storage/partners/partner-02.png') }}" alt="" class="img-circle">
-                    </div>
-                    <div class="col-md-2 partners-img">
-                        <img src="{{ asset('storage/partners/partner-03.jpeg') }}" alt="" class="img-circle">
-                    </div>
-                    <div class="col-md-2 partners-img">
-                        <img src="{{ asset('storage/partners/partner-04.jpeg') }}" alt="" class="img-circle">
-                    </div>
-                    <div class="col-md-2 partners-img">
-                        <img src="{{ asset('storage/partners/partner-05.png') }}" alt="" class="img-circle">
-                    </div>
-                    <div class="col-md-2 partners-img">
-                        <img src="{{ asset('storage/partners/partner-06.png') }}" alt="" class="img-circle">
-                    </div>
-                    <div class="col-md-2 partners-img">
-                        <img src="{{ asset('storage/partners/partner-07.png') }}" alt="" class="img-circle">
-                    </div>
-                    <div class="col-md-2 partners-img">
-                        <img src="{{ asset('storage/partners/partner-08.png') }}" alt="" class="img-circle">
-                    </div>
-                    <div class="col-md-2 partners-img">
-                        <img src="{{ asset('storage/partners/partner-09.png') }}" alt="" class="img-circle">
-                    </div>
-                    <div class="col-md-2 partners-img">
-                        <img src="{{ asset('storage/partners/partner-10.png') }}" alt="" class="img-circle">
-                    </div> 
-                    <div class="col-md-2 partners-img">
-                        <img src="{{ asset('storage/partners/partner-11.png') }}" alt="" class="img-circle">
-                    </div>
-                    <div class="col-md-2 partners-img">
-                        <img src="{{ asset('storage/partners/partner-12.png') }}" alt="" class="img-circle">
-                    </div>
-                    <div class="col-md-2 partners-img">
-                        <img src="{{ asset('storage/partners/partner-13.png') }}" alt="" class="img-circle">
-                    </div>
-                    <div class="col-md-2 partners-img">
-                        <img src="{{ asset('storage/partners/partner-14.png') }}" alt="" class="img-circle">
-                    </div>
-                </div>
+                @endif
             @endif
         </div>
         <!--/.container -->

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\MpesaPaymentController;
@@ -237,6 +238,8 @@ Route::get('payment_success', function () {
     return view('pesapal.success');
 });
 
+Route::get('/config', [ConfigController::class, 'config'])->name('config');
+
 //Mpesa paymentd
 Route::get('pay_with_mpesa_test', ['uses' => 'MpesaPaymentController@test', 'as' => 'pay_with_mpesa_test']);
 Route::get('pay_with_mpesa/{invoice_id}', ['uses' => 'MpesaPaymentController@makePayment', 'as' => 'pay_with_mpesa']);
@@ -248,3 +251,4 @@ Route::post('makeMpesaOrder', [MpesaPaymentController::class, 'makeMpesaOrder'])
 // == ==  User Exam Route == //
 //Route::get('student_exams', [ExamController::class, 'studentExams'])->name('studentExams');
 //Route::get('wizard1', ['uses' => 'LivewireController@index', 'as' => 'wizard.index']);
+
