@@ -34,6 +34,9 @@ class ContactController extends Controller
 
         return DataTables::of($contacts)
             ->addIndexColumn()
+            ->addColumn('name', function($q){
+                return $q->first_name . ' ' . $q->last_name;
+            })
             ->editColumn('created_at', function ($q) {
                return $q->created_at->format('d M, Y | H:i A');
             })

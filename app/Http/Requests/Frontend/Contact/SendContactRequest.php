@@ -27,11 +27,16 @@ class SendContactRequest extends FormRequest
      */
     public function rules()
     {
-//        return [
-//            'name' => ['required'],
-//            'email' => ['required'],
-//            'message' => ['required'],
-//            'g-recaptcha-response' => (config('access.captcha.registration') ? ['required',new CaptchaRule()] : ''),
-//        ];
+       return [
+           'first_name' => ['required', 'string', 'max:255'],
+           'last_name' => ['required', 'string', 'max:255'],
+           'email' => ['required', 'email'],
+           'organization' => ['required', 'string'],
+           'country' => ['required', 'string'],
+           'title' => ['required', 'string'],
+           'topic' => ['required', 'string'],
+           'message' => ['required'],
+           'g-recaptcha-response' => (config('access.captcha.registration') ? ['required',new CaptchaRule()] : ''),
+       ];
     }
 }

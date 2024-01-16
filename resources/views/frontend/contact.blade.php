@@ -38,46 +38,55 @@
             </p>
             <div class="flex-w flex-tr">
                 <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-                    <form>
+                    @if(session()->has('alert'))
+                        <div class="alert alert-success my-alert">
+                            {{ session('alert') }}
+                        </div>
+                    @endif
+                    <form method="POST" enctype="multipart/form-data" action="{{ route('contact.send') }}">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6 col-12">
                                 <div class="bor8 m-b-20 how-pos4-parent">
-                                    <input class="stext-111 cl2 plh3 size-116 p-lr-28 p-tb-25" type="text"
-                                        name="first_name" placeholder="First Name">
+                                    <input class="form-control" type="text" name="first_name" placeholder="First Name">
                                 </div>
                             </div>
 
                             <div class="col-md-6 col-12">
                                 <div class="bor8 m-b-20 how-pos4-parent">
-                                    <input class="stext-111 cl2 plh3 size-116 p-lr-28 p-tb-25" type="text"
-                                        name="last_name" placeholder="Last Name">
+                                    <input class="form-control" type="text" name="last_name" placeholder="Last Name">
                                 </div>
                             </div>
                         </div>
                         <!--/.row -->
 
                         <div class="row">
-                            <div class="col-md-12 col-12">
+                            <div class="col-md-6 col-12">
                                 <div class="bor8 m-b-20 how-pos4-parent">
-                                    <input class="stext-111 cl2 plh3 size-116 p-lr-28 p-tb-25" type="email" name="email"
+                                    <input class="form-control" type="email" name="email"
                                         placeholder="Your Email Address">
                                 </div>
                             </div>
+                            <div class="col-md-6 col-12">
+                                <div class="bor8 m-b-20 how-pos4-parent">
+                                    <input class="form-control" type="text" name="phone"
+                                        placeholder="Your Phone Number">
+                                </div>
+                            </div>
                         </div>
                         <!--/.row -->
 
                         <div class="row">
                             <div class="col-md-6 col-12">
                                 <div class="bor8 m-b-20 how-pos4-parent">
-                                    <input class="stext-111 cl2 plh3 size-116 p-lr-28 p-tb-25" type="text"
-                                        name="organization" placeholder="Organization/Institution Name">
+                                    <input class="form-control" type="text" name="organization"
+                                        placeholder="Organization/Institution Name">
                                 </div>
                             </div>
 
                             <div class="col-md-6 col-12">
                                 <div class="bor8 m-b-20 how-pos4-parent">
-                                    <select name="country" id="country"
-                                        class="stext-111 cl2 plh3 size-116 p-lr-28 form-control p-tb-25 select2"
+                                    <select name="country" id="country" class="select2 form-control"
                                         style="width: 100%; padding:1.5rem !important;">
                                         <option disabled="disabled" selected>Select Country</option>
                                         @foreach ($countries as $country)
@@ -92,8 +101,7 @@
                         <div class="row">
                             <div class="col-md-12 col-12">
                                 <div class="bor8 m-b-20 how-pos4-parent">
-                                    <input class="stext-111 cl2 plh3 size-116 p-lr-28 p-tb-25" type="text" name="title"
-                                        placeholder="Job Title">
+                                    <input class="form-control" type="text" name="title" placeholder="Job Title">
                                 </div>
                             </div>
                         </div>
@@ -101,21 +109,23 @@
                         <div class="row">
                             <div class="col-md-12 col-12">
                                 <div class="bor8 m-b-20 how-pos4-parent">
-                                    <select name="country" id="country"
+                                    <select name="topic" id="topic"
                                         class="stext-111 cl2 plh3 size-116 p-lr-28 form-control p-tb-25 select2"
                                         style="width: 100%; padding:1.5rem !important;">
                                         <option disabled="disabled" selected="selected">
                                             What would you like to know more about?
                                         </option>
-                                        <option>Buying CCIB Institute training - individual</option>
-                                        <option>Buying CCIB Institute training – group training</option>
-                                        <option>Private Training</option>
-                                        <option>The CCIB Institute Voucher Program</option>
-                                        <option>CCIB Institute Cyber Ranges offering</option>
+                                        <option>Buying institute training - individual</option>
+                                        <option>Buying institute training – group training</option>
+                                        <option>Enterprise training</option>
+                                        <option>The institute voucher program</option>
+                                        <option>Institute cyber simulation program</option>
                                         <option>Security Awareness Training</option>
-                                        <option>Buying GIAC Certification</option>
-                                        <option>Partnering with CCIB Institute</option>
-                                        <option>Cybersecurity Frameworks</option>
+                                        <option>Buying Certification Courses</option>
+                                        <option>Partnering with Institute</option>
+                                        <option>Understanding institute cybersecurity structure</option>
+                                        <option>Sponsorship program</option>
+                                        <option>Others</option>
                                     </select>
                                 </div>
                             </div>
@@ -137,12 +147,14 @@
                                 </p>
 
                                 <small class="p-b-10">
-                                    This site is protected by reCAPTCHA and the Google<a href="#"> Privacy Policy</a> and <a href="#">Terms of Service</a> apply.
+                                    This site is protected by reCAPTCHA and the Google<a href="#"> Privacy Policy</a>
+                                    and <a href="#">Terms of Service</a> apply.
                                 </small>
                             </div>
                         </div>
 
-                        <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                        <button type="submit"
+                            class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
                             Submit
                         </button>
                     </form>

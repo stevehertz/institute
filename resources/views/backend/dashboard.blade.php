@@ -625,35 +625,40 @@
                                     </h4>
 
                                 </div>
-                                <table class="table table-responsive-sm table-striped">
-                                    <thead>
-                                        <tr>
-                                            <td>@lang('labels.backend.dashboard.name')</td>
-                                            <td>@lang('labels.backend.dashboard.email')</td>
-                                            <td>@lang('labels.backend.dashboard.message')</td>
-                                            <td>@lang('labels.backend.dashboard.time')</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @if (count($recent_contacts) > 0)
-                                            @foreach ($recent_contacts as $item)
-                                                <tr>
-                                                    <td>
-                                                        {{ $item->name }}
-                                                    </td>
-                                                    <td>{{ $item->email }}</td>
-                                                    <td>{{ $item->message }}</td>
-                                                    <td>{{ $item->created_at->diffforhumans() }}</td>
-                                                </tr>
-                                            @endforeach
-                                        @else
+                                <div class="table-responsive">
+                                    <table class="table table-responsive-sm table-striped">
+                                        <thead>
                                             <tr>
-                                                <td colspan="4">@lang('labels.backend.dashboard.no_data')</td>
-
+                                                <td>@lang('labels.backend.dashboard.name')</td>
+                                                <td>@lang('labels.backend.dashboard.email')</td>
+                                                <td>@lang('labels.backend.dashboard.topic')</td>
+                                                <td>@lang('labels.backend.dashboard.message')</td>
+                                                <td>@lang('labels.backend.dashboard.time')</td>
                                             </tr>
-                                        @endif
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @if (count($recent_contacts) > 0)
+                                                @foreach ($recent_contacts as $item)
+                                                    <tr>
+                                                        <td>
+                                                            {{ $item->first_name }} {{ $item->last_name }}
+                                                        </td>
+                                                        <td>{{ $item->email }}</td>
+                                                        <td>{{ $item->topic }}</td>
+                                                        <td>{{ $item->message }}</td>
+                                                        <td>{{ $item->created_at->diffforhumans() }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td colspan="4">@lang('labels.backend.dashboard.no_data')</td>
+    
+                                                </tr>
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
                             </div>
                         @else
                             <div class="col-12">

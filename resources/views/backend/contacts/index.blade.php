@@ -24,12 +24,15 @@
                                class="table table-bordered table-striped ">
                             <thead>
                             <tr>
-
                                 <th>@lang('labels.general.sr_no')</th>
                                 <th>@lang('labels.general.id')</th>
                                 <th>@lang('labels.backend.contacts.fields.name')</th>
                                 <th>@lang('labels.backend.contacts.fields.email')</th>
                                 <th>@lang('labels.backend.contacts.fields.phone')</th>
+                                <th>@lang('labels.backend.contacts.fields.organization')</th>
+                                <th>@lang('labels.backend.contacts.fields.title')</th>
+                                <th>@lang('labels.backend.contacts.fields.country')</th>
+                                <th>@lang('labels.backend.contacts.fields.topic')</th>
                                 <th>@lang('labels.backend.contacts.fields.message')</th>
                                 <th>@lang('labels.backend.contacts.fields.time')</th>
                             </tr>
@@ -81,6 +84,10 @@
                     {data: "name", name: 'name'},
                     {data: "email", name: 'email'},
                     {data: "number", name: 'number'},
+                    {data: "organization", name: 'organization'},
+                    {data: "title", name: 'title'},
+                    {data: "country", name: 'country'},
+                    {data: "topic", name: 'topic'},
                     {data: "message", name: "message"},
                     {data: "created_at", name: "time"},
                 ],

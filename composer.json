@@ -19,7 +19,7 @@
         "darryldecode/cart": "~4.2.0",
         "diglactic/laravel-breadcrumbs": "^6.1",
         "divineomega/laravel-password-exposed-validation-rule": "^2.3.0",
-        "doctrine/dbal": "^3.1",
+        "doctrine/dbal": "^3.7",
         "fideloper/proxy": "^4.4",
         "gathuku/laravelmpesa": "^1.2",
         "graham-campbell/markdown": "^13.1.1",

@@ -53,29 +53,28 @@ class ContactController extends Controller
      *
      * @return mixed
      */
-    public function send(Request $request)
+    public function send(SendContactRequest $request)
     {
-        $this->validate($request,[
-            'name' => 'required',
-            'email' => 'required|email',
-            'message' => 'required',
-            'g-recaptcha-response' => (config('access.captcha.registration') ? ['required',new CaptchaRule] : ''),
-        ],[
-            'g-recaptcha-response.required' => __('validation.attributes.frontend.captcha')
-        ]);
+        
+        $data = $request->except("_token");
 
         $contact = new Contact();
-        $contact->name = $request->name;
-        $contact->number = $request->phone;
-        $contact->email = $request->email;
-        $contact->message = $request->message;
+
+        $contact->first_name = $data['first_name'];
+        $contact->last_name = $data['last_name'];
+        $contact->email = $data['email'];
+        $contact->organization = $data['organization'];
+        $contact->country = $data['country'];
+        $contact->title = $data['title'];
+        $contact->topic = $data['topic'];
+        $contact->phone = $data['phone'];
+        $contact->message = $data['message'];
+
         $contact->save();
 
         Mail::send(new SendContact($request));
         Session::flash('alert','Response received successfully!');
-
-
-
+        
         return redirect()->back();
     }
 }
