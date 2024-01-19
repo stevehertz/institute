@@ -1700,8 +1700,8 @@ return array(
     array(
       'send_now' => 'Send Now',
       'students' => 'Students',
-      'title' => 'Teachers',
-      'courses_by_teacher' => 'Courses <span>By Teacher.</span>',
+      'title' => 'Instructors',
+      'courses_by_teacher' => 'Courses <span>By Instructor.</span>',
       'course_detail' => 'Course Detail',
     ),
     'user' =>

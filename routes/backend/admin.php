@@ -13,12 +13,14 @@ use App\Http\Controllers\LivewireController;
 
 //===== General Routes =====//
 Route::redirect('/', '/user/dashboard', 301);
+
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
 Route::group(['middleware' => 'role:teacher|administrator'], function () {
     Route::resource('orders', 'Admin\OrderController');
 });
+
 Route::group(['middleware' => 'role:administrator'], function () {
 
     //===== Teachers Routes =====//
@@ -353,6 +355,7 @@ Route::group(['prefix' => 'live-lessons'], function () {
     Route::post('restore/{id}', ['uses' => 'LiveLessonController@restore', 'as' => 'live-lessons.restore']);
     Route::delete('permanent/{id}', ['uses' => 'LiveLessonController@permanent', 'as' => 'live-lessons.perma_del']);
 });
+
 Route::resource('live-lessons', 'LiveLessonController');
 
 
@@ -362,6 +365,7 @@ Route::group(['prefix' => 'live-lesson-slots'], function () {
     Route::post('restore/{id}', ['uses' => 'LiveLessonSlotController@restore', 'as' => 'live-lesson-slots.restore']);
     Route::delete('permanent/{id}', ['uses' => 'LiveLessonSlotController@permanent', 'as' => 'live-lesson-slots.perma_del']);
 });
+
 Route::resource('live-lesson-slots', 'LiveLessonSlotController');
 
 Route::group(['namespace' => 'Admin\Stripe', 'prefix' => 'stripe', 'as' => 'stripe.'], function () {

@@ -35,25 +35,25 @@ class ProfileController extends Controller
     public function update(UpdateProfileRequest $request)
     {
         $fieldsList = [];
-        if(config('registration_fields') != NULL){
+        if (config('registration_fields') != NULL) {
             $fields = json_decode(config('registration_fields'));
 
-            foreach ($fields  as $field){
-                $fieldsList[] =  ''.$field->name;
+            foreach ($fields  as $field) {
+                $fieldsList[] =  '' . $field->name;
             }
         }
         $output = $this->userRepository->update(
             $request->user()->id,
-            $request->only('first_name', 'last_name','dob', 'phone', 'gender', 'address', 'city', 'pincode', 'state', 'country', 'avatar_type', 'avatar_location','email'),
+            $request->only('first_name', 'last_name', 'dob', 'phone', 'gender', 'address', 'city', 'pincode', 'state', 'country', 'avatar_type', 'avatar_location', 'email'),
             $request->has('avatar_location') ? $request->file('avatar_location') : false
         );
-        if($request->user()->hasRole('teacher')){
+        if ($request->user()->hasRole('teacher')) {
             $payment_details = [
-                'bank_name'         => request()->payment_method == 'bank'?request()->bank_name:'',
-                'ifsc_code'         => request()->payment_method == 'bank'?request()->ifsc_code:'',
-                'account_number'    => request()->payment_method == 'bank'?request()->account_number:'',
-                'account_name'      => request()->payment_method == 'bank'?request()->account_name:'',
-                'paypal_email'      => request()->payment_method == 'paypal'?request()->paypal_email:'',
+                'bank_name'         => request()->payment_method == 'bank' ? request()->bank_name : '',
+                'ifsc_code'         => request()->payment_method == 'bank' ? request()->ifsc_code : '',
+                'account_number'    => request()->payment_method == 'bank' ? request()->account_number : '',
+                'account_name'      => request()->payment_method == 'bank' ? request()->account_name : '',
+                'paypal_email'      => request()->payment_method == 'paypal' ? request()->paypal_email : '',
             ];
             $data = [
                 'facebook_link'     => request()->facebook_link,
@@ -63,7 +63,7 @@ class ProfileController extends Controller
                 'payment_details'   => json_encode($payment_details),
                 'description'       => request()->description,
             ];
-            $request->user()->teacherProfile->update($data);
+            $request->user()->teacherProfile()->update($data);
         }
         // E-mail address was updated, user has to reconfirm
         if (is_array($output) && $output['email_changed']) {

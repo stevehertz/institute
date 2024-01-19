@@ -20,8 +20,8 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
     * These routes require the user to be logged in
     */
     Route::group(['middleware' => 'auth'], function () {
-        Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
+        Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
         //For when admin is logged in as user from backend
         Route::get('logout-as', [LoginController::class, 'logoutAs'])->name('logout-as');

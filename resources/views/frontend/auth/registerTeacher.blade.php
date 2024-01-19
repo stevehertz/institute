@@ -37,11 +37,18 @@
                             {!! csrf_field() !!}
 
                             <div class="row">
-
                                 <div class="col-12  mt-3 mb-2">
                                     <h3>{{ __('validation.attributes.frontend.personal_information') }}</h3>
-
                                 </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    {{ html()->hidden('active')->class('form-control')->attribute('maxlength', 191)->required()->value(0) }}
+                                </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         {{ html()->label(__('validation.attributes.frontend.first_name'))->for('first_name') }}
@@ -57,7 +64,9 @@
                                         {{ html()->text('last_name')->class('form-control')->placeholder(__('validation.attributes.frontend.last_name'))->attribute('maxlength', 191)->required() }}
                                     </div><!--form-group-->
                                 </div><!--col-->
+                            </div><!--row-->
 
+                            <div class="row">
                                 <div class="col-md-12 col-12">
                                     <div class="form-group">
                                         {{ html()->label(__('validation.attributes.frontend.email'))->for('email') }}
@@ -65,7 +74,9 @@
                                         {{ html()->email('email')->class('form-control')->placeholder(__('validation.attributes.frontend.email'))->attribute('maxlength', 191)->required() }}
                                     </div><!--form-group-->
                                 </div><!--col-->
+                            </div>
 
+                            <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         {{ html()->label(__('validation.attributes.frontend.password'))->for('password') }}
@@ -81,7 +92,9 @@
                                         {{ html()->password('password_confirmation')->class('form-control')->placeholder(__('validation.attributes.frontend.password_confirmation'))->required() }}
                                     </div><!--form-group-->
                                 </div><!--col-->
+                            </div>
 
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         {{ html()->label(__('labels.backend.teachers.fields.image'))->class('form-control-label')->for('image') }}
@@ -109,11 +122,20 @@
                                         </div>
                                     </div><!--form-group-->
                                 </div><!--col-->
-
                             </div><!--row-->
 
                             <div class="row">
-                                <div class="col">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        {{ html()->label(__('validation.attributes.frontend.specialities')) }}
+
+                                        {{ html()->text('specialities')->class('form-control')->placeholder(__('validation.attributes.frontend.specialities'))->attribute('maxlength', 191)->required() }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
                                     <div class="form-group">
                                         {{ html()->label(__('labels.teacher.description')) }}
 

@@ -13,7 +13,7 @@ return array (
       'password' => 'Password',
       'password_confirmation' => 'Password Confirmation',
       'avatar' => 'Avatar Location',
-      'first_na me' => 'First Name',
+      'first_name' => 'First Name',
       'last_name' => 'Last Name',
       'email' => 'E-mail Address',
       'name' => 'Full Name',
@@ -33,6 +33,7 @@ return array (
       'personal_information' => 'Personal Information',
       'social_information' => 'Social Information',
       'payment_information' => 'Payment Information',
+      'specialities' => 'Specialities',
     ),
     'backend' => 
     array (

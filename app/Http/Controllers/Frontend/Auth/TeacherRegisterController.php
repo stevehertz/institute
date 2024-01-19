@@ -63,6 +63,7 @@ class TeacherRegisterController extends Controller
             // 'linkedin_link' => request()->linkedin_link,
             // 'payment_method' => request()->payment_method,
             // 'payment_details' => json_encode($payment_details),
+            'specialities' => request()->specialities,
             'description'       => request()->description,
         ];
         TeacherProfile::create($data);
