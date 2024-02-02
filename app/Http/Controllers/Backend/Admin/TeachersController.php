@@ -41,9 +41,9 @@ class TeachersController extends Controller
 
 
         if (request('show_deleted') == 1) {
-            $teachers = User::query()->role('teacher')->onlyTrashed()->orderBy('created_at', 'desc');
+            $teachers = User::query()->role('instructor')->onlyTrashed()->orderBy('created_at', 'desc');
         } else {
-            $teachers = User::query()->role('teacher')->orderBy('created_at', 'desc');
+            $teachers = User::query()->role('instructor')->orderBy('created_at', 'desc');
         }
 
         if (auth()->user()->isAdmin()) {
@@ -129,7 +129,7 @@ class TeachersController extends Controller
         }
         $teacher->active = isset($request->active) ? 1 : 0;
         $teacher->save();
-        $teacher->assignRole('teacher');
+        $teacher->assignRole('instructor');
 
         $payment_details = [
             'bank_name'         => request()->payment_method == 'bank' ? request()->bank_name : '',
@@ -195,6 +195,7 @@ class TeachersController extends Controller
         ];
         $data = [
             // 'user_id'           => $user->id,
+            'specialities' => request()->specialities,
             'facebook_link'     => request()->facebook_link,
             'twitter_link'      => request()->twitter_link,
             'linkedin_link'     => request()->linkedin_link,

@@ -49,7 +49,7 @@ class CoursesController extends Controller
             $courses = Course::withoutGlobalScope('filter')->canDisableCourse()->where('published', 1)->where('featured', '=', 1)->orderBy('id', 'desc')->paginate(9);
 
         } else {
-            $courses = Course::withoutGlobalScope('filter')->canDisableCourse()->where('published', 1)->orderBy('id', 'desc')->paginate(9);
+            $courses = Course::withoutGlobalScope('filter')->canDisableCourse()->where('published', 1)->orderBy('id', 'asc')->paginate(9);
         }
         $purchased_courses = NULL;
         $purchased_bundles = NULL;

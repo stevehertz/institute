@@ -46,7 +46,7 @@
             $('#myModal').modal('show');
             $('#loginForm').find('#email').val('student@lms.com')
             $('#loginForm').find('#password').val('secret')
-        @elseif (request()->has('user') && request('user') == 'teacher')
+        @elseif (request()->has('user') && request('user') == 'instructor')
             $('#myModal').modal('show');
             $('#loginForm').find('#email').val('teacher@lms.com')
             $('#loginForm').find('#password').val('secret')

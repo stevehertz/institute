@@ -593,6 +593,7 @@ class CoursesController extends Controller
 
         return view('backend.courses.enrolments', compact('enrolments'));
     }
+    
     public function getEnrolmentData(Request $request)
     {
         $enrolments =  DB::table('course_student')

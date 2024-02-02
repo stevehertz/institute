@@ -43,7 +43,7 @@ class DashboardController extends Controller
             $subscribed_bundles = auth()->user()->subscribedBundles();
             $pending_orders = auth()->user()->pendingOrders();
 
-            if (auth()->user()->hasRole('teacher')) {
+            if (auth()->user()->hasRole('instructor')) {
                 //IF logged in user is teacher
                 $students_count = Course::whereHas('teachers', function ($query) {
                     $query->where('user_id', '=', auth()->user()->id);
@@ -82,7 +82,7 @@ class DashboardController extends Controller
 
             } elseif (auth()->user()->hasRole('administrator')) {
                 $students_count = User::role('student')->count();
-                $teachers_count = User::role('teacher')->count();
+                $teachers_count = User::role('instructor')->count();
                 $courses_count = \App\Models\Course::all()->count() + \App\Models\Bundle::all()->count();
                 $recent_orders = Order::orderBy('created_at', 'desc')->take(10)->get();
                 $recent_contacts = Contact::orderBy('created_at', 'desc')->take(10)->get();

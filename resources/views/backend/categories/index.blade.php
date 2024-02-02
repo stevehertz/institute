@@ -8,10 +8,14 @@
         <div class="card-header">
 
             <h3 class="page-title d-inline">@lang('labels.backend.categories.title')</h3>
-            <div class="float-right">
-                <a href="{{ route('admin.categories.create') }}" class="btn btn-success">@lang('strings.backend.general.app_add_new')</a>
-            </div>
 
+            @can('category_create')
+                <div class="float-right">
+                    <a href="{{ route('admin.categories.create') }}" class="btn btn-success">
+                        @lang('strings.backend.general.app_add_new')
+                    </a>
+                </div>
+            @endcan
         </div>
         <div class="card-body">
             <div class="row">
@@ -179,7 +183,7 @@
                 @if (request('show_deleted') != 1)
                     $('.actions').html('<a href="' + '{{ route('admin.categories.mass_destroy') }}' +
                         '" class="btn btn-xs btn-danger js-delete-selected" style="margin-top:0.755em;margin-left: 20px;">Delete selected</a>'
-                        );
+                    );
                 @endif
             @endcan
 

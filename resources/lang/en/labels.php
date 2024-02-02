@@ -1785,6 +1785,7 @@ return array(
       'ifsc_code' => 'IFSC Code',
     ),
     'description' => 'Description',
+    'specialities' => 'Specialities'
   ),
   'subscription' => array(
     'title' => 'Subscription Plan',

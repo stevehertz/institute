@@ -23,8 +23,11 @@
                         <i class="zmdi zmdi-search"></i>
                     </div> --}}
 
-                    <a href="{{route('cart.index')}}" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-                        @if (auth()->check() && Cart::session(auth()->user()->id)->getTotalQuantity() != 0) data-notify="{{ Cart::session(auth()->user()->id)->getTotalQuantity() }}" @else data-notify="0" @endif>
+                    <a href="{{ route('cart.index') }}"
+                        class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
+                        @if (auth()->check() && Cart::session(auth()->user()->id)->getTotalQuantity() != 0) data-notify="{{ Cart::session(auth()->user()->id)->getTotalQuantity() }}" 
+                        @else 
+                        data-notify="0" @endif>
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </a>
 

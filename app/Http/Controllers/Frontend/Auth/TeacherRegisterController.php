@@ -48,7 +48,7 @@ class TeacherRegisterController extends Controller
         }
         $user->active = 0;
         $user->save();
-        $user->assignRole('teacher');
+        $user->assignRole('instructor');
         // $payment_details = [
         //     'bank_name' => request()->bank_name,
         //     'ifsc_code' => request()->ifsc_code,

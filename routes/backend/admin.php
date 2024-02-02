@@ -17,7 +17,7 @@ Route::redirect('/', '/user/dashboard', 301);
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
-Route::group(['middleware' => 'role:teacher|administrator'], function () {
+Route::group(['middleware' => 'role:instructor|administrator'], function () {
     Route::resource('orders', 'Admin\OrderController');
 });
 
@@ -170,7 +170,7 @@ Route::group(['middleware' => 'role:administrator'], function () {
 
 
 //Common - Shared Routes for Teacher and Administrator
-Route::group(['middleware' => 'role:administrator|teacher'], function () {
+Route::group(['middleware' => 'role:administrator|instructor'], function () {
 
     //====== Reports Routes =====//
     Route::get('report/sales', ['uses' => 'ReportController@getSalesReport', 'as' => 'reports.sales']);

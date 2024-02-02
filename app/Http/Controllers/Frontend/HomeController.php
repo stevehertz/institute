@@ -102,7 +102,7 @@ class HomeController extends Controller
             ->where('published', '=', 1)
             ->where('trending', '=', 1)->take(2)->get();
 
-        $teachers = User::role('teacher')->with('courses')->where('active', '=', 1)->take(7)->get();
+        $teachers = User::role('instructor')->with('courses')->where('active', '=', 1)->take(7)->get();
 
         $sponsors = Sponsor::where('status', '=', 1)->get();
         $clients = Client::where('status', '=', 1)->get();
@@ -225,14 +225,14 @@ class HomeController extends Controller
     public function getTeachers()
     {
         $recent_news = Blog::orderBy('created_at', 'desc')->take(2)->get();
-        $teachers = User::role('teacher')->where('active', 1)->paginate(12);
+        $teachers = User::role('instructor')->where('active', 1)->paginate(12);
         return view($this->path . '.teachers.index', compact('teachers', 'recent_news'));
     }
 
     public function showTeacher(Request $request)
     {
         $recent_news = Blog::orderBy('created_at', 'desc')->take(2)->get();
-        $teacher = User::role('teacher')->where('id', '=', $request->id)->first();
+        $teacher = User::role('instructor')->where('id', '=', $request->id)->first();
         $courses = $teacher->courses;
         if (count($teacher->courses) > 0) {
             $courses = $teacher->courses()->paginate(12);

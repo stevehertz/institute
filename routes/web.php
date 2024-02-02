@@ -19,7 +19,6 @@ Route::get('lang/{lang}', [LanguageController::class, 'swap']);
 
 Route::get('/sitemap-' . str_slug(config('app.name')) . '/{file?}', 'SitemapController@index');
 
-
 //============ Remove this  while creating zip for Envato ===========//
 
 /* 
@@ -27,6 +26,7 @@ Route::get('/sitemap-' . str_slug(config('app.name')) . '/{file?}', 'SitemapCont
 ---------------This command is useful in demo site you can go to https://demo.neonlms.com/reset-demo and it will refresh site from this URL. 
 *********
 */
+
 
 Route::get('reset-demo', function () {
     ini_set('memory_limit', '-1');
@@ -38,8 +38,8 @@ Route::get('reset-demo', function () {
         return $e->getMessage();
     }
 });
-//===================================================================//
 
+//===================================================================//
 
 /*
  * Frontend Routes
@@ -146,7 +146,6 @@ Route::post('contact/send', 'Frontend\ContactController@send')->name('contact.se
 // Download
 Route::get('download', ['uses' => 'Frontend\HomeController@getDownload', 'as' => 'download']);
 
-
 // Cart
 Route::group(['middleware' => 'auth'], function () {
     Route::post('cart/checkout', ['uses' => 'CartController@checkout', 'as' => 'cart.checkout']);
@@ -181,6 +180,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('cart/offline-payment', ['uses' => 'CartController@offlinePayment', 'as' => 'cart.offline.payment']);
     Route::post('cart/getnow', ['uses' => 'CartController@getNow', 'as' => 'cart.getnow']);
 });
+
+
+
 
 //============= Menu  Manager Routes ===============//
 Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => config('menu.middleware')], function () {

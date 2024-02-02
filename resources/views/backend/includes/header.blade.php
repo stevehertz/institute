@@ -82,7 +82,7 @@
                 </div>
 
                 <a class="dropdown-item" href="{{ route('admin.messages') }}">
-                    <i class="fab fa-envelope-open"></i> @lang('navs.general.messages')
+                    <i class="fa fa-envelope-open"></i> @lang('navs.general.messages')
                     <span class="badge unreadMessageCounter d-none badge-success">5</span>
                 </a>
 
@@ -92,7 +92,7 @@
 
                 <div class="divider"></div>
                 <a class="dropdown-item" href="{{ route('frontend.auth.logout') }}">
-                    <i class="fas fa-plus"></i> @lang('navs.general.logout')
+                    <i class="fa fa-sign-out"></i> @lang('navs.general.logout')
                 </a>
             </div>
         </li>
