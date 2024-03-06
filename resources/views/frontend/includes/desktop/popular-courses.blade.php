@@ -56,7 +56,7 @@
                                                         </span>
                                                     </div>
 
-                                                    @include('frontend.includes.desktop.wishlist')
+                                                    {{-- @include('frontend.includes.desktop.wishlist') --}}
                                                 </div>
                                             </div>
                                         </div>

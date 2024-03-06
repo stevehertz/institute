@@ -66,9 +66,12 @@
                     <div class="tab-content">
                         <div class="tab-pane container active" id="login">
                             <span class="error-response text-danger"></span>
-                            <span class="success-response text-success">
-                                {{ session()->get('flash_success') }}
-                            </span>
+                            @if (Session::has('success'))
+                                <span class="success-response text-success">
+                                    {{ Session::get('success') }}
+                                </span>
+                            @endif
+
                             <form class="contact_form" id="loginForm" action="{{ route('frontend.auth.login.post') }}"
                                 method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -113,6 +116,7 @@
                         </div>
                         <!--/.tab-pane container active -->
                         <div class="tab-pane container fade" id="register">
+
                             <form id="registerForm" class="contact_form" action="#" method="post">
                                 {!! csrf_field() !!}
                                 <a href="#" class="go-login float-right text-info pr-0">@lang('labels.frontend.modal.already_user_note')</a>
@@ -214,6 +218,7 @@
                                     @lang('labels.teacher.teacher_register')
                                 </a>
                             </form>
+
                         </div>
                         <!--/.tab-pane -->
                     </div>

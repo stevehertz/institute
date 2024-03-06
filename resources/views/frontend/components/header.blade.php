@@ -9,7 +9,7 @@
 
                 <!-- Logo desktop -->
                 <a href="{{ url('/') }}" class="logo">
-                    <img src="{{ asset('storage/logo/logo.png') }}" alt="IMG-LOGO">
+                    <img src="{{ asset('storage/logo/logo.png') }}" alt="{{ config('app.name') }}">
                 </a>
 
                 <!-- Menu desktop -->
@@ -22,20 +22,56 @@
                     {{-- <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
                         <i class="zmdi zmdi-search"></i>
                     </div> --}}
+                    @auth
+                        @if ($logged_in_user->hasRole('student'))
+                            <a href="{{ route('admin.dashboard') }}"
+                                class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+                                <i class="zmdi zmdi-account-o"></i>
+                            </a>
 
-                    <a href="{{ route('cart.index') }}"
-                        class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-                        @if (auth()->check() && Cart::session(auth()->user()->id)->getTotalQuantity() != 0) data-notify="{{ Cart::session(auth()->user()->id)->getTotalQuantity() }}" 
-                        @else 
-                        data-notify="0" @endif>
-                        <i class="zmdi zmdi-shopping-cart"></i>
-                    </a>
+                            <a href="{{ route('frontend.auth.logout') }}"
+                                class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+                                <i class="zmdi zmdi-assignment-return"></i>
+                            </a>
 
-                    {{-- <a href="#"
-                        class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-                        data-notify="2">
-                        <i class="zmdi zmdi-favorite-outline"></i>
-                    </a> --}}
+                            @if (Cart::session(auth()->user()->id)->getTotalQuantity() != 0)
+                                <a href="{{ route('cart.index') }}"
+                                    class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
+                                    data-notify="{{ Cart::session(auth()->user()->id)->getTotalQuantity() }}">
+                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                </a>
+                            @else
+                                <a href="{{ route('cart.index') }}"
+                                    class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
+                                    data-notify="0">
+                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                </a>
+                            @endif
+                        @else
+                            @can('view backend')
+                                <a href="{{ route('admin.dashboard') }}"
+                                    class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+                                    <i class="zmdi zmdi-account-o"></i>
+                                </a>
+                            @endcan
+                            <a href="{{ route('frontend.auth.logout') }}"
+                                class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+                                <i class="zmdi zmdi-assignment-return"></i>
+                            </a>
+                        @endif
+                    @else
+                        <a href="{{ route('frontend.auth.login') }}"
+                            class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+                            <i class="zmdi zmdi-account-o"></i>
+                        </a>
+
+                        <a href="{{ route('cart.index') }}" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+                            <i class="zmdi zmdi-shopping-cart"></i>
+                        </a>
+
+                    @endauth
+
+
                 </div>
             </nav>
         </div>

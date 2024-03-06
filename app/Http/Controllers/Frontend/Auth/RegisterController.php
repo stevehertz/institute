@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\RegisterRequest;
-use App\Helpers\Frontend\Auth\Socialite;
-use App\Events\Frontend\Auth\UserRegistered;
-use App\Mail\Frontend\Auth\AdminRegistered;
 use App\Models\Auth\User;
-use Arcanedev\NoCaptcha\Rules\CaptchaRule;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use App\Repositories\Frontend\Auth\UserRepository;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\RegisterRequest;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Session;
+use App\Helpers\Frontend\Auth\Socialite;
 use Illuminate\Support\Facades\Validator;
+use Arcanedev\NoCaptcha\Rules\CaptchaRule;
+use App\Mail\Frontend\Auth\AdminRegistered;
+use App\Events\Frontend\Auth\UserRegistered;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Validation\ClosureValidationRule;
+use App\Repositories\Frontend\Auth\UserRepository;
 
 /**
  * Class RegisterController.
@@ -84,11 +85,20 @@ class RegisterController extends Controller
         if ($validator->passes()) {
             // Store your user in database
             event(new Registered($user = $this->create($request->all())));
-            return response(['success' => true]);
+
+            Session::flash('success', 'Registration successful! You can now login.');
+            // return response(['success' => true]);
+            return redirect()->route('frontend.auth.login');
 
         }
 
-        return response(['errors' => $validator->errors()]);
+        // return response(['errors' => $validator->errors()]);
+
+        return back()->withErrors([
+            'errors' => $validator->errors()
+        ]);
+
+       
     }
 
     /**
@@ -105,15 +115,15 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-                $user->dob = isset($data['dob']) ? $data['dob'] : NULL ;
-                $user->phone = isset($data['phone']) ? $data['phone'] : NULL ;
-                $user->gender = isset($data['gender']) ? $data['gender'] : NULL;
-                $user->address = isset($data['address']) ? $data['address'] : NULL;
-                $user->city =  isset($data['city']) ? $data['city'] : NULL;
-                $user->pincode = isset($data['pincode']) ? $data['pincode'] : NULL;
-                $user->state = isset($data['state']) ? $data['state'] : NULL;
-                $user->country = isset($data['country']) ? $data['country'] : NULL;
-                $user->save();
+        $user->dob = isset($data['dob']) ? $data['dob'] : NULL ;
+        $user->phone = isset($data['phone']) ? $data['phone'] : NULL ;
+        $user->gender = isset($data['gender']) ? $data['gender'] : NULL;
+        $user->address = isset($data['address']) ? $data['address'] : NULL;
+        $user->city =  isset($data['city']) ? $data['city'] : NULL;
+        $user->pincode = isset($data['pincode']) ? $data['pincode'] : NULL;
+        $user->state = isset($data['state']) ? $data['state'] : NULL;
+        $user->country = isset($data['country']) ? $data['country'] : NULL;
+        $user->save();
 
         $userForRole = User::find($user->id);
         $userForRole->confirmed = 1;

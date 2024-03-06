@@ -42,8 +42,11 @@ class LoginController extends Controller
         if(request()->ajax()){
             return ['socialLinks' => (new Socialite)->getSocialLinks()];
         }
-
-        return redirect('/')->with('show_login', true);
+        $socialLinks = (new  Socialite)->getSocialLinks();
+        // return redirect('/')->with('show_login', true);
+        return view('frontend.auth.login', [
+            'socialiteLinks' => $socialLinks
+        ]);
     }
 
     /**
@@ -55,8 +58,6 @@ class LoginController extends Controller
     {
         return config('access.users.username');
     }
-
-
 
     public function login(Request $request)
     {
@@ -83,34 +84,46 @@ class LoginController extends Controller
                         'last_login_at' => Carbon::now()->toDateTimeString(),
                         'last_login_ip' => $request->getClientIp()
                     ]);
-                    return response(['success' => true,'redirect' => $redirect], Response::HTTP_OK);
+
+                    return redirect()->route('admin.dashboard');
+                    // return response([
+                    //     'success' => true,
+                    //     'redirect' => $redirect
+                    // ], Response::HTTP_OK);
                 }else{
                     \Illuminate\Support\Facades\Auth::logout();
 
-                    return
-                        response([
-                            'success' => false,
-                            'message' => 'Login failed. Account is not active'
-                        ], Response::HTTP_FORBIDDEN);
+                    // return
+                    //     response([
+                    //         'success' => false,
+                    //         'message' => 'Login failed. Account is not active'
+                    //     ], Response::HTTP_FORBIDDEN);
+                    return back()->withErrors([
+                        'message' => 'Login failed. Account is not active'
+                    ]);
                 }
             }else{
-                return
-                    response([
-                        'success' => false,
-                        'message' => 'Login failed. Account not found'
-                    ], Response::HTTP_FORBIDDEN);
+                // return
+                //     response([
+                //         'success' => false,
+                //         'message' => 'Login failed. Account not found'
+                //     ], Response::HTTP_FORBIDDEN);
+                return back()->withErrors([
+                    'message' => 'Login failed. Account not found'
+                ]);
             }
 
         }
 
-
-        return response(['success'=>false,'errors' => $validator->errors()]);
+        // return response([
+        //     'success'=>false,
+        //     'errors' => $validator->errors()
+        // ]);
+        return back()->withErrors([
+            'errors' => $validator->errors()
+        ]);
 
     }
-
-
-
-
 
     /**
      * The user has been authenticated.
@@ -193,7 +206,7 @@ class LoginController extends Controller
     public function logoutAs()
     {
         // If for some reason route is getting hit without someone already logged in
-        if (! auth()->user()) {
+        if (!auth()->user()) {
             return redirect()->route('frontend.auth.login');
         }
 

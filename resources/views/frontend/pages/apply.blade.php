@@ -8,8 +8,11 @@
 
     <!-- Title page -->
     <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('{{ asset('storage/bg/bg-04.jpg') }}');">
-        <h2 class="ltext-105 cl0 txt-center">
+        <h2 class="cl0 txt-center">
             {{-- <span>{{ $page->title }}</span> --}}
+            <a href="{{ route('frontend.auth.register') }}" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+                Register today to apply
+            </a>
         </h2>
     </section>
 
@@ -24,22 +27,23 @@
                                 {{-- <h3 class="mtext-111 cl2 p-b-16 txt-center">
                                     {{ $page->title }}
                                 </h3> --}}
-                                
+
                                 {!! $page->content !!}
-                            
+
                             </div>
                         </div>
-    
+
                         <div class="col-11 col-md-5 col-lg-4 m-lr-auto">
                             <div class="">
                                 <div class="hov-img0">
                                     <img src="{{ asset('storage/uploads/' . $page->image) }}" alt="{{ $page->title }}">
                                 </div>
-                            </div>  
+                            </div>
 
                             <div class="apply-registration">
                                 <div class="bor10">
-                                    <a href="javascript:void(0)" id="openLoginModal" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                                    <a href="{{ route('frontend.auth.register') }}"
+                                        class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                                         Register today to apply
                                     </a>
                                 </div>
@@ -52,12 +56,12 @@
                                 <h3 class="mtext-111 text-center cl2 p-b-16">
                                     {{ $page->title }}
                                 </h3>
-    
+
                                 {!! $page->content !!}
                             </div>
                         </div>
                     @endif
-    
+
                 </div>
                 <!--/.row -->
             </div>

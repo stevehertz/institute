@@ -7,7 +7,7 @@
         <div class="right-top-bar flex-w h-full">
 
             @guest
-                <a href="javascript:void(0)" class="flex-c-m trans-04 p-lr-25" id="openLoginModal" data-target="#myModal">
+                <a href="{{ route('frontend.auth.login') }}" class="flex-c-m trans-04 p-lr-25">
                     @lang('navs.general.login')
                 </a>
             @else
